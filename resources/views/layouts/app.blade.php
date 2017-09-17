@@ -16,6 +16,24 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style type="text/css">
+        @font-face {
+            font-family: Koyu Italic;
+            src: url('fonts/Futura-Koyu-Italic.ttf');
+        }
+        @font-face {
+            font-family: FuturaLight;
+            src: url('fonts/FuturaLight.ttf');
+        }
+        * {
+            font-family: Koyu Italic;
+        }
+        .text-brand-primary {
+            color: rgb(235, 51, 35)
+        }
+        .header-font {
+            font-family: FuturaLight;
+            letter-spacing: 1px;
+        }
         .background-image {
             background-size: cover;
             background-position: center;
