@@ -6,23 +6,42 @@
         @include('home.carousel')
     </div>
     <div class="row">
-        <div class="col-xs-12" style="height: 35vh">
-
+        <div class="col-xs-12">
+            <div class="carousel">
+                <div class="carousel-item active">
+                    <div style="height: 35vh; width: 100vw">
+                    </div>
+                </div>
+                <a class="carousel-control-prev opacity-3" href="#landing-carousel" role="button" data-slide="prev">
+                    @icon('arrow-left', 'icon-h-3 font-weight-bold')
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next opacity-3" href="#landing-carousel" role="button" data-slide="next">
+                    @icon('arrow-right', 'icon-h-3 font-weight-bold')
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 p-0 background-image d-flex align-items-end flex-column" style="background-image: url('/images/headwear.png'); height: 55vh">
-            <h1 class="mt-auto text-brand-primary font-italic pr-5 mb-0">HEAD</h1>
-            <h1 class="text-brand-primary font-italic pr-5 mt-0">_WEAR</h1>
+        <div class="col-md-6 p-0 background-image d-flex align-items-start flex-column" style="background-image: url('/images/headwear.png'); height: 55vh">
+            <h1 class="display-3 mt-auto text-brand-primary font-italic pr-5 mb-0 ml-4">HEAD</h1>
+            <h1 class="display-3 text-brand-primary font-italic pr-5 mt-0 ml-4">_WEAR</h1>
         </div>
-        <div class="col-md-6 p-0 background-image d-flex align-items-end flex-column" style="background-image: url('/images/sportswear.png'); height: 55vh">
-            <h1 class="mt-auto text-brand-primary font-italic pr-5 mb-0">SPORTS</h1>
-            <h1 class="mt-0 text-brand-primary font-italic pr-5">_WEAR</h1>
+        <div class="col-md-6 p-0 background-image d-flex align-items-md-end flex-column" style="background-image: url('/images/sportswear.png'); height: 55vh">
+            <h1 class="display-3 mt-auto text-brand-primary font-italic pr-5 mb-0 ml-sm-4">SPORTS</h1>
+            <h1 class="display-3 mt-0 text-brand-primary font-italic pr-5 ml-sm-4">_WEAR</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 p-0 background-image d-flex align-items-end flex-column" style="background-image: url('/images/underwear.png'); height: 33vh">
-            <h1 class="mt-auto text-brand-primary font-italic pr-5">_UNDERWEAR</h1>
+    <div class="row d-none d-md-block">
+        <div class="col-xs-12 p-0 background-image d-flex align-items-md-end flex-column" style="background-image: url('/images/underwear.png'); height: 33vh">
+            <h1 class="display-3 mt-auto text-brand-primary font-italic pr-5 ml-sm-4">_UNDERWEAR</h1>
+        </div>
+    </div>
+    <div class="row d-md-none">
+        <div class="col-xs-12 p-0 background-image d-flex align-items-md-end flex-column" style="background-image: url('/images/underwear.png'); height: 55vh">
+            <h1 class="display-3 mt-auto text-brand-primary font-italic pr-5 mb-0 ml-sm-4">UNDER</h1>
+            <h1 class="display-3 mt-0 text-brand-primary font-italic pr-5 ml-sm-4">_WEAR</h1>
         </div>
     </div>
 </div>

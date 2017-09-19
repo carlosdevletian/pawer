@@ -41,6 +41,41 @@
             height: 100%;
             width: 100%;
         }
+        .icon {
+            display: inline-block;
+            height: 1.25em;
+            width: 1.25em;
+            fill: currentColor;
+            color: white;
+            vertical-align: text-bottom;
+        }
+        .icon-w-1 {
+            width: 1em;
+        }
+        .icon-w-2 {
+            width: 4em;
+        }
+        .icon-w-3 {
+            width: 8em;
+        }
+        .icon-h-1 {
+            height: 1em;
+        }
+        .icon-h-2 {
+            height: 4em;
+        }
+        .icon-h-3 {
+            height: 8em;
+        }
+        .opacity-1 {
+            opacity: .3;
+        }
+        .opacity-2 {
+            opacity: .5;
+        }
+        .opacity-3 {
+            opacity: .7;
+        }
     </style>
 </head>
 <body>

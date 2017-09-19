@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md" style="background-color: black">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-dark navbar-expand-md" style="background-color: black">
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#main-header" aria-controls="main-header" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">PAWER</a>
+    <a class="navbar-brand" href="#">@svg('logo', 'icon-w-3')</a>
 
-    <div class="collapse navbar-collapse justify-content-end" id="header">
+    <div class="collapse navbar-collapse justify-content-end" id="main-header">
         <ul class="navbar-nav">
             <li class="nav-item active mr-5">
                 <a class="nav-link header-font font-weight-bold text-light" href="#">ABOUT</a>
@@ -15,11 +15,8 @@
             <li class="nav-item mr-5">
                 <a class="nav-link header-font font-weight-bold text-light" href="#">CATALOG</a>
             </li>
-            <li class="nav-item mr-5">
-                <a class="nav-link header-font font-weight-bold text-light" href="#">LOOKBOOKS</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link header-font font-weight-bold text-light" href="#">BLOG</a>
+                <a class="nav-link header-font font-weight-bold text-light" href="#">LOOKBOOKS</a>
             </li>
         </ul>
     </div>
