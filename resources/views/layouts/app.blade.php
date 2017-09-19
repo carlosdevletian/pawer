@@ -24,15 +24,34 @@
             font-family: FuturaLight;
             src: url('fonts/FuturaLight.ttf');
         }
-        * {
+        h1,h2,h3,h4,h5 {
             font-family: Koyu Italic;
+        }
+        p, a {
+            font-family: FuturaLight;
+        }
+        a:hover {
+            text-decoration: none;
         }
         .text-brand-primary {
             color: rgb(235, 51, 35)
         }
-        .header-font {
-            font-family: FuturaLight;
+        .bg-brand {
+            background-color: rgb(235, 51, 35)
+        }
+        .btn-brand {
+            border-color: rgb(235, 51, 35);
+            color: white;
+            background-color: rgb(235, 51, 35);
+        }
+        .btn-brand:hover {
+            background-color: rgb(260, 51, 35);
+        }
+        .ls-1 {
             letter-spacing: 1px;
+        }
+        .clickable:hover {
+            cursor: pointer;
         }
         .background-image {
             background-size: cover;
@@ -84,6 +103,8 @@
         @include('layouts.header')
 
         @yield('content')
+
+        @include('layouts.footer')
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
