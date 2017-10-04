@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-md" style="background-color: black">
     <button class="navbar-toggler border-0 clickable" type="button" data-toggle="collapse" data-target="#main-header" aria-controls="main-header" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        @svg('navbar-toggler')
     </button>
     <a class="navbar-brand" href="#">@svg('logo', 'icon-w-3')</a>
 
@@ -16,7 +16,7 @@
                 <a class="nav-link ls-1 font-weight-bold text-light" href="#">CATALOG</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ls-1 font-weight-bold text-light" href="#">LOOKBOOKS</a>
+                <a class="nav-link ls-1 font-weight-bold text-light" href="{{ route('lookbook') }}">LOOKBOOKS</a>
             </li>
         </ul>
     </div>

@@ -6,7 +6,10 @@
         @include('home.carousel')
     </div>
 
-    <product-carousel></product-carousel>
+    <product-carousel>
+        <div slot="arrow-left">@icon('arrow-left', 'icon-h-3 font-weight-bold')</div>
+        <div slot="arrow-right">@icon('arrow-right', 'icon-h-3 font-weight-bold')</div>
+    </product-carousel>
 
     <div class="row">
         <a href="#" class="col-md-6 p-0 background-image d-flex align-items-start flex-column" style="background-image: url('/images/headwear.png'); height: 55vh">

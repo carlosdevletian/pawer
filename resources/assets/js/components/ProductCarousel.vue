@@ -9,12 +9,15 @@
                 <product :product="product"></product>
             </slide>
         </carousel-3d>
-
         <a role="button" class="carousel-control-prev clickable" @click="previousProduct">
-            <
+            <slot name="arrow-left">
+                <
+            </slot>
         </a>
         <a role="button" class="carousel-control-next clickable" @click="nextProduct">
-            >
+            <slot name="arrow-right">
+                >
+            </slot>
         </a>
     </div>
 </template>

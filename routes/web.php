@@ -14,3 +14,4 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::view('/lookbook', 'lookbook')->name('lookbook');

@@ -53,6 +53,12 @@
         .clickable:hover {
             cursor: pointer;
         }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 285px;
+        }
         .background-image {
             background-size: cover;
             background-position: center;
@@ -95,14 +101,22 @@
         .opacity-3 {
             opacity: .7;
         }
+        .mb-footer {
+            margin-bottom: 285px;
+        }
+        html {
+            position: relative;
+            min-height: 100%;
+        }
     </style>
 </head>
 <body>
     <div id="app">
+        <div class="mb-footer">
+            @include('layouts.header')
 
-        @include('layouts.header')
-
-        @yield('content')
+            @yield('content')
+        </div>
 
         @include('layouts.footer')
     </div>

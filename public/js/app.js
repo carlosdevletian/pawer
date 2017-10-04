@@ -29406,6 +29406,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -29578,7 +29581,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.previousProduct
     }
-  }, [_vm._v("\n        <\n    ")]), _vm._v(" "), _c('a', {
+  }, [_vm._t("arrow-left", [_vm._v("\n            <\n        ")])], 2), _vm._v(" "), _c('a', {
     staticClass: "carousel-control-next clickable",
     attrs: {
       "role": "button"
@@ -29586,7 +29589,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.nextProduct
     }
-  }, [_vm._v("\n        >\n    ")])], 1)
+  }, [_vm._t("arrow-right", [_vm._v("\n            >\n        ")])], 2)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
