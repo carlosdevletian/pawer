@@ -45,22 +45,28 @@
             }
             .icon {
                 display: inline-block;
-                width: 16em;
+                max-width: 90%;
+                width: 45em;
                 fill: currentColor;
                 color: white;
                 vertical-align: text-bottom;
             }
             .icon-small {
                 display: inline-block;
-                width: 8em;
+                max-width: 35%;
+                width: 10em;
                 fill: currentColor;
                 color: white;
                 vertical-align: text-bottom;
             }
+            .bottom {
+                position: absolute;
+                bottom: 5em;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+       <!--  <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
                     @icon('503.stay-tuned', 'icon')
@@ -69,6 +75,10 @@
                     @icon('503.pawerlab', 'icon-small')
                 </a>
             </div>
+        </div> -->
+        <div class="position-ref flex-center full-height" style="flex-direction: column">
+            @icon('503.stay-tuned', 'icon')
+            @icon('503.pawerlab', 'icon-small bottom')
         </div>
     </body>
 </html>

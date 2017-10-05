@@ -24,6 +24,20 @@
             font-family: FuturaLight;
             src: url('fonts/FuturaLight.ttf');
         }
+        @font-face {
+            font-family: Futura Condensed;
+            src: url('fonts/FuturaStd-Condensed.otf');
+        }
+        @font-face {
+            font-family: Futura Medium;
+            src: url('fonts/FuturaStd-Medium.otf');
+        }
+        .fut-con-med {
+            font-family: Futura Condensed;
+        }
+        .futura-medium {
+            font-family: Futura Medium;
+        }
         h1,h2,h3,h4,h5 {
             font-family: Koyu Italic;
         }

@@ -29694,7 +29694,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "width": "47%"
     }
   }, [_c('p', {
-    staticClass: "m-0 p-0"
+    staticClass: "m-0 p-0 futura-medium"
   }, [_vm._v(_vm._s(_vm.product.name))]), _vm._v(" "), _c('hr', {
     staticClass: "m-0 mb-2 p-0"
   }), _vm._v(" "), _c('div', {

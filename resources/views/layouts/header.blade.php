@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse justify-content-end" id="main-header">
         <ul class="navbar-nav">
             <li class="nav-item active mr-5">
-                <a class="nav-link ls-1 font-weight-bold text-light" href="#">ABOUT</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="#">ABOUT</a>
             </li>
             <li class="nav-item mr-5">
-                <a class="nav-link ls-1 font-weight-bold text-light" href="#">NEW ARRIVALS</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="#">NEW ARRIVALS</a>
             </li>
             <li class="nav-item mr-5">
-                <a class="nav-link ls-1 font-weight-bold text-light" href="#">CATALOG</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="#">CATALOG</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ls-1 font-weight-bold text-light" href="{{ route('lookbook') }}">LOOKBOOKS</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('lookbook') }}">LOOKBOOKS</a>
             </li>
         </ul>
     </div>

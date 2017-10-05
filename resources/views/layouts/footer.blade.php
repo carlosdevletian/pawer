@@ -5,22 +5,22 @@
                 @svg('mono', 'icon-w-3 icon-h-3')
                 <h5>SIGN UP TO BE IN THE KNOW</h5>
                 <div class="d-flex form-group">
-                    <input class="mr-2 form-control rounded-0" type="email" name="email" placeholder="Email address">
+                    <input class="mr-2 form-control rounded-0 text-center" type="email" name="email" placeholder="Email address">
                     <button class="btn rounded-0 clickable btn-brand">Sign up</button>
                 </div>
             </div>
             <div class="col-md-6 col-lg-7 d-none d-md-flex flex-column justify-content-center align-items-end">
-                <p class="ls-1 font-weight-bold">
-                    <a href="#" class="text-light">ABOUT-</a>
+                <p class="ls-1">
+                    <a href="#" class="text-light fut-con-med">ABOUT-</a>
                 </p>
-                <p class="ls-1 font-weight-bold">
-                    <a href="#" class="text-light">NEW ARRIVALS-</a>
+                <p class="ls-1">
+                    <a href="#" class="text-light fut-con-med">NEW ARRIVALS-</a>
                 </p>
-                <p class="ls-1 font-weight-bold">
-                    <a href="#" class="text-light">CATALOG-</a>
+                <p class="ls-1">
+                    <a href="#" class="text-light fut-con-med">CATALOG-</a>
                 </p>
-                <p class="ls-1 font-weight-bold">
-                    <a href="#" class="nav-link p-0 text-light">LOOKBOOKS-</a>
+                <p class="ls-1">
+                    <a href="#" class="nav-link p-0 text-light fut-con-med">LOOKBOOKS-</a>
                 </p>
                 @svg('logo', 'icon-h-2', ['style' => 'width: 20em'])
             </div>
