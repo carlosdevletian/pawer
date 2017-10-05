@@ -64,6 +64,9 @@
                 margin: 0 auto;
                 bottom: 5em;
             }
+            .mt {
+                margin-top: 100px;
+            }
         </style>
     </head>
     <body>
@@ -79,7 +82,9 @@
         </div> -->
         <div class="position-ref flex-center full-height" style="flex-direction: column">
             @icon('503.stay-tuned', 'icon')
-            @icon('503.pawerlab', 'icon-small bottom')
+            <a href="http://instagram.com/pawerlab" class="icon-small mt">
+                @icon('503.pawerlab')
+            </a>
         </div>
     </body>
 </html>
