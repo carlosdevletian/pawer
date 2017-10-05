@@ -61,6 +61,7 @@
             }
             .bottom {
                 position: absolute;
+                margin: 0 auto;
                 bottom: 5em;
             }
         </style>
