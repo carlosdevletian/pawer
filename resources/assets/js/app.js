@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('product-carousel', require('./components/ProductCarousel.vue'));
 Vue.component('product', require('./components/Product.vue'));
+Vue.component('product-lookbook', require('./components/ProductLookbook.vue'));
 
 const app = new Vue({
     el: '#app'

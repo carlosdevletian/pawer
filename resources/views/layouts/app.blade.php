@@ -38,6 +38,9 @@
         .futura-medium {
             font-family: Futura Medium;
         }
+        .futura-light {
+            font-family: FuturaLight;
+        }
         h1,h2,h3,h4,h5 {
             font-family: Koyu Italic;
         }

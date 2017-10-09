@@ -2,7 +2,7 @@
     <button class="navbar-toggler border-0 clickable" type="button" data-toggle="collapse" data-target="#main-header" aria-controls="main-header" aria-expanded="false" aria-label="Toggle navigation">
         @svg('navbar-toggler')
     </button>
-    <a class="navbar-brand" href="#">@svg('logo', 'icon-w-3')</a>
+    <a class="navbar-brand" href="{{ route('home') }}">@svg('logo', 'icon-w-3')</a>
 
     <div class="collapse navbar-collapse justify-content-end" id="main-header">
         <ul class="navbar-nav">
