@@ -1,7 +1,7 @@
 <template>
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        <img :src="imagePath">
-        <div style="margin-top: -20px; width: 47%" class="d-flex-column">
+    <div class="d-flex flex-column justify-content-center align-items-center mb-3">
+        <img :src="imagePath" class="fit-to-parent">
+        <div style="margin-top: -20px; width: 47%" class="d-flex-column" v-if="active">
             <p class="m-0 p-0 futura-medium">{{ product.name }}</p>
             <hr class="m-0 mb-2 p-0">
             <div class="d-flex justify-content-end">
@@ -13,11 +13,20 @@
 
 <script>
     export default {
-        props: ['product'],
+        props: ['product', 'dataActive'],
 
         data() {
             return {
+                active : false,
                 imagePath: this.product.images[0].path
+            }
+        },
+
+        mounted() {
+            if(this.dataActive == 'parent') {
+                this.active = this.$parent.isCurrent
+            } else {
+                this.active = this.dataActive
             }
         },
 

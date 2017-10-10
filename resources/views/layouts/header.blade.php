@@ -13,7 +13,7 @@
                 <a class="nav-link ls-1 text-light fut-con-med" href="#">NEW ARRIVALS</a>
             </li>
             <li class="nav-item mr-5">
-                <a class="nav-link ls-1 text-light fut-con-med" href="#">CATALOG</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('catalog') }}">CATALOG</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('lookbook') }}">LOOKBOOKS</a>

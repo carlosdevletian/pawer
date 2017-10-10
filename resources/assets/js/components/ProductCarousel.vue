@@ -6,7 +6,7 @@
                     :key="product.id"
                     class="border-0"
                     style="background-color: white">
-                <product :product="product"></product>
+                <product :product="product" data-active="parent"></product>
             </slide>
         </carousel-3d>
         <a role="button" class="carousel-control-prev clickable" @click="previousProduct">
@@ -157,11 +157,11 @@
 
         methods: {
             nextProduct() {
-                this.$refs.carousel.goNext();
+                this.$refs.carousel.goNext()
             },
             previousProduct() {
-                this.$refs.carousel.goPrev();
-            }
+                this.$refs.carousel.goPrev()
+            },
         }
     }
 </script>

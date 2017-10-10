@@ -121,6 +121,10 @@
         .mb-footer {
             margin-bottom: 285px;
         }
+        .fit-to-parent {
+            max-width: 100%;
+            max-height: 100%
+        }
         html {
             position: relative;
             min-height: 100%;

@@ -870,7 +870,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(50);
 
 
 /***/ }),
@@ -29571,7 +29571,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('product', {
       attrs: {
-        "product": product
+        "product": product,
+        "data-active": "parent"
       }
     })], 1)
   })), _vm._v(" "), _c('a', {
@@ -29661,12 +29662,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['product'],
+    props: ['product', 'dataActive'],
 
     data: function data() {
         return {
+            active: false,
             imagePath: this.product.images[0].path
         };
+    },
+    mounted: function mounted() {
+        if (this.dataActive == 'parent') {
+            this.active = this.$parent.isCurrent;
+        } else {
+            this.active = this.dataActive;
+        }
     },
 
 
@@ -29683,12 +29692,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "d-flex flex-column justify-content-center align-items-center"
+    staticClass: "d-flex flex-column justify-content-center align-items-center mb-3"
   }, [_c('img', {
+    staticClass: "fit-to-parent",
     attrs: {
       "src": _vm.imagePath
     }
-  }), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.active) ? _c('div', {
     staticClass: "d-flex-column",
     staticStyle: {
       "margin-top": "-20px",
@@ -29717,7 +29727,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     })
-  }))])])
+  }))]) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -29734,13 +29744,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(50)
+  __webpack_require__(43)
 }
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(43),
+  __webpack_require__(48),
   /* template */
-  __webpack_require__(44),
+  __webpack_require__(49),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -29773,221 +29783,46 @@ module.exports = Component.exports
 
 /***/ }),
 /* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// style-loader: Adds some css to the DOM by adding a <style> tag
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            product: {
-                name: 'Ruca Snapsack',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                colors: ['red', 'blue', 'green', 'orange'],
-                images: ['images/gorra1.png', 'images/gorra2.png', 'images/gorra3.png', 'images/gorra4.png', 'images/gorra5.png']
-            },
-            selectedIndex: 0
-        };
-    },
-
-    methods: {
-        select: function select(index) {
-            this.selectedIndex = index;
-        },
-        nextImage: function nextImage() {
-            if (this.selectedIndex == this.product.images.length - 1) {
-                this.selectedIndex = 0;
-            } else {
-                this.selectedIndex++;
-            }
-        },
-        prevImage: function prevImage() {
-            if (this.selectedIndex == 0) {
-                this.selectedIndex = this.product.images.length - 1;
-            } else {
-                this.selectedIndex--;
-            }
-        }
-    },
-    computed: {
-        activeImage: function activeImage() {
-            return this.product.images[this.selectedIndex];
-        }
-    }
-});
+// load the styles
+var content = __webpack_require__(44);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(46)("385d5d2a", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42230aec\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProductLookbook.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42230aec\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProductLookbook.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-sm-3 col-lg-2 pl-sm-5 pr-0"
-  }, [_c('div', {
-    staticClass: "d-flex flex-sm-column justify-content-center"
-  }, _vm._l((_vm.product.images), function(image, index) {
-    return _c('a', {
-      staticClass: "background-image border border-dark mb-3 mr-2 mr-sm-0 clickable",
-      style: ('background-image: url(' + image + '); width: 90px; height: 90px'),
-      attrs: {
-        "role": "button"
-      },
-      on: {
-        "click": function($event) {
-          _vm.select(index)
-        }
-      }
-    })
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-9 col-md-8 col-lg-7 col-xl-5 pl-0 pr-0"
-  }, [_c('div', {
-    staticClass: "d-flex flex-column align-items-center justify-content-center"
-  }, [_c('div', {
-    staticClass: "d-flex align-items-center justify-content-center mb-2",
-    staticStyle: {
-      "position": "relative",
-      "max-width": "100%"
-    }
-  }, [_c('a', {
-    staticClass: "clickable",
-    staticStyle: {
-      "position": "absolute",
-      "left": "0"
-    },
-    attrs: {
-      "role": "button"
-    },
-    on: {
-      "click": _vm.prevImage
-    }
-  }, [_vm._t("arrow-left")], 2), _vm._v(" "), _c('div', {
-    staticClass: "background-image",
-    style: ('background-image: url(' + _vm.activeImage + '); width: 400px; height: 400px; transition: background-image 0.5s')
-  }), _vm._v(" "), _c('a', {
-    staticClass: "clickable",
-    staticStyle: {
-      "position": "absolute",
-      "right": "0"
-    },
-    attrs: {
-      "role": "button"
-    },
-    on: {
-      "click": _vm.nextImage
-    }
-  }, [_vm._t("arrow-right")], 2)]), _vm._v(" "), _c('div', {
-    staticClass: "d-flex align-items-center justify-content-center"
-  }, _vm._l((_vm.product.images), function(image, index) {
-    return _c('a', {
-      staticClass: "unselected rounded-circle mr-1 clickable",
-      class: {
-        'selected': index === _vm.selectedIndex
-      },
-      staticStyle: {
-        "height": "10px",
-        "width": "10px"
-      },
-      attrs: {
-        "role": "button"
-      },
-      on: {
-        "click": function($event) {
-          _vm.select(index)
-        }
-      }
-    })
-  }))])]), _vm._v(" "), _c('div', {
-    staticClass: "col-lg-3 col-xl-5 p-0 px-4"
-  }, [_c('div', {
-    staticClass: "pr-2 pt-2 d-flex justify-content-between align-items-center border border-top-0 border-left-0 border-right-0 border-secondary mb-2"
-  }, [_c('h4', {
-    staticClass: "futura-medium p-0"
-  }, [_vm._v(_vm._s(_vm.product.name))]), _vm._v(" "), _c('small', [_vm._v("ONE-SIZE")])]), _vm._v(" "), _c('div', {
-    staticClass: "d-flex justify-content-end mb-4"
-  }, _vm._l((_vm.product.colors), function(color) {
-    return _c('a', {
-      staticClass: "clickable mr-2 border border-light",
-      staticStyle: {
-        "width": "20px",
-        "height": "20px"
-      },
-      style: ('background-color : ' + color),
-      attrs: {
-        "role": "button"
-      }
-    })
-  })), _vm._v(" "), _c('p', {
-    staticClass: "futura-medium m-0"
-  }, [_vm._v("Product Detail")]), _vm._v(" "), _c('p', {
-    staticClass: "p-2 mt-0",
-    staticStyle: {
-      "background-color": "rgb(230,230,230)"
-    }
-  }, [_vm._v("\n            " + _vm._s(_vm.product.description) + "\n        ")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-42230aec", module.exports)
-  }
-}
+exports = module.exports = __webpack_require__(45)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.unselected {\n    background-color: white;\n    border: 2px solid rgb(230,230,230);\n}\n.selected {\n    background-color: rgb(230,230,230);\n}\n", ""]);
+
+// exports
+
 
 /***/ }),
 /* 45 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 46 */,
-/* 47 */
 /***/ (function(module, exports) {
 
 /*
@@ -30069,49 +29904,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 48 */,
-/* 49 */,
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(51);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(52)("385d5d2a", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42230aec\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProductLookbook.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42230aec\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProductLookbook.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(47)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.unselected {\n    background-color: white;\n    border: 2px solid rgb(230,230,230);\n}\n.selected {\n    background-color: rgb(230,230,230);\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 52 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -30130,7 +29923,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(53)
+var listToStyles = __webpack_require__(47)
 
 /*
 type StyleObject = {
@@ -30332,7 +30125,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 53 */
+/* 47 */
 /***/ (function(module, exports) {
 
 /**
@@ -30363,6 +30156,220 @@ module.exports = function listToStyles (parentId, list) {
   return styles
 }
 
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            product: {
+                name: 'Ruca Snapsack',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                colors: ['red', 'blue', 'green', 'orange'],
+                images: ['images/gorra1.png', 'images/gorra2.png', 'images/gorra3.png', 'images/gorra4.png', 'images/gorra5.png']
+            },
+            selectedIndex: 0
+        };
+    },
+
+    methods: {
+        select: function select(index) {
+            this.selectedIndex = index;
+        },
+        nextImage: function nextImage() {
+            if (this.selectedIndex == this.product.images.length - 1) {
+                this.selectedIndex = 0;
+            } else {
+                this.selectedIndex++;
+            }
+        },
+        prevImage: function prevImage() {
+            if (this.selectedIndex == 0) {
+                this.selectedIndex = this.product.images.length - 1;
+            } else {
+                this.selectedIndex--;
+            }
+        }
+    },
+    computed: {
+        activeImage: function activeImage() {
+            return this.product.images[this.selectedIndex];
+        }
+    }
+});
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-3 col-lg-2 pl-sm-5 pr-0"
+  }, [_c('div', {
+    staticClass: "d-flex flex-sm-column justify-content-center"
+  }, _vm._l((_vm.product.images), function(image, index) {
+    return _c('a', {
+      staticClass: "background-image border border-dark mb-3 mr-2 mr-sm-0 clickable",
+      style: ('background-image: url(' + image + '); width: 90px; height: 90px'),
+      attrs: {
+        "role": "button"
+      },
+      on: {
+        "click": function($event) {
+          _vm.select(index)
+        }
+      }
+    })
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-9 col-md-8 col-lg-7 col-xl-5 pl-0 pr-0"
+  }, [_c('div', {
+    staticClass: "d-flex flex-column align-items-center justify-content-center"
+  }, [_c('div', {
+    staticClass: "d-flex align-items-center justify-content-center mb-2",
+    staticStyle: {
+      "position": "relative",
+      "max-width": "100%"
+    }
+  }, [_c('a', {
+    staticClass: "clickable",
+    staticStyle: {
+      "position": "absolute",
+      "left": "0"
+    },
+    attrs: {
+      "role": "button"
+    },
+    on: {
+      "click": _vm.prevImage
+    }
+  }, [_vm._t("arrow-left")], 2), _vm._v(" "), _c('div', {
+    staticClass: "background-image",
+    style: ('background-image: url(' + _vm.activeImage + '); width: 400px; height: 400px; transition: background-image 0.5s')
+  }), _vm._v(" "), _c('a', {
+    staticClass: "clickable",
+    staticStyle: {
+      "position": "absolute",
+      "right": "0"
+    },
+    attrs: {
+      "role": "button"
+    },
+    on: {
+      "click": _vm.nextImage
+    }
+  }, [_vm._t("arrow-right")], 2)]), _vm._v(" "), _c('div', {
+    staticClass: "d-flex align-items-center justify-content-center"
+  }, _vm._l((_vm.product.images), function(image, index) {
+    return _c('a', {
+      staticClass: "unselected rounded-circle mr-1 clickable",
+      class: {
+        'selected': index === _vm.selectedIndex
+      },
+      staticStyle: {
+        "height": "10px",
+        "width": "10px"
+      },
+      attrs: {
+        "role": "button"
+      },
+      on: {
+        "click": function($event) {
+          _vm.select(index)
+        }
+      }
+    })
+  }))])]), _vm._v(" "), _c('div', {
+    staticClass: "col-lg-3 col-xl-5 p-0 px-4"
+  }, [_c('div', {
+    staticClass: "pr-2 pt-2 d-flex justify-content-between align-items-center border border-top-0 border-left-0 border-right-0 border-secondary mb-2"
+  }, [_c('h4', {
+    staticClass: "futura-medium p-0"
+  }, [_vm._v(_vm._s(_vm.product.name))]), _vm._v(" "), _c('small', [_vm._v("ONE-SIZE")])]), _vm._v(" "), _c('div', {
+    staticClass: "d-flex justify-content-end mb-4"
+  }, _vm._l((_vm.product.colors), function(color) {
+    return _c('a', {
+      staticClass: "clickable mr-2 border border-light",
+      staticStyle: {
+        "width": "20px",
+        "height": "20px"
+      },
+      style: ('background-color : ' + color),
+      attrs: {
+        "role": "button"
+      }
+    })
+  })), _vm._v(" "), _c('p', {
+    staticClass: "futura-medium m-0"
+  }, [_vm._v("Product Detail")]), _vm._v(" "), _c('p', {
+    staticClass: "p-2 mt-0",
+    staticStyle: {
+      "background-color": "rgb(230,230,230)"
+    }
+  }, [_vm._v("\n            " + _vm._s(_vm.product.description) + "\n        ")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-42230aec", module.exports)
+  }
+}
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
