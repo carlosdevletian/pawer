@@ -17,6 +17,9 @@
         "vue": "^2.1.10"
     },
     "dependencies": {
+        "bootstrap": "^4.0.0-beta",
+        "jquery": "^3.2.1",
+        "popper.js": "^1.12.5",
         "vue-carousel-3d": "^0.1.18"
     }
 }
