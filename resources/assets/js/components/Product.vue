@@ -17,22 +17,22 @@
 
         data() {
             return {
-                active : false,
                 imagePath: this.product.images[0].path
-            }
-        },
-
-        mounted() {
-            if(this.dataActive == 'parent') {
-                this.active = this.$parent.isCurrent
-            } else {
-                this.active = this.dataActive
             }
         },
 
         methods: {
             changeImage(path) {
                 this.imagePath = path
+            }
+        },
+
+        computed : {
+            active() {
+                if(this.dataActive == 'parent') {
+                    return this.$parent.isCurrent
+                }
+                return this.dataActive
             }
         }
     }
