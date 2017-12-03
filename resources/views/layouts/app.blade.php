@@ -62,6 +62,9 @@
         .btn-brand:hover {
             background-color: rgb(260, 51, 35);
         }
+        .btn-transparent {
+            background-color: transparent;
+        }
         .ls-1 {
             letter-spacing: 1px;
         }
