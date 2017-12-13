@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-6 col-lg-7 d-none d-md-flex flex-column justify-content-center align-items-end">
                 <p class="ls-1">
-                    <a href="#" class="text-light fut-con-med">ABOUT-</a>
+                    <a href="{{ route('about') }}" class="text-light fut-con-med">ABOUT-</a>
                 </p>
                 <p class="ls-1">
                     <a href="#" class="text-light fut-con-med">NEW ARRIVALS-</a>

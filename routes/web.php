@@ -14,5 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::view('/about', 'about')->name('about');
 Route::view('/lookbook', 'lookbook')->name('lookbook');
 Route::view('/catalog', 'catalog')->name('catalog');

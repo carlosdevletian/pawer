@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="main-header">
         <ul class="navbar-nav">
             <li class="nav-item active mr-5">
-                <a class="nav-link ls-1 text-light fut-con-med" href="#">ABOUT</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('about') }}">ABOUT</a>
             </li>
             <li class="nav-item mr-5">
                 <a class="nav-link ls-1 text-light fut-con-med" href="#">NEW ARRIVALS</a>
