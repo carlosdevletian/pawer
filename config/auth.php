@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Pawer\User::class,
+            'model' => Pawer\Models\User::class,
         ],
 
         // 'users' => [

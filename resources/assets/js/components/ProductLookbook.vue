@@ -28,11 +28,12 @@
         <div class="col-lg-3 col-xl-5 p-0 px-4">
             <div class="pr-2 pt-2 d-flex justify-content-between align-items-center border border-top-0 border-left-0 border-right-0 border-secondary mb-2">
                 <h4 class="futura-medium p-0">{{ product.name }}</h4>
-                <small>ONE-SIZE</small>
+
+                <small v-for="size in product.sizes" v-text="size"></small>
             </div>
-            <div class="d-flex justify-content-end mb-4">
+           <!--  <div class="d-flex justify-content-end mb-4">
                 <a v-for="color in product.colors" role="button" class="clickable mr-2 border border-light" style="width: 20px; height: 20px;" :style="'background-color : ' + color"></a>
-            </div>
+            </div> -->
             <p class="futura-medium m-0">Product Detail</p>
             <p class="p-2 mt-0" style="background-color: rgb(230,230,230)">
                 {{ product.description }}
@@ -43,30 +44,11 @@
 
 <script>
     export default {
+        props: ['dataProduct'],
+
         data() {
             return {
-                product : {
-                    name : 'Ruca Snapsack',
-                    description : `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-                    colors : [
-                        'red',
-                        'blue',
-                        'green',
-                        'orange',
-                    ],
-                    images : [
-                        'images/gorra1.png',
-                        'images/gorra2.png',
-                        'images/gorra3.png',
-                        'images/gorra4.png',
-                        'images/gorra5.png',
-                    ]
-                },
+                product : this.dataProduct,
                 selectedIndex : 0
             }
         },

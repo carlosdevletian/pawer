@@ -27189,16 +27189,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['dataProduct'],
+
     data: function data() {
         return {
-            product: {
-                name: 'Ruca Snapsack',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                colors: ['red', 'blue', 'green', 'orange'],
-                images: ['images/gorra1.png', 'images/gorra2.png', 'images/gorra3.png', 'images/gorra4.png', 'images/gorra5.png']
-            },
+            product: this.dataProduct,
             selectedIndex: 0
         };
     },
@@ -27317,21 +27315,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "pr-2 pt-2 d-flex justify-content-between align-items-center border border-top-0 border-left-0 border-right-0 border-secondary mb-2"
   }, [_c('h4', {
     staticClass: "futura-medium p-0"
-  }, [_vm._v(_vm._s(_vm.product.name))]), _vm._v(" "), _c('small', [_vm._v("ONE-SIZE")])]), _vm._v(" "), _c('div', {
-    staticClass: "d-flex justify-content-end mb-4"
-  }, _vm._l((_vm.product.colors), function(color) {
-    return _c('a', {
-      staticClass: "clickable mr-2 border border-light",
-      staticStyle: {
-        "width": "20px",
-        "height": "20px"
-      },
-      style: ('background-color : ' + color),
-      attrs: {
-        "role": "button"
+  }, [_vm._v(_vm._s(_vm.product.name))]), _vm._v(" "), _vm._l((_vm.product.sizes), function(size) {
+    return _c('small', {
+      domProps: {
+        "textContent": _vm._s(size)
       }
     })
-  })), _vm._v(" "), _c('p', {
+  })], 2), _vm._v(" "), _c('p', {
     staticClass: "futura-medium m-0"
   }, [_vm._v("Product Detail")]), _vm._v(" "), _c('p', {
     staticClass: "p-2 mt-0",
