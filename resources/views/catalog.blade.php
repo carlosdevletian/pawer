@@ -1,5 +1,9 @@
 @extends('layouts.product-menu')
 
+@section('title')
+    Catalog - Pawer
+@endsection
+
 @section('main-content')
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">

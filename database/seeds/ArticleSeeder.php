@@ -15,7 +15,6 @@ class ArticleSeeder extends Seeder
         Article::create([
             'name' => 'RUCA SNAPBACK',
             'description' => 'A description for the ruca snapback article',
-            'slug' => 'ruca-snapback-red',
             'color' => 'red',
             'code' => 'RUCAEXAMPLECODE-RED',
             'sizes' => [
@@ -27,6 +26,34 @@ class ArticleSeeder extends Seeder
                 '/images/gorra3.png',
                 '/images/gorra4.png',
                 '/images/gorra5.png',
+            ]
+        ]);
+
+        Article::create([
+            'name' => 'RUCA SNAPBACK',
+            'description' => 'A description for the ruca snapback article',
+            'color' => 'green',
+            'code' => 'RUCAEXAMPLECODE-GREEN',
+            'sizes' => [
+                'XS','SM','MD'
+            ],
+            'images' => [
+                '/images/gorra4.png',
+                '/images/gorra5.png',
+            ]
+        ]);
+
+        Article::create([
+            'name' => 'RUCA SNAPBACK',
+            'description' => 'A description for the ruca snapback article',
+            'color' => 'blue',
+            'code' => 'RUCAEXAMPLECODE-BLUE',
+            'sizes' => [
+                'ONE-SIZE'
+            ],
+            'images' => [
+                '/images/gorra5.png',
+                '/images/gorra2.png',
             ]
         ]);
     }

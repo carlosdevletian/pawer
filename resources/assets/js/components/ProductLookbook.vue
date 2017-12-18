@@ -31,9 +31,13 @@
 
                 <small v-for="size in product.sizes" v-text="size"></small>
             </div>
-           <!--  <div class="d-flex justify-content-end mb-4">
-                <a v-for="color in product.colors" role="button" class="clickable mr-2 border border-light" style="width: 20px; height: 20px;" :style="'background-color : ' + color"></a>
-            </div> -->
+            <div class="d-flex justify-content-end mb-4">
+                <a v-for="product in related"
+                    @click="changeProduct(product)"
+                    role="button"
+                    class="clickable mr-2 border border-light" style="width: 20px; height: 20px;"
+                    :style="'background-color : ' + product.color"></a>
+            </div>
             <p class="futura-medium m-0">Product Detail</p>
             <p class="p-2 mt-0" style="background-color: rgb(230,230,230)">
                 {{ product.description }}
@@ -44,15 +48,22 @@
 
 <script>
     export default {
-        props: ['dataProduct'],
+        props: ['dataProduct', 'dataModel'],
 
         data() {
             return {
                 product : this.dataProduct,
+                related : this.dataModel,
                 selectedIndex : 0
             }
         },
+
         methods: {
+            changeProduct(product) {
+                this.product = product
+                this.selectedIndex = 0
+                history.pushState(null, null, this.product.slug)
+            },
             select(index) {
                 this.selectedIndex = index
             },

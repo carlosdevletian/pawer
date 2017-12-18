@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Pawer
+@endsection
+
 @section('content')
 <div class="container-fluid" style="overflow-x:hidden">
     <div class="row">

@@ -10,4 +10,14 @@ class Article extends Model
         'sizes' => 'array',
         'images' => 'array',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($article) {
+            $name = str_slug($article->name);
+            $article->slug = strtolower("{$name}-{$article->color}");
+        });
+    }
 }

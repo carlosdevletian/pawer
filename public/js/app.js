@@ -27190,18 +27190,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['dataProduct'],
+    props: ['dataProduct', 'dataModel'],
 
     data: function data() {
         return {
             product: this.dataProduct,
+            related: this.dataModel,
             selectedIndex: 0
         };
     },
 
+
     methods: {
+        changeProduct: function changeProduct(product) {
+            this.product = product;
+            this.selectedIndex = 0;
+            history.pushState(null, null, this.product.slug);
+        },
         select: function select(index) {
             this.selectedIndex = index;
         },
@@ -27321,7 +27332,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "textContent": _vm._s(size)
       }
     })
-  })], 2), _vm._v(" "), _c('p', {
+  })], 2), _vm._v(" "), _c('div', {
+    staticClass: "d-flex justify-content-end mb-4"
+  }, _vm._l((_vm.related), function(product) {
+    return _c('a', {
+      staticClass: "clickable mr-2 border border-light",
+      staticStyle: {
+        "width": "20px",
+        "height": "20px"
+      },
+      style: ('background-color : ' + product.color),
+      attrs: {
+        "role": "button"
+      },
+      on: {
+        "click": function($event) {
+          _vm.changeProduct(product)
+        }
+      }
+    })
+  })), _vm._v(" "), _c('p', {
     staticClass: "futura-medium m-0"
   }, [_vm._v("Product Detail")]), _vm._v(" "), _c('p', {
     staticClass: "p-2 mt-0",
