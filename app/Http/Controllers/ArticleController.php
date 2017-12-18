@@ -9,8 +9,12 @@ class ArticleController extends Controller
 {
     public function show($article)
     {
+        $article = Article::whereSlug($article)->firstOrFail();
+        $model = Article::whereName($article->name)->get();
+
         return view('articles.show', [
-            'article' => Article::where('name', $article)->firstOrFail()
+            'article' => $article,
+            'model' =>  $model
         ]);
     }
 }
