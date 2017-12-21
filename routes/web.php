@@ -16,6 +16,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::view('/about', 'about')->name('about');
 
+Route::get('/product/{article}/all-models', 'ArticleController@index')->name('articles.index');
 Route::get('/articles/{article}', 'ArticleController@show')->name('articles.show');
 
 Route::get('/catalog', 'CategoryController@index')->name('catalog');

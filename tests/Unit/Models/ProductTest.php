@@ -17,4 +17,14 @@ class ProductTest extends TestCase
 
         $this->assertInstanceOf('Pawer\Models\Category', $product->category);
     }
+
+    /** @test*/
+    public function a_product_has_many_articles()
+    {
+        $product = create('Product');
+        $articleA = create('Article', ['product_id' => $product->id]);
+        $articleB = create('Article', ['product_id' => $product->id]);
+
+        $this->assertEquals(2, $product->articles->count());
+    }
 }

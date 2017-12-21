@@ -4,15 +4,18 @@ use Faker\Generator as Faker;
 
 $factory->define(Pawer\Models\Article::class, function (Faker $faker) {
     return [
-        'name' => 'RUCA SNAPBACK',
-        'description' => 'A description for the ruca snapback article',
-        'color' => 'red',
-        'code' => 'RUCAEXAMPLECODE-RED',
+        'product_id' => function() {
+            return factory(Pawer\Models\Product::class)->create()->id;
+        },
+        'name' => $faker->name,
+        'description' => $faker->sentence,
+        'color' => $faker->colorName,
+        'code' => 'EXAMPLECODE',
         'sizes' => [
             'XS','SM','MD','LG','XL'
         ],
         'images' => [
-            'example-image-1.png', 'example-image-2.png'
+            '/images/gorra1.png', '/images/gorra2.png'
         ]
     ];
 });
