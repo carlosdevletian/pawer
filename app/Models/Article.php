@@ -21,6 +21,11 @@ class Article extends Model
         });
     }
 
+    public function scopeFeatured($query)
+    {
+        return $query->where('featured', true);
+    }
+
     public function scopeByFamily($query)
     {
         $groupedByName = $query->get()->groupBy('name');

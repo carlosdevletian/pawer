@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->string('code');
             $table->json('sizes');
             $table->json('images');
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

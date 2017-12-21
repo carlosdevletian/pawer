@@ -26398,114 +26398,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { Carousel3d: __WEBPACK_IMPORTED_MODULE_0_vue_carousel_3d__["Carousel3d"], Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel_3d__["Slide"] },
 
+    props: ['dataProducts'],
+
     data: function data() {
         return {
-            products: {
-                0: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                },
-                1: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                },
-                2: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                },
-                3: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                },
-                4: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                },
-                5: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                },
-                6: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                },
-                7: {
-                    0: {
-                        'id': 1,
-                        'code': 'code1',
-                        'name': 'KOBI',
-                        'color': 'green',
-                        'images': ['/images/product-thumbnail-2.png']
-                    },
-                    1: {
-                        'color': 'black',
-                        'image': '/images/product-thumbnail.png'
-                    }
-                }
-            }
+            products: this.dataProducts
         };
     },
 
@@ -26551,7 +26448,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, _vm._l((_vm.products), function(product, index) {
     return _c('slide', {
-      key: product.id,
+      key: product[0].id,
       staticClass: "border-0",
       staticStyle: {
         "background-color": "white"
@@ -26562,7 +26459,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('product', {
       attrs: {
         "data-product": product,
-        "data-active": "parent"
+        "data-active": "true"
       }
     })], 1)
   })), _vm._v(" "), _c('a', {

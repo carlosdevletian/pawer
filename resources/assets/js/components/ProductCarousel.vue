@@ -3,10 +3,10 @@
         <carousel-3d width="250" height="300" space=300 perspective=0 ref="carousel">
             <slide v-for="(product, index) in products"
                     :index="parseInt(index)"
-                    :key="product.id"
+                    :key="product[0].id"
                     class="border-0"
                     style="background-color: white">
-                <product :data-product="product" data-active="parent"></product>
+                <product :data-product="product" data-active="true"></product>
             </slide>
         </carousel-3d>
         <a role="button" class="carousel-control-prev clickable" @click="previousProduct">
@@ -28,130 +28,11 @@
     export default {
         components: {Carousel3d, Slide},
 
+        props: ['dataProducts'],
+
         data() {
             return {
-                products : {
-                    0 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                    1 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                    2 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                    3 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                    4 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                    5 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                    6 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                    7 : {
-                        0: {
-                            'id' : 1,
-                            'code' : 'code1',
-                            'name' : 'KOBI',
-                            'color' : 'green',
-                            'images' : [
-                                '/images/product-thumbnail-2.png',
-                            ],
-                        },
-                        1: {
-                            'color' : 'black',
-                            'image' : '/images/product-thumbnail.png',
-                        }
-                    },
-                }
+                products : this.dataProducts
             }
         },
 

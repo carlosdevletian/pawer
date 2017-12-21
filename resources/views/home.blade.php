@@ -10,7 +10,7 @@
         @include('home.carousel')
     </div>
 
-    <product-carousel>
+    <product-carousel :data-products="{{ $featuredArticles }}">
         <div slot="arrow-left">@icon('arrow-left', 'icon-h-3 font-weight-bold')</div>
         <div slot="arrow-right">@icon('arrow-right', 'icon-h-3 font-weight-bold')</div>
     </product-carousel>

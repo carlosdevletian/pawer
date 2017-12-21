@@ -7,6 +7,7 @@ $factory->define(Pawer\Models\Article::class, function (Faker $faker) {
         'product_id' => function() {
             return factory(Pawer\Models\Product::class)->create()->id;
         },
+        'featured' => 0,
         'name' => $faker->name,
         'description' => $faker->sentence,
         'color' => $faker->colorName,

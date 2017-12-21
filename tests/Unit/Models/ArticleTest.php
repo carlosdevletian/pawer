@@ -23,6 +23,18 @@ class ArticleTest extends TestCase
     }
 
     /** @test*/
+    public function an_article_can_be_marked_as_featured()
+    {
+        $featuredArticle = create('Article', ['featured' => true]);
+        $normalArticle = create('Article', ['featured' => false]);
+
+        $featured = Article::featured();
+
+        $this->assertCount(1, $featured->get());
+        $this->assertTrue($featured->first()->is($featuredArticle));
+    }
+
+    /** @test*/
     public function can_get_all_articles_of_same_name_grouped_as_a_family()
     {
         $ruca1 = create('Article', [
