@@ -1,11 +1,14 @@
 <template>
     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-        <img :src="imagePath" class="fit-to-parent">
-        <div style="margin-top: -20px; width: 47%" class="d-flex-column" v-if="active">
+        <a :href="linkTo" v-if="linkTo">
+            <img :src="imagePath" class="fit-to-parent">
+        </a>
+        <img v-else :src="imagePath" class="fit-to-parent">
+        <div style="margin-top: 0; width: 47%" class="d-flex-column" v-if="active">
             <p class="m-0 p-0 futura-medium">{{ product.name }}</p>
             <hr class="m-0 mb-2 p-0">
             <div class="d-flex justify-content-end">
-                <a v-for="image in product.images" role="button" class="clickable mr-1" style="width: 10px; height: 10px;" :style="'background-color : ' + image.color" @click="changeImage(image.path)"></a>
+                <a v-for="color in allColors" role="button" class="clickable mr-1" style="width: 10px; height: 10px;" :style="'background-color : ' + color.color" @click="changeImage(color.image)"></a>
             </div>
         </div>
     </div>
@@ -13,12 +16,21 @@
 
 <script>
     export default {
-        props: ['product', 'dataActive'],
+        props: ['dataProduct', 'dataActive', 'linkTo'],
 
         data() {
             return {
-                imagePath: this.product.images[0].path
+                product : '',
+                imagePath: '',
+                allProducts: '',
+                associated: '',
             }
+        },
+
+        created() {
+            this.product = this.dataProduct[0]
+            this.imagePath = this.product.images[0],
+            this.allProducts = Array.from(this.dataProduct);
         },
 
         methods: {
@@ -33,6 +45,17 @@
                     return this.$parent.isCurrent
                 }
                 return this.dataActive
+            },
+
+            allColors() {
+                let colors = {};
+                this.allProducts.forEach((product, index) =>
+                    colors[index] = {
+                        'color' : product.color,
+                        'image' : product.images[0]
+                    }
+                );
+                return colors;
             }
         }
     }

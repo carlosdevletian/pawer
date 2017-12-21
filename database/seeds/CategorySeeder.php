@@ -15,7 +15,10 @@ class CategorySeeder extends Seeder
     public function run()
     {
         tap(factory(Category::class)->create(['name' => 'tops']), function($tops) {
-            factory(Product::class)->create(['name' => 't-shirts','category_id' => $tops->id]);
+            tap(factory(Product::class)->create(['name' => 't-shirts','category_id' => $tops->id]), function($shirts) {
+                factory(Article::class)->create(['name' => 'Coy','product_id' => $shirts->id]);
+                factory(Article::class)->create(['name' => 'Kobi','product_id' => $shirts->id]);
+            });
             factory(Product::class)->create(['name' => 'sweatshirts','category_id' => $tops->id]);
             factory(Product::class)->create(['name' => 'button-ups','category_id' => $tops->id]);
             factory(Product::class)->create(['name' => 'tanks','category_id' => $tops->id]);

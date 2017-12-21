@@ -26402,100 +26402,108 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             products: {
                 0: {
-                    'id': 1,
-                    'code': 'code1',
-                    'name': 'KOBI',
-                    'images': [{
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }, {
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 },
                 1: {
-                    'id': 2,
-                    'code': 'code2',
-                    'name': 'BRYAN',
-                    'images': [{
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }, {
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 },
                 2: {
-                    'id': 3,
-                    'code': 'code3',
-                    'name': 'PAWER',
-                    'images': [{
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }, {
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 },
                 3: {
-                    'id': 4,
-                    'code': 'code4',
-                    'name': 'ANDRES',
-                    'images': [{
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }, {
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 },
                 4: {
-                    'id': 5,
-                    'code': 'code5',
-                    'name': 'AGUALOCA',
-                    'images': [{
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }, {
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 },
                 5: {
-                    'id': 6,
-                    'code': 'code6',
-                    'name': 'MODELO',
-                    'images': [{
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }, {
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 },
                 6: {
-                    'id': 7,
-                    'code': 'code7',
-                    'name': 'GORRA',
-                    'images': [{
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }, {
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 },
                 7: {
-                    'id': 8,
-                    'code': 'code8',
-                    'name': 'INTERIOR',
-                    'images': [{
-                        'path': '/images/product-thumbnail.png',
-                        'color': 'black'
-                    }, {
-                        'path': '/images/product-thumbnail-2.png',
-                        'color': 'green'
-                    }]
+                    0: {
+                        'id': 1,
+                        'code': 'code1',
+                        'name': 'KOBI',
+                        'color': 'green',
+                        'images': ['/images/product-thumbnail-2.png']
+                    },
+                    1: {
+                        'color': 'black',
+                        'image': '/images/product-thumbnail.png'
+                    }
                 }
             }
         };
@@ -26553,7 +26561,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('product', {
       attrs: {
-        "product": product,
+        "data-product": product,
         "data-active": "parent"
       }
     })], 1)
@@ -26642,14 +26650,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['product', 'dataActive'],
+    props: ['dataProduct', 'dataActive', 'linkTo'],
 
     data: function data() {
         return {
-            imagePath: this.product.images[0].path
+            product: '',
+            imagePath: '',
+            allProducts: '',
+            associated: ''
         };
+    },
+    created: function created() {
+        this.product = this.dataProduct[0];
+        this.imagePath = this.product.images[0], this.allProducts = Array.from(this.dataProduct);
     },
 
 
@@ -26665,6 +26683,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return this.$parent.isCurrent;
             }
             return this.dataActive;
+        },
+        allColors: function allColors() {
+            var colors = {};
+            this.allProducts.forEach(function (product, index) {
+                return colors[index] = {
+                    'color': product.color,
+                    'image': product.images[0]
+                };
+            });
+            return colors;
         }
     }
 });
@@ -26676,7 +26704,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "d-flex flex-column justify-content-center align-items-center mb-3"
+  }, [(_vm.linkTo) ? _c('a', {
+    attrs: {
+      "href": _vm.linkTo
+    }
   }, [_c('img', {
+    staticClass: "fit-to-parent",
+    attrs: {
+      "src": _vm.imagePath
+    }
+  })]) : _c('img', {
     staticClass: "fit-to-parent",
     attrs: {
       "src": _vm.imagePath
@@ -26684,7 +26721,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), (_vm.active) ? _c('div', {
     staticClass: "d-flex-column",
     staticStyle: {
-      "margin-top": "-20px",
+      "margin-top": "0",
       "width": "47%"
     }
   }, [_c('p', {
@@ -26693,20 +26730,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "m-0 mb-2 p-0"
   }), _vm._v(" "), _c('div', {
     staticClass: "d-flex justify-content-end"
-  }, _vm._l((_vm.product.images), function(image) {
+  }, _vm._l((_vm.allColors), function(color) {
     return _c('a', {
       staticClass: "clickable mr-1",
       staticStyle: {
         "width": "10px",
         "height": "10px"
       },
-      style: ('background-color : ' + image.color),
+      style: ('background-color : ' + color.color),
       attrs: {
         "role": "button"
       },
       on: {
         "click": function($event) {
-          _vm.changeImage(image.path)
+          _vm.changeImage(color.image)
         }
       }
     })

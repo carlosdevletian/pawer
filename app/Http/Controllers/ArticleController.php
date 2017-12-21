@@ -11,7 +11,7 @@ class ArticleController extends Controller
     public function index($productSlug)
     {
         $product = Product::whereSlug($productSlug)->firstOrFail();
-        $articles = $product->articles;
+        $articles = $product->articles()->byFamily();
 
         return view('articles.index', [
             'product' => $product,

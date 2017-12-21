@@ -32,9 +32,12 @@ class ViewArticlesIndexTest extends TestCase
 
         $response = $this->get('/product/t-shirt/all-models');
 
-        $response->data('articles')->assertEquals([
-            $articleA,
-            $articleB
-        ]);
+        $this->assertEquals(
+            $response->data('articles')->keys(),
+            collect([
+                'Example T Shirt Article',
+                'Another T shirt'
+            ])
+        );
     }
 }

@@ -20,4 +20,17 @@ class Article extends Model
             $article->slug = strtolower("{$name}-{$article->color}");
         });
     }
+
+    public function scopeByFamily($query)
+    {
+        $groupedByName = $query->get()->groupBy('name');
+
+        return $groupedByName->map(function($sameName) {
+            return $sameName->map(function($article, $key) {
+                if($key === 0) return $article;
+
+                return collect($article)->only(['color', 'images']);
+            });
+        });
+    }
 }
