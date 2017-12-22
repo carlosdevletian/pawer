@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Pawer\Events\Event' => [
-            'Pawer\Listeners\EventListener',
+        'Pawer\Events\ImageAdded' => [
+            'Pawer\Listeners\ScheduleImageProcessing',
         ],
     ];
 

@@ -4,7 +4,10 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Pawer\Models\Category;
+use Pawer\Events\ImageAdded;
 use Illuminate\Http\Testing\File;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,13 +27,14 @@ class CreateCategoryTest extends TestCase
     {
         return array_merge([
             'name' => 'tops',
-            'image_path' => File::image('category_image.png', 400),
+            'category_image' => File::image('category_image.png', 1100, 850),
         ], $overrides);
     }
 
     /** @test*/
     public function logged_in_users_can_create_a_category()
     {
+        $this->fake([ImageAdded::class]);
         $this->signIn();
 
         $response = $this->withoutExceptionHandling()->post('/categories', [
@@ -95,10 +99,10 @@ class CreateCategoryTest extends TestCase
     }
 
     /** @test */
-    public function image_must_be_at_least_400px_wide()
+    public function image_must_be_at_least_600px_wide()
     {
         $response = $this->signIn()->post('/categories', $this->validParams([
-            'category_image' => File::image('category_image.png', $width = 399, $height = 308)
+            'category_image' => File::image('category_image.png', $width = 599, $height = 463)
         ]));
 
         $response->assertStatus(302);
@@ -116,5 +120,25 @@ class CreateCategoryTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('category_image');
         $this->assertEquals(0, Category::count());
+    }
+
+    /** @test*/
+    public function an_event_is_fired_when_a_category_is_created()
+    {
+        $this->fake([ImageAdded::class]);
+
+        $response = $this->signIn()->post('/categories', $this->validParams());
+
+        Event::assertDispatched(ImageAdded::class, function($event) {
+            $category = Category::firstOrFail();
+            return $event->image === $category->image_path;
+        });
+    }
+
+    private function fake($eventsToFake = [])
+    {
+        $modelDispatcher = Model::getEventDispatcher();
+        Event::fake($eventsToFake);
+        Model::setEventDispatcher($modelDispatcher);
     }
 }
