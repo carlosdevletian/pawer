@@ -13,7 +13,7 @@
             @if($errors->any())
                 <div class="col-12 d-flex justify-content-center">
                     <div class="image-upload-banner-w alert alert-danger" role="alert">
-                        <p class="font-weight-bold futura-medium m-0 p-0">Oops!</p>
+                        <strong class="futura-medium m-0 p-0">Oops!</strong>
                         <p class="futura-medium m-0 p-0">{{ $errors->first() }}</p>
                     </div>
                 </div>

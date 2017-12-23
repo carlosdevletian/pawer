@@ -27426,7 +27426,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('label', {
     staticClass: "position-absolute pin clickable d-flex justify-content-center align-items-center text-light bg-overlay md-hover-only m-0"
   }, [_c('input', {
-    staticClass: "pseudo-hidden",
+    staticClass: "pseudo-hidden w-100 h-100 clickable",
     attrs: {
       "type": "file",
       "name": "category_image"

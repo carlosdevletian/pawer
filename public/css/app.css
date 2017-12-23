@@ -9346,7 +9346,6 @@ a:hover {
 .pseudo-hidden {
   position: absolute;
   opacity: 0;
-  z-index: -1;
 }
 
 .flex-center {
@@ -10369,6 +10368,14 @@ a:hover {
   border-color: #e3342f !important;
   background-color: #fcebea;
   color: #cc1f1a;
+}
+
+.alert-info {
+  background-color: #e8fffe;
+  border-left: 0;
+  border-top: 4px solid;
+  border-color: #4dc0b5 !important;
+  color: #0d3331;
 }
 
 [v-cloak] .v-cloak-block {

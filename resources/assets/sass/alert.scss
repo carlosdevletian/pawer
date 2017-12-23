@@ -7,4 +7,11 @@
         background-color: #fcebea; // bg-red-lightest
         color: #cc1f1a; // text-red-dark
     }
+    &-info {
+        background-color: #e8fffe; //bg-teal-lightest
+        border-left: 0;
+        border-top: 4px solid;
+        border-color: #4dc0b5 !important; // border-teal;
+        color: #0d3331; // text-teal-darkest
+    }
 }
