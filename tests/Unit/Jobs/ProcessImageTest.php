@@ -13,8 +13,8 @@ class ProcessImageTest extends TestCase
     /** @test*/
     public function it_resizes_the_image_to_600px_wide()
     {
-        Storage::fake('public');
-        Storage::disk('public')->put(
+        Storage::fake();
+        Storage::put(
             'examples/example.png',
             file_get_contents(base_path('tests/__fixtures__/high-quality-image.png'))
         );
@@ -22,12 +22,12 @@ class ProcessImageTest extends TestCase
 
         ProcessImage::dispatch($image);
 
-        $resizedImage = Storage::disk('public')->get('examples/example.png');
+        $resizedImage = Storage::get('examples/example.png');
         [$width, $height] = getimagesizefromstring($resizedImage);
         $this->assertEquals(600, $width);
         $this->assertEquals(776, $height);
 
-        $resizedImageContents = Storage::disk('public')->get('examples/example.png');
+        $resizedImageContents = Storage::get('examples/example.png');
         $controlImageContents = file_get_contents(base_path('tests/__fixtures__/optimized-image.png'));
         $this->assertEquals($resizedImageContents, $controlImageContents);
     }
@@ -35,8 +35,8 @@ class ProcessImageTest extends TestCase
     /** @test*/
     public function it_optimizes_the_image()
     {
-        Storage::fake('public');
-        Storage::disk('public')->put(
+        Storage::fake();
+        Storage::put(
             'examples/example.png',
             file_get_contents(base_path('tests/__fixtures__/small-unoptimized-image.png'))
         );
@@ -44,11 +44,11 @@ class ProcessImageTest extends TestCase
 
         ProcessImage::dispatch($image);
 
-        $optimizedImageSize = Storage::disk('public')->size('examples/example.png');
+        $optimizedImageSize = Storage::size('examples/example.png');
         $originalSize = filesize(base_path('tests/__fixtures__/small-unoptimized-image.png'));
         $this->assertLessThan($originalSize, $optimizedImageSize);
 
-        $optimizedImageContents = Storage::disk('public')->get('examples/example.png');
+        $optimizedImageContents = Storage::get('examples/example.png');
         $controlImageContents = file_get_contents(base_path('tests/__fixtures__/optimized-image.png'));
         $this->assertEquals($optimizedImageContents, $controlImageContents);
     }
@@ -56,8 +56,8 @@ class ProcessImageTest extends TestCase
     /** @test*/
     public function it_does_not_resize_the_image_if_it_is_already_smaller_than_600px_wide()
     {
-        Storage::fake('public');
-        Storage::disk('public')->put(
+        Storage::fake();
+        Storage::put(
             'examples/example.png',
             file_get_contents(base_path('tests/__fixtures__/smaller-size-image.png'))
         );
@@ -65,7 +65,7 @@ class ProcessImageTest extends TestCase
 
         ProcessImage::dispatch($image);
 
-        $resizedImage = Storage::disk('public')->get('examples/example.png');
+        $resizedImage = Storage::get('examples/example.png');
         [$width, $height] = getimagesizefromstring($resizedImage);
 
         $this->assertEquals(400, $width);

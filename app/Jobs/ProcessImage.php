@@ -23,12 +23,12 @@ class ProcessImage implements ShouldQueue
 
     public function handle()
     {
-        $this->imageContents = Storage::disk('public')->get($this->imagePath);
+        $this->imageContents = Storage::get($this->imagePath);
         $this->file = Image::make($this->imageContents);
         $this->resize()
             ->limitColors(255)
             ->encode();
-        Storage::disk('public')->put($this->imagePath, (string) $this->file);
+        Storage::put($this->imagePath, (string) $this->file);
     }
 
     public function resize()

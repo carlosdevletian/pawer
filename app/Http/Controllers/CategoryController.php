@@ -30,7 +30,7 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => request('name'),
-            'image_path' => $image = request('category_image')->store('categories', 'public')
+            'image_path' => $image = request('category_image')->store('categories')
         ]);
 
         ImageAdded::dispatch($image);
