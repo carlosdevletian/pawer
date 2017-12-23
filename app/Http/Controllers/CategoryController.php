@@ -24,9 +24,9 @@ class CategoryController extends Controller
     public function store()
     {
         request()->validate([
+            'category_image' => ['required', 'image', Rule::dimensions()->minWidth(600)],
             'name' => ['required'],
-            'category_image' => ['required', 'image', Rule::dimensions()->minWidth(600)]
-        ]);
+        ], ['category_image*' => "Make sure you've selected an image that is at least 600px wide"]);
 
         Category::create([
             'name' => request('name'),

@@ -1,0 +1,10 @@
+.alert {
+    border: 0;
+    border-left: 4px solid;
+    border-radius: 0;
+    &-danger {
+        border-color: #e3342f !important; // border-red
+        background-color: #fcebea; // bg-red-lightest
+        color: #cc1f1a; // text-red-dark
+    }
+}

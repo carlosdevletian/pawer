@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <div class="mb-footer">
             @include('layouts.header')
 

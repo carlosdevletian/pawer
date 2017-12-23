@@ -2,6 +2,8 @@
     .image-upload-banner {
         width:80vw;
         height:40vh;
+        &-w { width:80vw;}
+        &-h { height:40vh;}
     }
 }
 
@@ -9,6 +11,8 @@
     .image-upload-banner {
         width:60vw;
         height:30vh;
+        &-w { width:60vw;}
+        &-h { height:30vh;}
     }
 }
 
@@ -16,6 +20,8 @@
     .image-upload-banner {
         width:40vw;
         height:30vh;
+        &-w { width:40vw;}
+        &-h { height:30vh;}
     }
 }
 
@@ -23,5 +29,7 @@
     .image-upload-banner {
         width:36vw;
         height:25vh;
+        &-w { width:36vw;}
+        &-h { height:25vh;}
     }
 }

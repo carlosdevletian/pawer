@@ -2,7 +2,12 @@
 
 @import "fonts.scss";
 @import "general.scss";
+@import "typography.scss";
+@import "backgrounds.scss";
+@import "borders.scss";
 @import "image-upload-banner.scss";
+@import "alert.scss";
+@import "vue.scss";
 
 @include media-breakpoint-up(md) {
   .w-md-50 {
