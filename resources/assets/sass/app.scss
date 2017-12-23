@@ -2,9 +2,20 @@
 
 @import "fonts.scss";
 @import "general.scss";
+@import "image-upload-banner.scss";
 
 @include media-breakpoint-up(md) {
   .w-md-50 {
     width: 50% !important;
   }
 }
+
+@include media-breakpoint-up(md) {
+    .md-hover-only {
+        opacity: 0;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+

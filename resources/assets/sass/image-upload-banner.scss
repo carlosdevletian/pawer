@@ -1,0 +1,27 @@
+@include media-breakpoint-up(xs) {
+    .image-upload-banner {
+        width:80vw;
+        height:40vh;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .image-upload-banner {
+        width:60vw;
+        height:30vh;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .image-upload-banner {
+        width:40vw;
+        height:30vh;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .image-upload-banner {
+        width:36vw;
+        height:25vh;
+    }
+}

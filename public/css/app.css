@@ -9343,9 +9343,91 @@ a:hover {
   list-style: none;
 }
 
+.pseudo-hidden {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pin {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.card {
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-section {
+  padding: 1rem 1.5rem;
+}
+
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.flex-grow {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.image-upload-banner {
+  width: 80vw;
+  height: 40vh;
+}
+
+@media (min-width: 576px) {
+  .image-upload-banner {
+    width: 60vw;
+    height: 30vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .image-upload-banner {
+    width: 40vw;
+    height: 30vh;
+  }
+}
+
+@media (min-width: 992px) {
+  .image-upload-banner {
+    width: 36vw;
+    height: 25vh;
+  }
+}
+
 @media (min-width: 768px) {
   .w-md-50 {
     width: 50% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .md-hover-only {
+    opacity: 0;
+  }
+
+  .md-hover-only:hover {
+    opacity: 1;
   }
 }
 

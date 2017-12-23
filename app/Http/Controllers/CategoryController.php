@@ -16,11 +16,16 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('categories.create');
+    }
+
     public function store()
     {
         request()->validate([
             'name' => ['required'],
-            'category_image' => ['required', 'image', Rule::dimensions()->minWidth(600)->ratio(11/8.5)]
+            'category_image' => ['required', 'image', Rule::dimensions()->minWidth(600)]
         ]);
 
         Category::create([
@@ -29,5 +34,7 @@ class CategoryController extends Controller
         ]);
 
         ImageAdded::dispatch($image);
+
+        return back();
     }
 }

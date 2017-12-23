@@ -98,6 +98,34 @@ a:hover {
     max-width: 100%;
     max-height: 100%
 }
-.no-list-style {
-    list-style : none;
+.no-list-style { list-style : none; }
+.pseudo-hidden {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
 }
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pin {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.card {
+    background: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.card-section{
+    padding: 1rem 1.5rem;
+}
+.bg-overlay {
+    background-color: rgba(0,0,0,0.2);
+}
+.flex-grow {flex-grow: 1;}

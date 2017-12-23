@@ -37,12 +37,11 @@ class CreateCategoryTest extends TestCase
         $this->fake([ImageAdded::class]);
         $this->signIn();
 
-        $response = $this->withoutExceptionHandling()->post('/categories', [
+        $response = $this->post('/categories', [
             'name' => 'tops',
             'category_image' => $file = File::image('category_image.png', 1100, 850)
         ]);
 
-        $response->assertSuccessful();
         tap(Category::first(), function($category) use($file) {
             $this->assertEquals('tops', $category->name);
             $this->assertNotNull($category->image_path);
@@ -60,6 +59,22 @@ class CreateCategoryTest extends TestCase
         $this->post('/categories', $this->validParams());
 
         $this->assertCount(0, Category::get());
+    }
+
+    /** @test*/
+    public function logged_in_users_can_see_the_form_to_create_a_category()
+    {
+        $response = $this->signIn()->get('/categories/create');
+
+        $response->assertSuccessful();
+    }
+
+    /** @test*/
+    public function guests_cannot_see_the_form_to_create_a_category()
+    {
+        $response = $this->get('/categories/create');
+
+        $response->assertStatus(302);
     }
 
     /** @test */
@@ -103,18 +118,6 @@ class CreateCategoryTest extends TestCase
     {
         $response = $this->signIn()->post('/categories', $this->validParams([
             'category_image' => File::image('category_image.png', $width = 599, $height = 463)
-        ]));
-
-        $response->assertStatus(302);
-        $response->assertSessionHasErrors('category_image');
-        $this->assertEquals(0, Category::count());
-    }
-
-    /** @test */
-    public function image_must_be_have_landscape_letter_ratio()
-    {
-        $response = $this->signIn()->post('/categories', $this->validParams([
-            'category_image' => File::image('category_image.png', $width = 1100, $height = 851)
         ]));
 
         $response->assertStatus(302);
