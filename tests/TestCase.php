@@ -3,6 +3,8 @@
 namespace Tests;
 
 use PHPUnit\Framework\Assert;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -34,6 +36,15 @@ abstract class TestCase extends BaseTestCase
         $user = $user?: create('User');
 
         $this->actingAs($user);
+
+        return $this;
+    }
+
+    protected function fakeEvents($eventsToFake = [])
+    {
+        $modelDispatcher = Model::getEventDispatcher();
+        Event::fake($eventsToFake);
+        Model::setEventDispatcher($modelDispatcher);
 
         return $this;
     }

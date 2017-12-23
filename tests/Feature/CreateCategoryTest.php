@@ -20,7 +20,7 @@ class CreateCategoryTest extends TestCase
     {
         parent::setUp();
 
-        Storage::fake('public');
+        Storage::fake();
     }
 
     private function validParams($overrides = [])
@@ -34,7 +34,7 @@ class CreateCategoryTest extends TestCase
     /** @test*/
     public function logged_in_users_can_create_a_category()
     {
-        $this->fake([ImageAdded::class]);
+        $this->fakeEvents([ImageAdded::class]);
         $this->signIn();
 
         $response = $this->post('/categories', [
@@ -45,10 +45,10 @@ class CreateCategoryTest extends TestCase
         tap(Category::first(), function($category) use($file) {
             $this->assertEquals('tops', $category->name);
             $this->assertNotNull($category->image_path);
-            Storage::disk('public')->assertExists($category->image_path);
+            Storage::assertExists($category->image_path);
             $this->assertFileEquals(
                 $file->getPathName(),
-                Storage::disk('public')->path($category->image_path)
+                Storage::path($category->image_path)
             );
         });
     }
@@ -128,7 +128,7 @@ class CreateCategoryTest extends TestCase
     /** @test*/
     public function an_event_is_fired_when_a_category_is_created()
     {
-        $this->fake([ImageAdded::class]);
+        $this->fakeEvents([ImageAdded::class]);
 
         $response = $this->signIn()->post('/categories', $this->validParams());
 
@@ -136,12 +136,5 @@ class CreateCategoryTest extends TestCase
             $category = Category::firstOrFail();
             return $event->image === $category->image_path;
         });
-    }
-
-    private function fake($eventsToFake = [])
-    {
-        $modelDispatcher = Model::getEventDispatcher();
-        Event::fake($eventsToFake);
-        Model::setEventDispatcher($modelDispatcher);
     }
 }

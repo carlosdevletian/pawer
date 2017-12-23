@@ -2,24 +2,31 @@
 
 namespace Pawer\Models;
 
+use Pawer\Models\Traits\HasImages;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Category extends Model
 {
+    use HasImages;
+
     protected $guarded = [];
 
-    public static function boot()
-    {
-        parent::boot();
+    const IMAGES_FOLDER = 'categories';
 
-        static::creating(function($category) {
-            $slug = str_slug($category->name);
-            $category->slug = strtolower($slug);
-        });
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = strtolower(str_slug($value));
     }
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function getImage()
+    {
+        return asset($this->image_path);
     }
 }
