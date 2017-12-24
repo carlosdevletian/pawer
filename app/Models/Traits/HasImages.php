@@ -16,7 +16,7 @@ trait HasImages {
     public function changeImage($newImage)
     {
         ImageDeleted::dispatch($this->image_path);
-        $image = $newImage->store(self::IMAGES_FOLDER);
+        $image = $newImage->store(self::IMAGES_FOLDER, 'public');
         ImageAdded::dispatch($image);
         return $image;
     }

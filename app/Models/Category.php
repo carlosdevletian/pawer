@@ -27,6 +27,9 @@ class Category extends Model
 
     public function getImage()
     {
-        return asset($this->image_path);
+        if(Storage::disk('public')->exists($this->image_path)) {
+            return asset($this->image_path);
+        }
+        return Storage::disk('s3')->url($this->image_path);
     }
 }

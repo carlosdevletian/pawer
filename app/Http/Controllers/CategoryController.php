@@ -29,14 +29,14 @@ class CategoryController extends Controller
             'name' => ['required'],
         ], ['category_image*' => "Make sure you've selected an image that is at least 600px wide"]);
 
-        Category::create([
+        $category = Category::create([
             'name' => request('name'),
-            'image_path' => $image = request('category_image')->store('categories')
+            'image_path' => $image = request('category_image')->store('categories', 'public')
         ]);
 
         ImageAdded::dispatch($image);
 
-        return back();
+        return redirect()->route('categories.edit', $category->slug);
     }
 
     public function edit($categorySlug)
