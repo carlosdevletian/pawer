@@ -97,8 +97,9 @@ class EditCategoryTest extends TestCase
     /** @test*/
     public function logged_in_users_can_see_the_edit_screen()
     {
+        Storage::fake('s3');
         $category = create('Category');
-        $this->signIn()->get(route('categories.edit', $category->slug))->assertSuccessful();
+        $this->withoutExceptionHandling()->signIn()->get(route('categories.edit', $category->slug))->assertSuccessful();
     }
 
     /** @test*/

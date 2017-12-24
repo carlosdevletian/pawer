@@ -27,7 +27,7 @@
                             <div class="background-image image-upload-banner bg-overlay m-0 p-0"></div>
                         </div>
                         <!--  -->
-                        <image-upload></image-upload>
+                        <image-upload file-name="category_image"></image-upload>
 
                         <div class="card-section">
                             <div class="row">

@@ -27370,6 +27370,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'defaultImage': {
             type: String,
             default: '/images/placeholder-image.png'
+        },
+        'fileName': {
+            type: String,
+            required: true
         }
     },
 
@@ -27429,7 +27433,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "pseudo-hidden w-100 h-100 clickable",
     attrs: {
       "type": "file",
-      "name": "category_image"
+      "name": _vm.fileName
     },
     on: {
       "change": _vm.updateImagePreview

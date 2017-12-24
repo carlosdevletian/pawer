@@ -7,6 +7,7 @@ $factory->define(Pawer\Models\Product::class, function (Faker $faker) {
         'name' => $faker->name,
         'category_id' => function() {
             return factory(Pawer\Models\Category::class)->create()->id;
-        }
+        },
+        'image_path' => 'products/some-image.png'
     ];
 });

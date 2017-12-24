@@ -31,6 +31,7 @@ class ViewProductsIndexTest extends TestCase
 
         $response = $this->get('/category/tops/all-products');
 
+
         $response->data('products')->assertEquals([
             $tShirt,
             $jacket

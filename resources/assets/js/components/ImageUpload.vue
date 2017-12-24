@@ -2,7 +2,7 @@
     <div class="position-relative">
         <div class="background-image image-upload-banner bg-overlay m-0 p-0" role="img" :style="bannerStyles"></div>
         <label class="position-absolute pin clickable d-flex justify-content-center align-items-center text-light bg-overlay md-hover-only m-0">
-            <input type="file" class="pseudo-hidden w-100 h-100 clickable" name="category_image" @change="updateImagePreview">
+            <input type="file" class="pseudo-hidden w-100 h-100 clickable" :name="fileName" @change="updateImagePreview">
             <div>
                 <p class="futura-medium m-0 text-bold text-xl">Upload an image</p>
                 <div class="text-center text-3xl">
@@ -19,6 +19,10 @@
             'defaultImage' : {
                 type: String,
                 default : '/images/placeholder-image.png'
+            },
+            'fileName' : {
+                type: String,
+                required: true
             }
         },
 

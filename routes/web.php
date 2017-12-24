@@ -30,4 +30,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/categories', 'CategoryController@store')->name('categories.store');
     Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
     Route::patch('/category/{category}', 'CategoryController@update')->name('categories.update');
+
+    Route::get('/products/create', 'ProductController@create')->name('products.create');
+    Route::post('/products', 'ProductController@store')->name('products.store');
 });

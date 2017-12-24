@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
+            $table->string('image_path');
             $table->unsignedInteger('category_id');
             $table->timestamps();
         });
