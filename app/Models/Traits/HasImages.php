@@ -4,8 +4,17 @@ namespace Pawer\Models\Traits;
 
 use Pawer\Events\ImageAdded;
 use Pawer\Events\ImageDeleted;
+use Illuminate\Support\Facades\Storage;
 
 trait HasImages {
+
+    public function getImage()
+    {
+        if(Storage::disk('public')->exists($this->image_path)) {
+            return Storage::disk('public')->url($this->image_path);
+        }
+        return Storage::disk('s3')->url($this->image_path);
+    }
 
     public function updateImage($newImage)
     {

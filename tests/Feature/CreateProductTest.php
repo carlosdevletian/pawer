@@ -91,6 +91,30 @@ class CreateProductTest extends TestCase
         $this->assertEquals(0, Product::count());
     }
 
+    /** @test*/
+    public function category_id_is_required()
+    {
+        $response = $this->signIn()->post('/products', $this->validParams([
+            'category_id' => ''
+        ]));
+
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors('category_id');
+        $this->assertEquals(0, Product::count());
+    }
+
+    /** @test*/
+    public function category_id_must_be_valid()
+    {
+        $response = $this->signIn()->post('/products', $this->validParams([
+            'category_id' => 999
+        ]));
+
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors('category_id');
+        $this->assertEquals(0, Product::count());
+    }
+
     /** @test */
     public function image_is_required()
     {

@@ -40,6 +40,13 @@ abstract class TestCase extends BaseTestCase
         return $this;
     }
 
+    protected function signOut()
+    {
+        if(auth()->check()) auth()->logout();
+
+        return $this;
+    }
+
     protected function fakeEvents($eventsToFake = [])
     {
         $modelDispatcher = Model::getEventDispatcher();

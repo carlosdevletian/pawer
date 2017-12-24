@@ -31,19 +31,45 @@ class ProductController extends Controller
     {
         request()->validate([
             'name' => ['required'],
+            'category_id' => ['required', 'exists:categories,id'],
             'product_image' => ['required', 'image', Rule::dimensions()->minWidth(600)],
-            'category_id' => ['required']
         ]);
 
         $category = Product::create([
             'name' => request('name'),
+            'category_id' => request('category_id'),
             'image_path' => $image = request('product_image')->store('products', 'public'),
-            'category_id' => request('category_id')
         ]);
 
         ImageAdded::dispatch($image);
 
-        return back();
-        // return redirect()->route('categories.edit', $category->slug);
+        return redirect()->route('products.edit', $category->slug);
+    }
+
+    public function edit($productSlug)
+    {
+        return view('products.edit', [
+            'product' => Product::whereSlug($productSlug)->firstOrFail(),
+            'categories' => Category::select('id', 'name')->get()
+        ]);
+    }
+
+    public function update($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        request()->validate([
+            'name' => ['required'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'product_image' => ['nullable', 'image', Rule::dimensions()->minWidth(600)]
+        ]);
+
+        $product->update([
+            'name' => request('name'),
+            'category_id' => request('category_id'),
+            'image_path' => $product->updateImage(request('product_image')),
+        ]);
+
+        return redirect()->route('products.edit', $product->slug);
     }
 }
