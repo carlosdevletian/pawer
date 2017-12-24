@@ -11,13 +11,13 @@
             <h3>Categories</h3>
             <hr>
             <p class="m-0"><a class="futura-medium" href="{{ route('categories.create') }}">Create a new category</a></p>
-            <p class="m-0"><a class="futura-medium" href="#">Update an existing category</a></p>
+            <p class="m-0"><a class="futura-medium" href="{{ route('admin.categories.index') }}">Update an existing category</a></p>
         </div>
         <div class="col-12 col-md-4 p-3 rounded-0">
             <h3>Products</h3>
             <hr>
             <p class="m-0"><a class="futura-medium" href="{{ route('products.create') }}">Create a new product</a></p>
-            <p class="m-0"><a class="futura-medium" href="#">Update an existing product</a></p>
+            <p class="m-0"><a class="futura-medium" href="{{ route('admin.products.index') }}">Update an existing product</a></p>
         </div>
         <div class="col-12 col-md-4 p-3 rounded-0">
             <h3>Models</h3>

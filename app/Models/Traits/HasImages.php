@@ -13,7 +13,9 @@ trait HasImages {
         if(Storage::disk('public')->exists($this->image_path)) {
             return Storage::disk('public')->url($this->image_path);
         }
-        return Storage::disk('s3')->url($this->image_path);
+        if(Storage::disk('s3')->exists($this->image_path)) {
+            return Storage::disk('s3')->url($this->image_path);
+        }
     }
 
     public function updateImage($newImage)
