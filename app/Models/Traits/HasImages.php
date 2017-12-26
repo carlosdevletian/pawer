@@ -8,14 +8,15 @@ use Illuminate\Support\Facades\Storage;
 
 trait HasImages {
 
-    public function getImage()
+    public function getImage($image = null)
     {
-        if(Storage::disk('public')->exists($this->image_path)) {
-            return Storage::disk('public')->url($this->image_path);
-        }
-        if(Storage::disk('s3')->exists($this->image_path)) {
-            return Storage::disk('s3')->url($this->image_path);
-        }
+        $image = $image ?? $this->image_path;
+        // if(Storage::disk('public')->exists($image)) {
+            return Storage::disk('public')->url($image);
+        // }
+        // if(Storage::disk('s3')->exists($image)) {
+        //     return Storage::disk('s3')->url($image);
+        // }
     }
 
     public function updateImage($newImage)

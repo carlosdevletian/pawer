@@ -29,7 +29,7 @@
 
         created() {
             this.product = this.dataProduct[0]
-            this.imagePath = this.product.images[0],
+            this.imagePath = this.product.main_image_path,
             this.allProducts = Array.from(this.dataProduct);
         },
 
@@ -52,7 +52,7 @@
                 this.allProducts.forEach((product, index) =>
                     colors[index] = {
                         'color' : product.color,
-                        'image' : product.images[0]
+                        'image' : product.main_image_path
                     }
                 );
                 return colors;

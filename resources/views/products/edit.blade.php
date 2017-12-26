@@ -9,6 +9,7 @@
         <div class="row">
             <div class="col-12 text-center bg-white pt-4 mb-4 border border-top-0 border-right-0 border-left-0 pb-3">
                 <h3>Edit the "{{ ucfirst($product->name) }}" Product</h3>
+                <a class="futura-medium" href="{{ route('articles.create', $product->slug) }}">Add a new model for this product</a>
             </div>
             @if($errors->any())
                 <div class="col-12 d-flex justify-content-center">

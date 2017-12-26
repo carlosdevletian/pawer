@@ -20,9 +20,10 @@ class CreateArticlesTable extends Migration
             $table->text('description');
             $table->string('slug');
             $table->string('color');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->json('sizes');
-            $table->json('images');
+            $table->string('main_image_path');
+            $table->json('secondary_images');
             $table->boolean('featured')->default(false);
             $table->timestamps();
         });

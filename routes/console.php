@@ -21,4 +21,5 @@ Artisan::command('inspire', function () {
 Artisan::command('delete-images', function () {
     Storage::disk('public')->deleteDirectory('categories');
     Storage::disk('public')->deleteDirectory('products');
+    Storage::disk('public')->deleteDirectory('articles');
 })->describe('Delete all user uploaded images');

@@ -11,6 +11,12 @@ class ScheduleImageProcessing
 {
     public function handle(ImageAdded $event)
     {
-        ProcessImage::dispatch($event->image);
+        if(is_array($event->image)) {
+            foreach ($event->image as $image) {
+                ProcessImage::dispatch($image);
+            }
+        } else {
+            ProcessImage::dispatch($event->image);
+        }
     }
 }

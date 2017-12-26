@@ -15,7 +15,8 @@ $factory->define(Pawer\Models\Article::class, function (Faker $faker) {
         'sizes' => [
             'XS','SM','MD','LG','XL'
         ],
-        'images' => [
+        'main_image_path' => 'some/path.png',
+        'secondary_images' => [
             '/images/gorra1.png', '/images/gorra2.png'
         ]
     ];

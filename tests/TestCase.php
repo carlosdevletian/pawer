@@ -5,6 +5,7 @@ namespace Tests;
 use PHPUnit\Framework\Assert;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -16,6 +17,8 @@ abstract class TestCase extends BaseTestCase
     protected function setUp()
     {
         parent::setUp();
+
+        Storage::fake('s3');
 
         TestResponse::macro('data', function($key) {
             return $this->original->getData()[$key];

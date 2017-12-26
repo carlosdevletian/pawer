@@ -24,4 +24,24 @@ class ScheduleImageProcessingTest extends TestCase
             return $image === $job->imagePath;
         });
     }
+
+    /** @test*/
+    public function if_it_receives_many_paths_it_queues_many_jobs_to_process_images()
+    {
+        Queue::fake();
+
+        $image = [$image1, $image2, $image3] = ['image-1.png', 'image-2.png', 'image-3.png'];
+
+        ImageAdded::dispatch($image);
+
+        Queue::assertPushed(ProcessImage::class, function($job) use($image1) {
+            return $image1 === $job->imagePath;
+        });
+        Queue::assertPushed(ProcessImage::class, function($job) use($image2) {
+            return $image2 === $job->imagePath;
+        });
+        Queue::assertPushed(ProcessImage::class, function($job) use($image3) {
+            return $image3 === $job->imagePath;
+        });
+    }
 }

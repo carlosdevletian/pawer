@@ -54,8 +54,8 @@ class CategorySeeder extends Seeder
             'sizes' => [
                 'XS','SM','MD','LG','XL'
             ],
-            'images' => [
-                '/images/gorra1.png',
+            'main_image_path' => '/images/gorra1.png',
+            'secondary_images' => [
                 '/images/gorra2.png',
                 '/images/gorra3.png',
                 '/images/gorra4.png',
@@ -72,7 +72,8 @@ class CategorySeeder extends Seeder
             'sizes' => [
                 'XS','SM','MD'
             ],
-            'images' => [
+            'main_image_path' => '/images/gorra3.png',
+            'secondary_images' => [
                 '/images/gorra4.png',
                 '/images/gorra5.png',
             ]
@@ -87,7 +88,8 @@ class CategorySeeder extends Seeder
             'sizes' => [
                 'ONE-SIZE'
             ],
-            'images' => [
+            'main_image_path' => '/images/gorra4.png',
+            'secondary_images' => [
                 '/images/gorra5.png',
                 '/images/gorra2.png',
             ]
