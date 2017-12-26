@@ -1,14 +1,14 @@
 <template>
     <div class="row">
-        <div class="col-sm-3 col-lg-2 pl-sm-5 pr-0">
-            <div class="d-flex flex-sm-column justify-content-center">
+        <div class="col-sm-3 col-lg-2">
+            <div class="d-flex flex-sm-column justify-content-center align-items-center">
                 <a role="button" v-for="(image, index) in product.images"
                     class="background-image border border-dark mb-3 mr-2 mr-sm-0 clickable"
                     :style="'background-image: url(' + image + '); width: 90px; height: 90px'"
                     @click="select(index)"></a>
             </div>
         </div>
-        <div class="col-sm-9 col-md-8 col-lg-7 col-xl-5 pl-0 pr-0">
+        <div class="col-sm-9 col-md-8 col-lg-6 col-xl-5 pl-0 pr-0">
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <div class="d-flex align-items-center justify-content-center mb-2" style="position: relative; max-width: 100%">
                     <a style="position: absolute; left: 0" role="button" class="clickable" @click="prevImage"><slot name="arrow-left"></slot></a>
@@ -25,11 +25,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-xl-5 p-0 px-4">
-            <div class="pr-2 pt-2 d-flex justify-content-between align-items-center border border-top-0 border-left-0 border-right-0 border-secondary mb-2">
+        <div class="col-lg-4 col-xl-5 p-0 px-1">
+            <div class="pr-2 pt-2 d-flex flex-column justify-content-center align-items-center border border-top-0 border-left-0 border-right-0 border-secondary mb-2">
                 <h4 class="futura-medium p-0">{{ product.name }}</h4>
-
-                <small v-for="size in product.sizes" v-text="size"></small>
+                <div class="d-flex justify-content-between w-100 mt-2">
+                    <small v-for="size in product.sizes" v-text="size"></small>
+                </div>
             </div>
             <div class="d-flex justify-content-end mb-4">
                 <a v-for="product in related"
