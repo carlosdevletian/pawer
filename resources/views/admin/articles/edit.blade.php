@@ -18,7 +18,8 @@
                     ])
                     <a class="btn rounded-0 clickable btn-brand" style="max-height: 40px" href="{{ route('articles.show', $article->slug) }}">User's view</a>
                 </div>
-                <h3>Edit the "{{ $article->name }}" Model</h3>
+                <h3 class="d-inline-block mb-0">Edit the "{{ $article->name }}" Model</h3>
+                @include('admin.articles.featured', ['article' => $article])
             </div>
             @if($errors->any())
                 <div class="col-12 d-flex justify-content-center">

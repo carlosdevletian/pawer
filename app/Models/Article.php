@@ -38,6 +38,11 @@ class Article extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function isFeatured()
+    {
+        return $this->featured === true;
+    }
+
     public function scopeFeatured($query)
     {
         return $query->where('featured', true);

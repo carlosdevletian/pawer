@@ -44,4 +44,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::post('/articles', 'ArticleController@store')->name('articles.store');
     Route::get('/models/{article}/edit', 'ArticleController@edit')->name('articles.edit');
     Route::patch('/articles/{article}', 'ArticleController@update')->name('articles.update');
+
+    Route::post('/featured-articles', 'FeaturedArticleController@store')->name('featured-articles.store');
+    Route::delete('/featured-articles', 'FeaturedArticleController@destroy')->name('featured-articles.destroy');
 });
