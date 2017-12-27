@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::view('/about', 'about')->name('about');
 
 Route::get('/product/{article}/all-models', 'ArticleController@index')->name('articles.index');
-Route::get('/articles/{article}', 'ArticleController@show')->name('articles.show');
+Route::get('/models/{article}', 'ArticleController@show')->name('articles.show');
 
 Route::get('/catalog', 'CategoryController@index')->name('catalog');
 
@@ -41,4 +41,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/products/{product}/models/create', 'Admin\ArticleController@create')->name('articles.create');
     Route::post('/articles', 'Admin\ArticleController@store')->name('articles.store');
+    Route::get('/models/{article}/edit', 'Admin\ArticleController@edit')->name('articles.edit');
+    Route::patch('/articles/{article}', 'Admin\ArticleController@update')->name('articles.update');
 });

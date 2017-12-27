@@ -19,15 +19,16 @@ trait HasImages {
         // }
     }
 
-    public function updateImage($newImage)
+    public function updateImage($newImage, $oldImage = null)
     {
-        return $newImage ? $this->changeImage($newImage)
-                        : $this->image_path;
+        $oldImage = $oldImage ?? $this->image_path;
+        return $newImage ? $this->changeImage($newImage, $oldImage)
+                        : $oldImage;
     }
 
-    public function changeImage($newImage)
+    public function changeImage($newImage, $oldImage = null)
     {
-        ImageDeleted::dispatch($this->image_path);
+        ImageDeleted::dispatch($oldImage ?? $this->image_path);
         $image = $newImage->store(self::IMAGES_FOLDER, 'public');
         ImageAdded::dispatch($image);
         return $image;

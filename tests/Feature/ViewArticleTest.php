@@ -17,7 +17,7 @@ class ViewArticleTest extends TestCase
             'color' => 'red'
         ]);
 
-        $response = $this->get('/articles/ruca-snapback-red');
+        $response = $this->get('/models/ruca-snapback-red');
 
         $this->assertTrue(
             $response->data('article')->is($article)
@@ -40,7 +40,7 @@ class ViewArticleTest extends TestCase
             'color' => 'black',
         ]);
 
-        $response = $this->get('/articles/ruca-snapback-red');
+        $response = $this->get('/models/ruca-snapback-red');
 
         $response->data('model')->assertEquals([
             $articleA,
