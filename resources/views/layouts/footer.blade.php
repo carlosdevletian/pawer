@@ -17,10 +17,7 @@
                     <a href="#" class="text-light fut-con-med">NEW ARRIVALS-</a>
                 </p>
                 <p class="ls-1">
-                    <a href="#" class="text-light fut-con-med">CATALOG-</a>
-                </p>
-                <p class="ls-1">
-                    <a href="#" class="nav-link p-0 text-light fut-con-med">LOOKBOOKS-</a>
+                    <a href="{{ route('catalog') }}" class="text-light fut-con-med">CATALOG-</a>
                 </p>
                 @svg('logo', 'icon-h-2', ['style' => 'width: 20em'])
             </div>

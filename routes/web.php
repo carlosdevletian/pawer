@@ -24,23 +24,23 @@ Route::get('/category/{category}/all-products', 'ProductController@index')->name
 
 Route::view('/lookbook', 'lookbook')->name('lookbook');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-    Route::get('/categories-list', 'Admin\CategoryController@index')->name('admin.categories.index');
+    Route::get('/categories-list', 'CategoryController@index')->name('admin.categories.index');
     Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
     Route::post('/categories', 'CategoryController@store')->name('categories.store');
     Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
     Route::patch('/category/{category}', 'CategoryController@update')->name('categories.update');
 
-    Route::get('/products-list', 'Admin\ProductController@index')->name('admin.products.index');
+    Route::get('/products-list', 'ProductController@index')->name('admin.products.index');
     Route::get('/products/create', 'ProductController@create')->name('products.create');
     Route::post('/products', 'ProductController@store')->name('products.store');
     Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
     Route::patch('/products/{product}', 'ProductController@update')->name('products.update');
 
-    Route::get('/products/{product}/models/create', 'Admin\ArticleController@create')->name('articles.create');
-    Route::post('/articles', 'Admin\ArticleController@store')->name('articles.store');
-    Route::get('/models/{article}/edit', 'Admin\ArticleController@edit')->name('articles.edit');
-    Route::patch('/articles/{article}', 'Admin\ArticleController@update')->name('articles.update');
+    Route::get('/products/{product}/models/create', 'ArticleController@create')->name('articles.create');
+    Route::post('/articles', 'ArticleController@store')->name('articles.store');
+    Route::get('/models/{article}/edit', 'ArticleController@edit')->name('articles.edit');
+    Route::patch('/articles/{article}', 'ArticleController@update')->name('articles.update');
 });

@@ -92,7 +92,11 @@ class EditProductTest extends TestCase
     public function logged_in_users_can_see_the_edit_screen()
     {
         $product = create('Product');
-        $this->withoutExceptionHandling()->signIn()->get(route('products.edit', $product->slug))->assertSuccessful();
+
+        $response = $this->signIn()->get(route('products.edit', $product->slug));
+
+        $response->assertSuccessful();
+        $response->assertViewIs('admin.products.edit');
     }
 
     /** @test*/

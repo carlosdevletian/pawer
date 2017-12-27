@@ -69,6 +69,7 @@ class CreateProductTest extends TestCase
         $response = $this->signIn()->get('/products/create');
 
         $response->assertSuccessful();
+        $response->assertViewIs('admin.products.create');
     }
 
     /** @test*/

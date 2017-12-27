@@ -67,6 +67,7 @@ class CreateCategoryTest extends TestCase
         $response = $this->signIn()->get('/categories/create');
 
         $response->assertSuccessful();
+        $response->assertViewIs('admin.categories.create');
     }
 
     /** @test*/
