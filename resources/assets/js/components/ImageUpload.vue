@@ -1,8 +1,12 @@
 <template>
     <div class="position-relative">
-        <div class="background-image bg-overlay m-0 p-0" role="img" :style="[imageBackground, additionalStyles]" :class="{ 'image-upload-banner' : isBanner }"></div>
+        <div class="background-image bg-overlay m-0 p-0" role="img" :style="[imageBackground, additionalStyles]" :class="{ 'image-upload-banner' : isBanner }" draggable=true></div>
         <label class="position-absolute pin clickable d-flex justify-content-center align-items-center text-light bg-overlay md-hover-only m-0">
-            <input type="file" class="pseudo-hidden w-100 h-100 clickable" :name="fileName" @change="updateImagePreview">
+            <input type="file" class="pseudo-hidden w-100 h-100 clickable"
+                    :name="fileName"
+                    @change="updateImagePreview"
+                    @dragenter="activateHover"
+                    @dragleave="deactivateHover">
             <div v-if="withHover">
                 <p class="futura-medium m-0 text-bold text-xl" v-text="hoverText"></p>
                 <div class="text-center text-3xl">
@@ -86,6 +90,12 @@
             },
             close() {
                 this.$emit('closed');
+            },
+            activateHover(event) {
+                event.target.parentElement.classList.remove('md-hover-only')
+            },
+            deactivateHover(event) {
+                event.target.parentElement.classList.add('md-hover-only')
             }
         }
     }

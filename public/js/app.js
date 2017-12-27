@@ -27416,6 +27416,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -27489,6 +27493,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         close: function close() {
             this.$emit('closed');
+        },
+        activateHover: function activateHover(event) {
+            event.target.parentElement.classList.remove('md-hover-only');
+        },
+        deactivateHover: function deactivateHover(event) {
+            event.target.parentElement.classList.add('md-hover-only');
         }
     }
 });
@@ -27507,7 +27517,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     style: ([_vm.imageBackground, _vm.additionalStyles]),
     attrs: {
-      "role": "img"
+      "role": "img",
+      "draggable": "true"
     }
   }), _vm._v(" "), _c('label', {
     staticClass: "position-absolute pin clickable d-flex justify-content-center align-items-center text-light bg-overlay md-hover-only m-0"
@@ -27518,7 +27529,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": _vm.fileName
     },
     on: {
-      "change": _vm.updateImagePreview
+      "change": _vm.updateImagePreview,
+      "dragenter": _vm.activateHover,
+      "dragleave": _vm.deactivateHover
     }
   }), _vm._v(" "), (_vm.withHover) ? _c('div', [_c('p', {
     staticClass: "futura-medium m-0 text-bold text-xl",
