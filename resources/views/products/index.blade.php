@@ -5,6 +5,12 @@
 @endsection
 
 @section('main-content')
+    @include('layouts.breadcrumbs', [
+            'links' => [
+                'Catalog' => route('catalog'),
+                'active' => $category->name
+            ]
+        ])
     <div class="row">
     @foreach($products as $product)
         <a href="{{ route('articles.index', $product->slug) }}" class="col-12 col-lg-6  p-0 background-image d-flex align-items-start flex-column" style="background-image: url('/images/headwear.png'); height: 55vh">

@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function index($productSlug)
     {
-        $product = Product::whereSlug($productSlug)->firstOrFail();
+        $product = Product::whereSlug($productSlug)->with('category:id,name,slug')->firstOrFail();
         $articles = $product->articles()->byFamily();
 
         return view('articles.index', [
@@ -21,12 +21,15 @@ class ArticleController extends Controller
 
     public function show($article)
     {
-        $article = Article::whereSlug($article)->firstOrFail();
+        $article = Article::whereSlug($article)->with('product:id,name,slug,category_id')->firstOrFail();
         $model = Article::whereName($article->name)->get();
+        $product = $article->product;
 
         return view('articles.show', [
             'article' => $article,
-            'model' =>  $model
+            'model' =>  $model,
+            'product' => $product,
+            'category' => $product->load('category:id,name,slug')->category
         ]);
     }
 }

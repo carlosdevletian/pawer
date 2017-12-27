@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group d-flex justify-content-center">
-                                        <button type="submit" class="btn rounded-0 clickable btn-brand w-100">Update</button>
+                                        <button type="submit" class="btn rounded-0 clickable btn-brand w-100">Save changes</button>
                                     </div>
                                 </div>
                             </div>

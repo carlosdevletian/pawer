@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'Pawer\Events\ImageAdded' => [
             'Pawer\Listeners\ScheduleImageProcessing',
         ],
+        'Pawer\Events\ImageDeleted' => [
+            'Pawer\Listeners\ScheduleImageDeletion',
+        ],
     ];
 
     /**
