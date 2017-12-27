@@ -5,9 +5,16 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid bg-light">
         <div class="row">
-            <div class="col-12 text-center bg-white pt-4 mb-4 border border-top-0 border-right-0 border-left-0 pb-3">
+            <div class="col-12 text-center bg-white pt-4 mb-4 border border-top-0 border-right-0 border-left-0 pb-3">@include('layouts.admin.breadcrumbs', [
+                        'links' => [
+                            'dashboard' => route('dashboard'),
+                            'products' => route('admin.products.index'),
+                            $product->name => route('products.edit', $product->slug),
+                            'active' => 'Create a model'
+                        ],
+                    ])
                 <h3>Create a new model for the product "{{ $product->name }}"</h3>
             </div>
             @if($errors->any())

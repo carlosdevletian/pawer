@@ -5,9 +5,19 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid bg-light">
         <div class="row">
             <div class="col-12 text-center bg-white pt-4 mb-4 border border-top-0 border-right-0 border-left-0 pb-3">
+                <div class="d-flex justify-content-between mb-4">
+                    @include('layouts.admin.breadcrumbs', [
+                        'links' => [
+                            'dashboard' => route('dashboard'),
+                            'models' => route('admin.articles.index'),
+                            'active' => $article->name
+                        ],
+                    ])
+                    <a class="btn rounded-0 clickable btn-brand" style="max-height: 40px" href="{{ route('articles.show', $article->slug) }}">User's view</a>
+                </div>
                 <h3>Edit the "{{ $article->name }}" Model</h3>
             </div>
             @if($errors->any())

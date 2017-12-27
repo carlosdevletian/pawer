@@ -8,6 +8,12 @@
     <div class="container-fluid bg-light">
         <div class="row">
             <div class="col-12 text-center bg-white pt-4 mb-4 border border-top-0 border-right-0 border-left-0 pb-3">
+                @include('layouts.admin.breadcrumbs', [
+                    'links' => [
+                        'dashboard' => route('dashboard'),
+                        'active' => 'Create a category'
+                    ]
+                ])
                 <h3>Create a new category</h3>
             </div>
             @if($errors->any())

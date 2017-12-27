@@ -8,6 +8,13 @@
     <div class="container-fluid bg-light">
         <div class="row">
             <div class="col-12 text-center bg-white pt-4 mb-4 border border-top-0 border-right-0 border-left-0 pb-3">
+                 @include('layouts.admin.breadcrumbs', [
+                    'links' => [
+                        'dashboard' => route('dashboard'),
+                        'categories' => route('admin.categories.index'),
+                        'active' => $category->name
+                    ]
+                ])
                 <h3>Edit the "{{ ucfirst($category->name) }}" Category</h3>
             </div>
             @if($errors->any())

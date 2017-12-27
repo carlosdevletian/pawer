@@ -4,6 +4,7 @@ namespace Pawer\Http\Controllers\Admin;
 
 use Pawer\Models\Article;
 use Pawer\Models\Product;
+use Pawer\Models\Category;
 use Illuminate\Http\Request;
 use Pawer\Events\ImageAdded;
 use Illuminate\Validation\Rule;
@@ -12,6 +13,17 @@ use Pawer\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+    public function index()
+    {
+        $categories = Category::with(['products.articles' => function($query) {
+            $query->select('name', 'color', 'slug', 'product_id');
+        }])->get();
+
+        return view('admin.articles.index', [
+            'categories' => $categories
+        ]);
+    }
+
     public function create($productSlug)
     {
         return view('admin.articles.create', [

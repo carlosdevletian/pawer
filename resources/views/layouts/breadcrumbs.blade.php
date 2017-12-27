@@ -5,12 +5,12 @@
                  @foreach($links as $name => $link)
                     @if($name === 'active')
                         <li class="breadcrumb-item active" aria-current="page">
-                            <small class="futura-medium text-dark">{{ strtoupper($link) }}</small>
+                            <small class="futura-medium text-dark text-uppercase">{{ ($link) }}</small>
                         </li>
                     @else
                         <li class="breadcrumb-item">
                             <a href="{{ $link }}">
-                                <small class="futura-medium text-grey">{{ strtoupper($name) }}</small>
+                                <small class="futura-medium text-grey text-uppercase">{{ ($name) }}</small>
                             </a>
                         </li>
                     @endif

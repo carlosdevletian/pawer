@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
     Route::patch('/products/{product}', 'ProductController@update')->name('products.update');
 
+    Route::get('/models-list', 'ArticleController@index')->name('admin.articles.index');
     Route::get('/products/{product}/models/create', 'ArticleController@create')->name('articles.create');
     Route::post('/articles', 'ArticleController@store')->name('articles.store');
     Route::get('/models/{article}/edit', 'ArticleController@edit')->name('articles.edit');

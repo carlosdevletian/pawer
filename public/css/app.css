@@ -9256,10 +9256,12 @@ a:hover {
   border-color: #eb3323;
   color: white;
   background-color: #eb3323;
+  font-family: Futura Medium;
 }
 
 .btn-brand:hover {
   background-color: #ff3323;
+  color: white;
 }
 
 .btn-transparent {
@@ -9402,6 +9404,10 @@ a:hover {
 
 .breadcrumb-item > a > small:hover {
   color: #eb3323;
+}
+
+.rounded-0 {
+  border-radius: 0 !important;
 }
 
 .text-xs {
