@@ -8,14 +8,8 @@ use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        factory(User::class)->create(['email' => 'carlos@example.com']);
         tap(factory(Category::class)->create(['name' => 'tops']), function($tops) {
             tap(factory(Product::class)->create(['name' => 't-shirts','category_id' => $tops->id]), function($shirts) {
                 factory(Article::class)->create(['name' => 'Coy','product_id' => $shirts->id]);
