@@ -74,21 +74,6 @@ class Article extends Model
         return $this->updateImage($newImage, $this->main_image_path);
     }
 
-    public function updateSecondaryImages($secondaryImages)
-    {
-        $this->deleteUnwanted(
-            $this->unwantedImages(
-                $kept = $this->keptImages($secondaryImages)
-            )
-        );
-
-        $newImages = $this->storeImages(
-            $this->filesFrom($secondaryImages)
-        );
-
-        return $kept->concat($newImages)->values();
-    }
-
     public function getSecondaryImages()
     {
         return collect($this->secondary_images)->map(function($image) {
@@ -125,6 +110,21 @@ class Article extends Model
         ]);
     }
 
+    public function updateSecondaryImages($secondaryImages)
+    {
+        $this->deleteUnwanted(
+            $this->unwantedImages(
+                $kept = $this->keptImages($secondaryImages)
+            )
+        );
+
+        $newImages = $this->storeImages(
+            $this->filesFrom($secondaryImages)
+        );
+
+        return $kept->concat($newImages)->values();
+    }
+
     public function deleteUnwanted($unwanted)
     {
         $unwanted->each(function($image) {
@@ -157,9 +157,9 @@ class Article extends Model
     public function storeImages($files)
     {
         return $files->map(function($file) {
-            $path = $file->store('articles', 'public');
-            ImageAdded::dispatch($path);
-            return $path;
+            return tap($file->store('articles', 'public'), function($path) {
+                ImageAdded::dispatch($path);
+            });
         });
     }
 }

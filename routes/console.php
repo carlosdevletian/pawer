@@ -19,6 +19,7 @@ Artisan::command('inspire', function () {
 })->describe('Display an inspiring quote');
 
 Artisan::command('delete-images', function () {
+    Storage::disk('public')->deleteDirectory('home');
     Storage::disk('public')->deleteDirectory('categories');
     Storage::disk('public')->deleteDirectory('products');
     Storage::disk('public')->deleteDirectory('articles');

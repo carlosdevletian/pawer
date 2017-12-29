@@ -16,7 +16,7 @@ class ProcessImageTest extends TestCase
         Storage::fake();
         Storage::put(
             'examples/example.png',
-            file_get_contents(base_path('tests/__fixtures__/high-quality-image.png'))
+            file_get_contents(base_path('tests/__fixtures__/regular-images/high-quality-image.png'))
         );
         $image = 'examples/example.png';
 
@@ -28,7 +28,7 @@ class ProcessImageTest extends TestCase
         $this->assertEquals(776, $height);
 
         $resizedImageContents = Storage::get('examples/example.png');
-        $controlImageContents = file_get_contents(base_path('tests/__fixtures__/optimized-image.png'));
+        $controlImageContents = file_get_contents(base_path('tests/__fixtures__/regular-images/optimized-image.png'));
         $this->assertEquals($resizedImageContents, $controlImageContents);
     }
 
@@ -38,18 +38,18 @@ class ProcessImageTest extends TestCase
         Storage::fake();
         Storage::put(
             'examples/example.png',
-            file_get_contents(base_path('tests/__fixtures__/small-unoptimized-image.png'))
+            file_get_contents(base_path('tests/__fixtures__/regular-images/small-unoptimized-image.png'))
         );
         $image = 'examples/example.png';
 
         ProcessImage::dispatch($image);
 
         $optimizedImageSize = Storage::size('examples/example.png');
-        $originalSize = filesize(base_path('tests/__fixtures__/small-unoptimized-image.png'));
+        $originalSize = filesize(base_path('tests/__fixtures__/regular-images/small-unoptimized-image.png'));
         $this->assertLessThan($originalSize, $optimizedImageSize);
 
         $optimizedImageContents = Storage::get('examples/example.png');
-        $controlImageContents = file_get_contents(base_path('tests/__fixtures__/optimized-image.png'));
+        $controlImageContents = file_get_contents(base_path('tests/__fixtures__/regular-images/optimized-image.png'));
         $this->assertEquals($optimizedImageContents, $controlImageContents);
     }
 
@@ -59,7 +59,7 @@ class ProcessImageTest extends TestCase
         Storage::fake();
         Storage::put(
             'examples/example.png',
-            file_get_contents(base_path('tests/__fixtures__/smaller-size-image.png'))
+            file_get_contents(base_path('tests/__fixtures__/regular-images/smaller-size-image.png'))
         );
         $image = 'examples/example.png';
 

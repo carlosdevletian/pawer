@@ -187,13 +187,13 @@ class EditArticleTest extends TestCase
     /** @test*/
     public function secondary_images_updated()
     {
-            $article = create('Article', [
-                'secondary_images' => [
-                    'articles/first-image.png',
-                    'articles/second-image.png',
-                    'articles/third-image.png',
-                ]
-            ]);
+        $article = create('Article', [
+            'secondary_images' => [
+                'articles/first-image.png',
+                'articles/second-image.png',
+                'articles/third-image.png',
+            ]
+        ]);
 
         $response = $this->fakeEvents()->signIn()->patch(route('articles.update', $article), $this->validParams([
             'secondary_images' => [

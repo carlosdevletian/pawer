@@ -22,8 +22,6 @@ Route::get('/catalog', 'CategoryController@index')->name('catalog');
 
 Route::get('/category/{category}/all-products', 'ProductController@index')->name('products.index');
 
-Route::view('/lookbook', 'lookbook')->name('lookbook');
-
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
@@ -47,4 +45,6 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
 
     Route::post('/featured-articles', 'FeaturedArticleController@store')->name('featured-articles.store');
     Route::delete('/featured-articles', 'FeaturedArticleController@destroy')->name('featured-articles.destroy');
+
+    Route::patch('/home-images', 'HomeImagesController@update')->name('home-images.update');
 });

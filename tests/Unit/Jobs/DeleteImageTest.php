@@ -17,7 +17,7 @@ class DeleteImageTest extends TestCase
         Storage::fake();
         Storage::put(
             'examples/example.png',
-            file_get_contents(base_path('tests/__fixtures__/high-quality-image.png'))
+            file_get_contents(base_path('tests/__fixtures__/regular-images/high-quality-image.png'))
         );
         $image = 'examples/example.png';
 
@@ -33,7 +33,7 @@ class DeleteImageTest extends TestCase
         Storage::fake();
         Storage::put(
             'examples/example.png',
-            file_get_contents(base_path('tests/__fixtures__/high-quality-image.png'))
+            file_get_contents(base_path('tests/__fixtures__/regular-images/high-quality-image.png'))
         );
         $image = 'examples/example.png';
 

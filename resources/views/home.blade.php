@@ -8,9 +8,9 @@
 <div class="container-fluid" style="overflow-x:hidden">
     <div class="row">
         @auth
-            @include('admin.home.edit-carousel')
+            @include('admin.home.edit-carousel', ['images' => 'carouselImages'])
         @else
-            @include('home.carousel')
+            @include('home.carousel', ['images' => 'carouselImages'])
         @endauth
     </div>
 

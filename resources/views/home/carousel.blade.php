@@ -1,13 +1,15 @@
 <div id="landing-carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#landing-carousel" data-slide-to="0" class="active clickable"></li>
-        <li data-target="#landing-carousel" data-slide-to="1" class="clickable"></li>
-        <li data-target="#landing-carousel" data-slide-to="2" class="clickable"></li>
+        @foreach($carouselImages as $image)
+        <li data-target="#landing-carousel" data-slide-to="{{ $loop->index }}" class="{{ $loop->index === 0 ? 'active' : '' }} clickable"></li>
+        @endforeach
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="background-image" style="background-image: url('/images/carousel1.png'); height: 60vh; width: 100vw" alt="First slide"></div>
-        </div>
+        @foreach($carouselImages as $image)
+            <div class="carousel-item {{ $loop->index === 0 ? 'active' : '' }}">
+                <div class="background-image" style="background-image: url('{{ $image['absolute'] }}'); height: 60vh; width: 100vw" alt="Slide {{ $loop->index }}"></div>
+            </div>
+        @endforeach
     </div>
     <a class="carousel-control-prev opacity-3" href="#landing-carousel" role="button" data-slide="prev">
         @icon('arrow-left', 'icon-h-3 font-weight-bold')
