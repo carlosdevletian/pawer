@@ -27420,6 +27420,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -27531,7 +27532,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "change": _vm.updateImagePreview,
       "dragenter": _vm.activateHover,
-      "dragleave": _vm.deactivateHover
+      "dragleave": _vm.deactivateHover,
+      "drop": _vm.deactivateHover
     }
   }), _vm._v(" "), (_vm.withHover) ? _c('div', [_c('p', {
     staticClass: "futura-medium m-0 text-bold text-xl",

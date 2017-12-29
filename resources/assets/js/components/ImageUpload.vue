@@ -6,7 +6,8 @@
                     :name="fileName"
                     @change="updateImagePreview"
                     @dragenter="activateHover"
-                    @dragleave="deactivateHover">
+                    @dragleave="deactivateHover"
+                    @drop="deactivateHover">
             <div v-if="withHover">
                 <p class="futura-medium m-0 text-bold text-xl" v-text="hoverText"></p>
                 <div class="text-center text-3xl">

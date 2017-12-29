@@ -1,8 +1,8 @@
 <div id="landing-carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#landing-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#landing-carousel" data-slide-to="1"></li>
-        <li data-target="#landing-carousel" data-slide-to="2"></li>
+        <li data-target="#landing-carousel" data-slide-to="0" class="active clickable"></li>
+        <li data-target="#landing-carousel" data-slide-to="1" class="clickable"></li>
+        <li data-target="#landing-carousel" data-slide-to="2" class="clickable"></li>
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">

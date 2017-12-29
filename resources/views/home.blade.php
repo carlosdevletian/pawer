@@ -7,7 +7,11 @@
 @section('content')
 <div class="container-fluid" style="overflow-x:hidden">
     <div class="row">
-        @include('home.carousel')
+        @auth
+            @include('admin.home.edit-carousel')
+        @else
+            @include('home.carousel')
+        @endauth
     </div>
 
     <product-carousel :data-products="{{ $featuredArticles }}">
