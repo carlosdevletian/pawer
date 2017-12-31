@@ -1,4 +1,4 @@
-<div id="landing-carousel" class="carousel slide" data-ride="carousel">
+<div id="landing-carousel" class="bg-grey-light carousel slide" data-ride="carousel" style="min-height: 60vh">
     <ol class="carousel-indicators">
         @foreach($carouselImages as $image)
         <li data-target="#landing-carousel" data-slide-to="{{ $loop->index }}" class="{{ $loop->index === 0 ? 'active' : '' }} clickable"></li>
@@ -6,9 +6,9 @@
     </ol>
     <div class="carousel-inner">
         @foreach($carouselImages as $image)
-            <div class="carousel-item {{ $loop->index === 0 ? 'active' : '' }}">
-                <div class="background-image" style="background-image: url('{{ $image['absolute'] }}'); height: 60vh; width: 100vw" alt="Slide {{ $loop->index }}"></div>
-            </div>
+        <div class="carousel-item {{ $loop->index === 0 ? 'active' : '' }}">
+            <div class="background-image" style="background-image: url('{{ $image['absolute'] }}'); height: 60vh; width: 100vw" alt="Pawer Home Slide {{ $loop->index }}"></div>
+        </div>
         @endforeach
     </div>
     <a class="carousel-control-prev opacity-3" href="#landing-carousel" role="button" data-slide="prev">

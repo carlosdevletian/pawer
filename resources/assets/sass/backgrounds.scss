@@ -4,7 +4,7 @@
 .bg-grey-darker {background-color: #606f7b;}
 .bg-grey-dark   {background-color: #8795a1;}
 .bg-grey    {background-color: #b8c2cc;}
-.bg-grey-light  {background-color: #dae1e7;}
+.bg-grey-light  {background-color: #E6E6E6}
 .bg-grey-lighter    {background-color: #f1f5f8;}
 .bg-grey-lightest   {background-color: #f8fafc;}
 .bg-white   {background-color: #ffffff;}
@@ -71,3 +71,23 @@
 .bg-pink-light  {background-color: #fa7ea8;}
 .bg-pink-lighter    {background-color: #ffbbca;}
 .bg-pink-lightest   {background-color: #ffebef;}
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+.animated-background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    height: 96px;
+}

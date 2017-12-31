@@ -106,7 +106,10 @@ class Article extends Model
     {
         return array_merge(parent::toArray(), [
             'main_image_path' => $this->getMainImage(),
-            'images' => $this->getImages()
+            'images' => $this->getImages(),
+            'links' => [
+                'show' => route('articles.show', $this->slug)
+            ],
         ]);
     }
 

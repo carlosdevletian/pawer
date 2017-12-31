@@ -22,6 +22,8 @@ Route::get('/catalog', 'CategoryController@index')->name('catalog');
 
 Route::get('/category/{category}/all-products', 'ProductController@index')->name('products.index');
 
+Route::post('email-suscriptions', 'EmailSuscriptionController@store')->name('email-suscriptions.store');
+
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 

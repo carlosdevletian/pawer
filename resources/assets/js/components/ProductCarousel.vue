@@ -6,7 +6,7 @@
                     :key="product[0].id"
                     class="border-0"
                     style="background-color: white">
-                <product :data-product="product" data-active="true"></product>
+                <product :data-product="product" data-active="parent" :link-to="product[0].links.show"></product>
             </slide>
         </carousel-3d>
         <a role="button" class="carousel-control-prev clickable" @click="previousProduct">

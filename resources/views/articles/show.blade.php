@@ -14,9 +14,10 @@
                     'active' => $article->name
                 ]
             ])
+        @include('skeletons.articles.show')
         <product-lookbook :data-product="{{ $article }}" :data-model="{{ $model }}">
-            <div slot="arrow-left">@icon('arrow-left', 'icon-h-3 font-weight-bold')</div>
-            <div slot="arrow-right">@icon('arrow-right', 'icon-h-3 font-weight-bold')</div>
+            <div class="v-cloak-invisible" slot="arrow-left">@icon('arrow-left', 'icon-h-3 font-weight-bold')</div>
+            <div class="v-cloak-invisible" slot="arrow-right">@icon('arrow-right', 'icon-h-3 font-weight-bold')</div>
         </product-lookbook>
     </div>
 @endsection

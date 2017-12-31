@@ -3,17 +3,29 @@
         <div class="col-sm-3 col-lg-2">
             <div class="d-flex flex-sm-column justify-content-center align-items-center">
                 <a role="button" v-for="(image, index) in product.images"
-                    class="background-image border border-dark mb-3 mr-2 mr-sm-0 clickable"
-                    :style="'background-image: url(' + image + '); width: 90px; height: 90px'"
-                    @click="select(index)"></a>
+                    @click="select(index)"
+                    class="mb-3 mr-2 mr-sm-0">
+                        <loadable-image
+                            skeleton-styles='{"width": "90px", "height": "90px"}'
+                            image-styles='{"width": "90px", "height": "90px"}'
+                            :image-source="image"
+                            image-classes="background-image border border-dark clickable"
+                            :image-alt="product.name"
+                        ></loadable-image>
+                    </a>
             </div>
         </div>
         <div class="col-sm-9 col-md-8 col-lg-6 col-xl-5 pl-0 pr-0">
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <div class="d-flex align-items-center justify-content-center mb-2" style="position: relative; max-width: 100%">
-                    <a style="position: absolute; left: 0" role="button" class="clickable" @click="prevImage"><slot name="arrow-left"></slot></a>
-                    <div class="background-image" :style="'background-image: url(' + activeImage + '); width: 400px; height: 400px; transition: background-image 0.5s'"></div>
-                    <a style="position: absolute; right: 0" role="button" class="clickable" @click="nextImage"><slot name="arrow-right"></slot></a>
+                    <a style="left: 0" role="button" class="position-absolute clickable" @click="prevImage"><slot name="arrow-left"></slot></a>
+                        <loadable-image
+                            skeleton-styles='{"width": "400px", "height": "400px"}'
+                            image-styles='{"width": "400px", "height": "400px", "transition" : "all 0.5s"}'
+                            :image-source="activeImage"
+                            :image-alt="product.name"
+                        ></loadable-image>
+                    <a style="right: 0" role="button" class="position-absolute clickable" @click="nextImage"><slot name="arrow-right"></slot></a>
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
                     <a role="button"
