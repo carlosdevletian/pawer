@@ -12,12 +12,17 @@ class Category extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'sub_names' => 'array'
+    ];
+
     const IMAGES_FOLDER = 'categories';
 
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = strtolower(str_slug($value));
+        $this->attributes['name'] = str_replace("-", "", $value);
+        $this->attributes['slug'] = strtolower(str_slug($this->attributes['name']));
+        $this->attributes['sub_names'] = json_encode(explode('-', $value));
     }
 
     public function products()

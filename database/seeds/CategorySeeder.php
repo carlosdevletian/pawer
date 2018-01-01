@@ -21,7 +21,7 @@ class CategorySeeder extends Seeder
             factory(Product::class)->create(['name' => 'jackets','category_id' => $tops->id]);
         });
 
-        tap(factory(Category::class)->create(['name' => 'headwear']), function($headwear) {
+        tap(factory(Category::class)->create(['name' => 'head-wear']), function($headwear) {
             tap(factory(Product::class)->create(['name' => 'snapbacks','category_id' => $headwear->id]), function($snapbacks) {
                 $this->createSnapbacks($snapbacks->id);
             });
@@ -29,7 +29,7 @@ class CategorySeeder extends Seeder
             factory(Product::class)->create(['name' => 'beanies','category_id' => $headwear->id]);
         });
 
-        tap(factory(Category::class)->create(['name' => 'underwear']), function($underwear) {
+        tap(factory(Category::class)->create(['name' => 'under-wear']), function($underwear) {
             factory(Product::class)->create(['name' => 'boxers','category_id' => $underwear->id]);
             factory(Product::class)->create(['name' => 'socks','category_id' => $underwear->id]);
         });
