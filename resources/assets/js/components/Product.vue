@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-        <a :href="linkTo" v-if="linkTo">
+        <a :href="linkTo" v-if="linkTo && active">
             <loadable-image
                 skeleton-styles='{"width": "250px", "height": "250px"}'
                 image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'

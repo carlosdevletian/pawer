@@ -1146,7 +1146,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-module.exports = __webpack_require__(65);
+module.exports = __webpack_require__(68);
 
 
 /***/ }),
@@ -1176,7 +1176,7 @@ Vue.component('product-lookbook', __webpack_require__(44));
 Vue.component('image-upload', __webpack_require__(50));
 Vue.component('article-secondary-images-upload', __webpack_require__(55));
 Vue.component('edit-article-secondary-images', __webpack_require__(60));
-Vue.component('loadable-image', __webpack_require__(69));
+Vue.component('loadable-image', __webpack_require__(65));
 
 var app = new Vue({
   el: '#app'
@@ -26934,7 +26934,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "d-flex flex-column justify-content-center align-items-center mb-3"
-  }, [(_vm.linkTo) ? _c('a', {
+  }, [(_vm.linkTo && _vm.active) ? _c('a', {
     attrs: {
       "href": _vm.linkTo
     }
@@ -28052,23 +28052,14 @@ if (false) {
 
 /***/ }),
 /* 65 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(70),
+  __webpack_require__(66),
   /* template */
-  __webpack_require__(71),
+  __webpack_require__(67),
   /* styles */
   null,
   /* scopeId */
@@ -28100,7 +28091,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28162,7 +28153,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 71 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -28185,6 +28176,12 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-71dea210", module.exports)
   }
 }
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -1,4 +1,4 @@
-<div id="landing-carousel" class="bg-grey-light carousel slide" data-ride="carousel" style="min-height: 60vh">
+<div id="landing-carousel" class="animated-background carousel slide" data-ride="carousel" style="min-height: 60vh">
     <ol class="carousel-indicators">
         @foreach($carouselImages as $image)
         <li data-target="#landing-carousel" data-slide-to="{{ $loop->index }}" class="{{ $loop->index === 0 ? 'active' : '' }} clickable"></li>
