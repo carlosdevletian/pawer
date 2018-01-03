@@ -9,11 +9,15 @@
                         @foreach($categories as $category)
                             <ul class="p-0">
                                 <li class="no-list-style">
-                                    <a class="nav-link text-dark" href="{{ route('products.index', $category->slug) }}"><h6 class="futura-medium text-uppercase">{{ $category->name }}</h6></a>
+                                    <a class="nav-link text-dark"
+                                        href="{{ route('products.index', $category->slug) }}"
+                                        title="{{ ucfirst($category->name) }}"><h6 class="futura-medium text-uppercase">{{ $category->name }}</h6></a>
                                 </li>
                                 @foreach($category->products as $product)
                                     <li class="no-list-style">
-                                        <a class="nav-link p-0 pl-4 text-dark text-capitalize" href="{{ route('articles.index', $product->slug) }}">{{ $product->name }}</a>
+                                        <a class="nav-link p-0 pl-4 text-dark text-capitalize"
+                                            href="{{ route('articles.index', $product->slug) }}"
+                                            title="{{ ucfirst($product->name) }}">{{ $product->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>

@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-        <a :href="linkTo" v-if="linkTo && active">
+        <a :href="linkTo" v-if="linkTo && active" :title="product.name">
             <loadable-image
                 skeleton-styles='{"width": "250px", "height": "250px"}'
                 image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
@@ -21,7 +21,13 @@
             <p class="m-0 p-0 futura-medium">{{ product.name }}</p>
             <hr class="m-0 mb-2 p-0">
             <div class="d-flex justify-content-end">
-                <a v-for="color in allColors" role="button" class="clickable mr-1" style="width: 10px; height: 10px;" :style="'background-color : ' + color.color" @click="changeImage(color.image)"></a>
+                <a v-for="color in allColors"
+                    role="button"
+                    class="clickable mr-1"
+                    style="width: 10px; height: 10px;"
+                    :style="'background-color : ' + color.color"
+                    @click="changeImage(color.image)"
+                    :title="product.name + '-' + color.color"></a>
             </div>
         </div>
     </div>

@@ -26871,6 +26871,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['dataProduct', 'dataActive', 'linkTo'],
@@ -26936,7 +26942,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "d-flex flex-column justify-content-center align-items-center mb-3"
   }, [(_vm.linkTo && _vm.active) ? _c('a', {
     attrs: {
-      "href": _vm.linkTo
+      "href": _vm.linkTo,
+      "title": _vm.product.name
     }
   }, [_c('loadable-image', {
     attrs: {
@@ -26975,7 +26982,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       style: ('background-color : ' + color.color),
       attrs: {
-        "role": "button"
+        "role": "button",
+        "title": _vm.product.name + '-' + color.color
       },
       on: {
         "click": function($event) {
@@ -27177,6 +27185,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['dataProduct', 'dataModel'],
@@ -27268,7 +27277,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "left": "0"
     },
     attrs: {
-      "role": "button"
+      "role": "button",
+      "title": "Previous Image"
     },
     on: {
       "click": _vm.prevImage
@@ -27286,7 +27296,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "right": "0"
     },
     attrs: {
-      "role": "button"
+      "role": "button",
+      "title": "Next Image"
     },
     on: {
       "click": _vm.nextImage
@@ -27337,7 +27348,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       style: ('background-color : ' + product.color),
       attrs: {
-        "role": "button"
+        "role": "button",
+        "title": product.name + '-' + product.color
       },
       on: {
         "click": function($event) {

@@ -45,7 +45,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <div class="row justify-content-center">
-        <button type="submit" class="btn btn-brand rounded-0">Save changes</button>
+    <div class="row justify-content-center bg-overlay">
+        <button type="submit" class="btn btn-brand rounded-0 clickable">Save changes</button>
     </div>
 </form>

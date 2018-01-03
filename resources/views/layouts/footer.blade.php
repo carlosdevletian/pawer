@@ -11,13 +11,13 @@
             </div>
             <div class="col-md-6 col-lg-7 d-none d-md-flex flex-column justify-content-center align-items-end">
                 <p class="ls-1">
-                    <a href="{{ route('about') }}" class="text-light fut-con-med">ABOUT-</a>
+                    <a href="{{ route('about') }}" class="text-light fut-con-med" title="About Pawer">ABOUT-</a>
                 </p>
                 <p class="ls-1">
-                    <a href="#" class="text-light fut-con-med">NEW ARRIVALS-</a>
+                    <a href="#" class="text-light fut-con-med" title="New Arrivals">NEW ARRIVALS-</a>
                 </p>
                 <p class="ls-1">
-                    <a href="{{ route('catalog') }}" class="text-light fut-con-med">CATALOG-</a>
+                    <a href="{{ route('catalog') }}" class="text-light fut-con-med" title="Catalog">CATALOG-</a>
                 </p>
                 @svg('logo', 'icon-h-2', ['style' => 'width: 20em'])
             </div>

@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container-fluid" style="overflow-x:hidden">
-    <div class="row">
+    <div class="row bg-grey-light">
         @auth
             @include('admin.home.edit-carousel', ['images' => 'carouselImages'])
         @else

@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
 
         Collection::macro('chunkAfterFirst', function($chunkSize) {
             $first = collect($this->items)->first();
-            $rest = collect($this->items)->except(1)->chunk($chunkSize);
+            $rest = collect($this->items)->except(0)->chunk($chunkSize);
             return collect([$first])->chunk(1)->concat($rest);
         });
     }

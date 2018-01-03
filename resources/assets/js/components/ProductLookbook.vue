@@ -18,14 +18,14 @@
         <div class="col-sm-9 col-md-8 col-lg-6 col-xl-5 pl-0 pr-0">
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <div class="d-flex align-items-center justify-content-center mb-2" style="position: relative; max-width: 100%">
-                    <a style="left: 0" role="button" class="position-absolute clickable" @click="prevImage"><slot name="arrow-left"></slot></a>
+                    <a style="left: 0" role="button" class="position-absolute clickable" @click="prevImage" title="Previous Image"><slot name="arrow-left"></slot></a>
                         <loadable-image
                             skeleton-styles='{"width": "400px", "height": "400px"}'
                             image-styles='{"width": "400px", "height": "400px", "transition" : "all 0.5s"}'
                             :image-source="activeImage"
                             :image-alt="product.name"
                         ></loadable-image>
-                    <a style="right: 0" role="button" class="position-absolute clickable" @click="nextImage"><slot name="arrow-right"></slot></a>
+                    <a style="right: 0" role="button" class="position-absolute clickable" @click="nextImage" title="Next Image"><slot name="arrow-right"></slot></a>
                 </div>
                 <div class="d-flex align-items-center justify-content-center">
                     <a role="button"
@@ -49,7 +49,8 @@
                     @click="changeProduct(product)"
                     role="button"
                     class="clickable mr-2 border border-light" style="width: 20px; height: 20px;"
-                    :style="'background-color : ' + product.color"></a>
+                    :style="'background-color : ' + product.color"
+                    :title="product.name + '-' + product.color"></a>
             </div>
             <p class="futura-medium m-0">Product Detail</p>
             <p class="p-2 mt-0" style="background-color: rgb(230,230,230)">

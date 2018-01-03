@@ -9,7 +9,7 @@
                         </li>
                     @else
                         <li class="breadcrumb-item">
-                            <a href="{{ $link }}">
+                            <a href="{{ $link }}" title="{{ ucfirst($name) }}">
                                 <small class="futura-medium text-grey text-uppercase">{{ ($name) }}</small>
                             </a>
                         </li>

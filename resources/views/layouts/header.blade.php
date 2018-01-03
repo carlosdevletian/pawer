@@ -2,22 +2,22 @@
     <button class="navbar-toggler border-0 clickable" type="button" data-toggle="collapse" data-target="#main-header" aria-controls="main-header" aria-expanded="false" aria-label="Toggle navigation">
         @svg('navbar-toggler')
     </button>
-    <a class="navbar-brand" href="{{ route('home') }}">@svg('logo', 'icon-w-3')</a>
+    <a class="navbar-brand" href="{{ route('home') }}" title="Home">@svg('logo', 'icon-w-3')</a>
 
     <div class="collapse navbar-collapse justify-content-end" id="main-header">
         <ul class="navbar-nav">
             <li class="nav-item active mr-5">
-                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('about') }}">ABOUT</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('about') }}" title="About Pawer">ABOUT</a>
             </li>
             <li class="nav-item mr-5">
-                <a class="nav-link ls-1 text-light fut-con-med" href="#">NEW ARRIVALS</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="#" title="New Arrivals">NEW ARRIVALS</a>
             </li>
             <li class="nav-item @auth mr-5 @endauth">
-                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('catalog') }}">CATALOG</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('catalog') }}" title="Catalog">CATALOG</a>
             </li>
             @auth
             <li class="nav-item">
-                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('dashboard') }}">DASHBOARD</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('dashboard') }}" title="Dashboard">DASHBOARD</a>
             </li>
             @endauth
         </ul>

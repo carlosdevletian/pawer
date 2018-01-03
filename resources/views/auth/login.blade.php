@@ -16,7 +16,7 @@
                 @endif
 
                 <div class="d-flex form-group w-50">
-                    <input class="mr-2 form-control bg-light rounded-0 text-center" type="email" name="email" placeholder="Email address">
+                    <input class="mr-2 form-control bg-light rounded-0 text-center" type="email" name="email" placeholder="Email address" autofocus>
                 </div>
                 <div class="d-flex form-group w-50">
                     <input class="mr-2 form-control bg-light rounded-0 text-center" type="password" name="password" placeholder="Password">
