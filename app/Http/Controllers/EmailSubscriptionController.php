@@ -3,9 +3,9 @@
 namespace Pawer\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Pawer\Models\EmailSuscription;
+use Pawer\Models\EmailSubscription;
 
-class EmailSuscriptionController extends Controller
+class EmailSubscriptionController extends Controller
 {
     public function store()
     {
@@ -13,7 +13,7 @@ class EmailSuscriptionController extends Controller
             'email' => ['required', 'email']
         ]);
 
-        EmailSuscription::create([
+        EmailSubscription::create([
             'email' => request('email')
         ]);
     }
