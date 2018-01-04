@@ -49,4 +49,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::delete('/featured-articles', 'FeaturedArticleController@destroy')->name('featured-articles.destroy');
 
     Route::patch('/home-images', 'HomeImagesController@update')->name('home-images.update');
+
+    Route::get('/email-subscriptions', 'EmailSubscriptionController@index')->name('email-subscriptions.index');
+    Route::delete('/email-subscriptions/{subscription}', 'EmailSubscriptionController@destroy')->name('email-subscriptions.destroy');
 });

@@ -30,7 +30,13 @@
         <div class="col-12 col-md-4 p-3 rounded-0">
             <h3>Users</h3>
             <hr>
-            <p class="m-0"><a class="futura-medium" href="{{ route('categories.create') }}">Create a new user</a></p>
+            <p class="m-0"><a class="futura-medium" href="#">Create a new user</a></p>
+            <!-- <p class="m-0"><a class="futura-medium" href="#">Update an existing category</a></p> -->
+        </div>
+        <div class="col-12 col-md-4 p-3 rounded-0">
+            <h3>Email subscriptions</h3>
+            <hr>
+            <p class="m-0"><a class="futura-medium" href="{{ route('email-subscriptions.index') }}">View all subscribed emails</a></p>
             <!-- <p class="m-0"><a class="futura-medium" href="#">Update an existing category</a></p> -->
         </div>
     </div>

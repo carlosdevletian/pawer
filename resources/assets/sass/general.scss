@@ -148,3 +148,6 @@ a:hover {
 .rounded-0 {
     border-radius: 0 !important;
 }
+.even\:bg-grey-light:nth-child(even) {
+    background-color: #E6E6E6
+}

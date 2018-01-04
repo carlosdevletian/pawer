@@ -9410,6 +9410,10 @@ a:hover {
   border-radius: 0 !important;
 }
 
+.even\:bg-grey-light:nth-child(even) {
+  background-color: #E6E6E6;
+}
+
 .text-xs {
   font-size: .75rem;
 }
