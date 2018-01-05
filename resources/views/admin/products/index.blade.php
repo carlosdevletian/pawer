@@ -17,7 +17,7 @@
             <h3>Select a product</h3>
         </div>
     </div>
-    <div class="row">
+    <div class="row pb-5">
         @foreach($products as $category => $product)
         <div class="col-12 col-lg-4 text-center">
             <div class="card rounded-0 p-3 mt-4">

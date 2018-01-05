@@ -34,9 +34,10 @@
                 </div>
             @endif
             <div class="col-12 d-flex justify-content-center">
-                <form method="POST" action="{{ route('products.update', $product) }}" enctype="multipart/form-data" class="card mb-4">
-                    {{ method_field('PATCH') }}
-                    {{ csrf_field() }}
+                <div  class="card mb-4">
+                    <form method="POST" action="{{ route('products.update', $product) }}" enctype="multipart/form-data">
+                        {{ method_field('PATCH') }}
+                        {{ csrf_field() }}
 
                         <!-- Placeholder hasta que Vue carge -->
                         <div class="position-relative v-cloak-block">
@@ -77,7 +78,17 @@
                                 </div>
                             </div>
                         </div>
-                </form>
+                    </form>
+                    <div class="pr-4 pb-2 align-self-end">
+                        <delete-button>
+                            <form class="v-cloak-invisible" method="POST" action="{{ route('products.destroy', $product) }}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button class="btn btn-brand clickable" type="submit">Delete this product</button>
+                            </form>
+                        </delete-button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

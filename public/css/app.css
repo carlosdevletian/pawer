@@ -9414,6 +9414,14 @@ a:hover {
   background-color: #E6E6E6;
 }
 
+.black {
+  color: black;
+}
+
+button:focus {
+  outline: none;
+}
+
 .text-xs {
   font-size: .75rem;
 }
@@ -10471,6 +10479,18 @@ a:hover {
 @media (min-width: 768px) {
   .w-md-50 {
     width: 50% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .mt-lg-neg-115 {
+    margin-top: -115px;
+  }
+}
+
+@media (max-width: 991px) {
+  .mt-md-neg-50 {
+    margin-top: -50px;
   }
 }
 

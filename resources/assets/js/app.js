@@ -22,6 +22,7 @@ Vue.component('image-upload', require('./components/ImageUpload.vue'));
 Vue.component('article-secondary-images-upload', require('./components/ArticleSecondaryImagesUpload.vue'));
 Vue.component('edit-article-secondary-images', require('./components/EditArticleSecondaryImages.vue'));
 Vue.component('loadable-image', require('./components/LoadableImage.vue'));
+Vue.component('delete-button', require('./components/DeleteButton.vue'));
 
 const app = new Vue({
     el: '#app'

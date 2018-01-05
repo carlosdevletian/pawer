@@ -3,6 +3,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\Assert;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;

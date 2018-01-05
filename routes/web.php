@@ -34,18 +34,21 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::post('/categories', 'CategoryController@store')->name('categories.store');
     Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
     Route::patch('/category/{category}', 'CategoryController@update')->name('categories.update');
+    Route::delete('/category/{category}', 'CategoryController@destroy')->name('categories.destroy');
 
     Route::get('/products-list', 'ProductController@index')->name('admin.products.index');
     Route::get('/products/create', 'ProductController@create')->name('products.create');
     Route::post('/products', 'ProductController@store')->name('products.store');
     Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
     Route::patch('/products/{product}', 'ProductController@update')->name('products.update');
+    Route::delete('/products/{product}', 'ProductController@destroy')->name('products.destroy');
 
     Route::get('/models-list', 'ArticleController@index')->name('admin.articles.index');
     Route::get('/products/{product}/models/create', 'ArticleController@create')->name('articles.create');
     Route::post('/articles', 'ArticleController@store')->name('articles.store');
     Route::get('/models/{article}/edit', 'ArticleController@edit')->name('articles.edit');
     Route::patch('/articles/{article}', 'ArticleController@update')->name('articles.update');
+    Route::delete('/articles/{article}', 'ArticleController@destroy')->name('articles.destroy');
 
     Route::post('/featured-articles', 'FeaturedArticleController@store')->name('featured-articles.store');
     Route::delete('/featured-articles', 'FeaturedArticleController@destroy')->name('featured-articles.destroy');

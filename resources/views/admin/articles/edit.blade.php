@@ -72,11 +72,29 @@
                         <input type="color" name="color" value="{{ $article->color }}">
                     </div>
                     <label for="description" class="futura-medium m-0">Product Detail</label>
-                    <textarea name="description" value="{{ $article->description }}" class="p-2 mt-0 mb-2 form-control futura-light rounded-0 border-0" rows="4" cols="50" placeholder="Give the model a description" style="background-color: rgb(230,230,230)">{{ $article->description }}</textarea>
+                    <textarea name="description"
+                            value="{{ $article->description }}"
+                            class="p-2 mt-0 mb-2 form-control futura-light rounded-0 border-0"
+                            rows="4"
+                            cols="50"
+                            placeholder="Give the model a description"
+                            style="background-color: rgb(230,230,230)">{{ $article->description }}</textarea>
                     <button type="submit" class="btn rounded-0 clickable btn-brand w-100 mb-2">Save changes</button>
                 </div>
             </div>
-
         </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-lg-2"></div>
+                <div class="col-sm-9 col-md-8 col-lg-6 col-xl-5"></div>
+                <delete-button class="col-lg-4 col-xl-5 d-flex flex-column align-items-end mt-md-neg-50 mt-lg-neg-115">
+                    <form class="v-cloak-invisible" method="POST" action="{{ route('articles.destroy', $article) }}">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button class="btn btn-brand clickable" type="submit">Delete this article</button>
+                    </form>
+                </delete-button>
+            </div>
+        </div>
     </div>
 @endsection

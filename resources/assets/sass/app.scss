@@ -15,6 +15,18 @@
   }
 }
 
+@include media-breakpoint-up(lg) {
+  .mt-lg-neg-115 {
+    margin-top: -115px
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .mt-md-neg-50 {
+    margin-top: -50px
+  }
+}
+
 @include media-breakpoint-up(md) {
     .md-hover-only {
         opacity: 0;

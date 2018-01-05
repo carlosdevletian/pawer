@@ -26,6 +26,8 @@ class CreateArticlesTable extends Migration
             $table->json('secondary_images');
             $table->boolean('featured')->default(false);
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

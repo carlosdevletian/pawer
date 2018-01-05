@@ -101,4 +101,13 @@ class ArticleController extends Controller
 
         return redirect()->route('articles.edit', $article->slug);
     }
+
+    public function destroy($articleId)
+    {
+        $article = Article::findOrFail($articleId);
+
+        $article->delete();
+
+        return redirect()->route('admin.articles.index');
+    }
 }

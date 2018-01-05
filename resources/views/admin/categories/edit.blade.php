@@ -25,10 +25,11 @@
                     </div>
                 </div>
             @endif
-            <div class="col-12 d-flex justify-content-center">
-                <form method="POST" action="{{ route('categories.update', $category) }}" enctype="multipart/form-data" class="card mb-4">
-                    {{ method_field('PATCH') }}
-                    {{ csrf_field() }}
+            <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+                <div class="card mb-4">
+                    <form method="POST" action="{{ route('categories.update', $category) }}" enctype="multipart/form-data">
+                        {{ method_field('PATCH') }}
+                        {{ csrf_field() }}
 
                         <!-- Placeholder hasta que Vue carge -->
                         <div class="position-relative v-cloak-block">
@@ -37,7 +38,7 @@
                         <!--  -->
                         <image-upload file-name="category_image" default-image="{{ $category->getImage() }}"></image-upload>
 
-                        <div class="card-section">
+                        <div class="card-section pb-0">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -54,7 +55,17 @@
                                 </div>
                             </div>
                         </div>
-                </form>
+                    </form>
+                    <div class="pr-4 pb-2 align-self-end">
+                        <delete-button>
+                            <form class="v-cloak-invisible" method="POST" action="{{ route('categories.destroy', $category) }}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button class="btn btn-brand clickable" type="submit">Delete this category</button>
+                            </form>
+                        </delete-button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

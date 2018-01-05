@@ -62,4 +62,13 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.edit', $category->slug);
     }
+
+    public function destroy($categoryId)
+    {
+        $category = Category::findOrFail($categoryId);
+
+        $category->delete();
+
+        return redirect()->route('admin.categories.index');
+    }
 }

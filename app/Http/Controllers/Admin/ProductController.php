@@ -70,4 +70,13 @@ class ProductController extends Controller
 
         return redirect()->route('products.edit', $product->slug);
     }
+
+    public function destroy($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        $product->delete();
+
+        return redirect()->route('admin.products.index');
+    }
 }
