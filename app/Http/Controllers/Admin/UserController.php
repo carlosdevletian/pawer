@@ -9,6 +9,13 @@ use Pawer\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        return view('admin.users.index', [
+            'users' => User::get()
+        ]);
+    }
+
     public function store()
     {
         request()->validate([
