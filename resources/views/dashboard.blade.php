@@ -30,7 +30,7 @@
         <div class="col-12 col-md-4 p-3 rounded-0">
             <h3>Users</h3>
             <hr>
-            <p class="m-0"><a class="futura-medium" href="#">Create a new user</a></p>
+            <p class="m-0"><a class="futura-medium" href="{{ route('admin.users.create') }}">Create a new user</a></p>
             <p class="m-0"><a class="futura-medium" href="{{ route('admin.users.index') }}">View all users</a></p>
         </div>
         <div class="col-12 col-md-4 p-3 rounded-0">

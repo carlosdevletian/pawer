@@ -11,7 +11,7 @@
         @include('layouts.admin.breadcrumbs', [
                     'links' => [
                         'dashboard' => route('dashboard'),
-                        'active' => 'Categories'
+                        'active' => 'Email subscriptions'
                     ]
                 ])
             <h3>Email subscriptions</h3>

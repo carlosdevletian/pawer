@@ -25,7 +25,7 @@ class CreateUsersTest extends TestCase
     /** @test*/
     public function signed_in_users_can_create_user_accounts()
     {
-        $this->signIn()->post(route('admin.users.create'), [
+        $this->signIn()->post(route('admin.users.store'), [
             'name' => 'Bill Doe',
             'email' => 'bill@example.com',
             'password' => 'secret-password',
@@ -43,7 +43,7 @@ class CreateUsersTest extends TestCase
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
 
-        $this->withoutExceptionHandling()->post(route('admin.users.create'), [
+        $this->withoutExceptionHandling()->post(route('admin.users.store'), [
             'name' => 'Bill Doe',
             'email' => 'bill@example.com',
             'password' => 'secret-password'
@@ -51,9 +51,26 @@ class CreateUsersTest extends TestCase
     }
 
     /** @test*/
+    public function signed_in_users_can_see_the_form_to_create_users()
+    {
+        $response = $this->signIn()->get(route('admin.users.create'));
+
+        $response->assertSuccessful();
+        $response->assertViewIs('admin.users.create');
+    }
+
+    /** @test*/
+    public function guest_cannot_see_the_form_to_create_users()
+    {
+        $this->expectException('Illuminate\Auth\AuthenticationException');
+
+        $this->withoutExceptionHandling()->get(route('admin.users.create'));
+    }
+
+    /** @test*/
     public function name_is_required()
     {
-        $response = $this->signIn()->post(route('admin.users.create'), $this->validParams([
+        $response = $this->signIn()->post(route('admin.users.store'), $this->validParams([
             'name' => '',
         ]));
 
@@ -63,7 +80,7 @@ class CreateUsersTest extends TestCase
     /** @test*/
     public function email_is_required()
     {
-        $response = $this->signIn()->post(route('admin.users.create'), $this->validParams([
+        $response = $this->signIn()->post(route('admin.users.store'), $this->validParams([
             'email' => '',
         ]));
 
@@ -73,7 +90,7 @@ class CreateUsersTest extends TestCase
     /** @test*/
     public function email_must_be_valid_email()
     {
-        $response = $this->signIn()->post(route('admin.users.create'), $this->validParams([
+        $response = $this->signIn()->post(route('admin.users.store'), $this->validParams([
             'email' => 'not-an-email',
         ]));
 
@@ -85,7 +102,7 @@ class CreateUsersTest extends TestCase
     {
         create('User', ['email' => 'some-email@example.com']);
 
-        $response = $this->signIn()->post(route('admin.users.create'), $this->validParams([
+        $response = $this->signIn()->post(route('admin.users.store'), $this->validParams([
             'email' => 'some-email@example.com',
         ]));
 
@@ -95,7 +112,7 @@ class CreateUsersTest extends TestCase
     /** @test*/
     public function password_is_required()
     {
-        $response = $this->signIn()->post(route('admin.users.create'), $this->validParams([
+        $response = $this->signIn()->post(route('admin.users.store'), $this->validParams([
             'password' => '',
         ]));
 
@@ -105,7 +122,7 @@ class CreateUsersTest extends TestCase
     /** @test*/
     public function password_must_be_at_least_6_characters_long()
     {
-        $response = $this->signIn()->post(route('admin.users.create'), $this->validParams([
+        $response = $this->signIn()->post(route('admin.users.store'), $this->validParams([
             'password' => 'admin',
         ]));
 
@@ -115,7 +132,7 @@ class CreateUsersTest extends TestCase
     /** @test*/
     public function password_must_be_confirmed()
     {
-        $response = $this->signIn()->post(route('admin.users.create'), $this->validParams([
+        $response = $this->signIn()->post(route('admin.users.store'), $this->validParams([
             'password_confirmation' => '',
         ]));
 

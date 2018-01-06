@@ -59,5 +59,6 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::delete('/email-subscriptions/{subscription}', 'EmailSubscriptionController@destroy')->name('email-subscriptions.destroy');
 
     Route::get('/users', 'UserController@index')->name('admin.users.index');
-    Route::post('/users', 'UserController@store')->name('admin.users.create');
+    Route::get('/users/create', 'UserController@create')->name('admin.users.create');
+    Route::post('/users', 'UserController@store')->name('admin.users.store');
 });
