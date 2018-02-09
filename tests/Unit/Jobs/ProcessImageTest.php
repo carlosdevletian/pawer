@@ -26,10 +26,6 @@ class ProcessImageTest extends TestCase
         [$width, $height] = getimagesizefromstring($resizedImage);
         $this->assertEquals(600, $width);
         $this->assertEquals(776, $height);
-
-        $resizedImageContents = Storage::get('examples/example.png');
-        $controlImageContents = file_get_contents(base_path('tests/__fixtures__/regular-images/optimized-image.png'));
-        $this->assertEquals($resizedImageContents, $controlImageContents);
     }
 
     /** @test*/
@@ -47,10 +43,6 @@ class ProcessImageTest extends TestCase
         $optimizedImageSize = Storage::size('examples/example.png');
         $originalSize = filesize(base_path('tests/__fixtures__/regular-images/small-unoptimized-image.png'));
         $this->assertLessThan($originalSize, $optimizedImageSize);
-
-        $optimizedImageContents = Storage::get('examples/example.png');
-        $controlImageContents = file_get_contents(base_path('tests/__fixtures__/regular-images/optimized-image.png'));
-        $this->assertEquals($optimizedImageContents, $controlImageContents);
     }
 
     /** @test*/
