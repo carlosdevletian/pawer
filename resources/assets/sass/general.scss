@@ -62,6 +62,9 @@ a:hover {
     height: 100%;
     width: 100%;
 }
+.h-30 {
+    height: 30%;
+}
 .icon {
     display: inline-block;
     height: 1.25em;
@@ -97,8 +100,20 @@ a:hover {
 .opacity-3 {
     opacity: .7;
 }
+.opacity-4 {
+    opacity: .8;
+}
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
 .mb-footer {
     margin-bottom: 285px;
+}
+.h-35vh {
+    height: 35vh;
 }
 .fit-to-parent {
     max-width: 100%;
@@ -120,6 +135,10 @@ a:hover {
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
 }
 
 .card {

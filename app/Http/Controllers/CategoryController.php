@@ -8,8 +8,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('catalog', [
-            'categories' => Category::all()
+        return redirect()->route('products.index', [
+            'category' => Category::get()->random()->slug
         ]);
     }
 }
