@@ -12,7 +12,7 @@ trait HasImages {
     {
         $image = $image ?? $this->image_path;
         // if(Storage::disk('public')->exists($image)) {
-            return Storage::disk('public')->url($image);
+            return asset($image);
         // }
         // if(Storage::disk('s3')->exists($image)) {
         //     return Storage::disk('s3')->url($image);
