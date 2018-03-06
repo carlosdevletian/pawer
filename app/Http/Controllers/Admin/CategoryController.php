@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
         $category = Category::create([
             'name' => request('name'),
-            'image_path' => $image = request('category_image')->store('categories', 'public')
+            'image_path' => $image = request('category_image')->storePublicly('categories', 'public')
         ]);
 
         ImageAdded::dispatch($image);
