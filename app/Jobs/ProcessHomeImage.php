@@ -28,7 +28,7 @@ class ProcessHomeImage implements ShouldQueue
         $this->resize()
             ->limitColors(255)
             ->encode();
-        Storage::disk('public')->delete($this->imagePath);
+        // Storage::disk('public')->delete($this->imagePath);
         Storage::put($this->imagePath, (string) $this->file, 'public');
     }
 
