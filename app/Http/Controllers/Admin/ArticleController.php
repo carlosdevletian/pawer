@@ -2,6 +2,7 @@
 
 namespace Pawer\Http\Controllers\Admin;
 
+use Pawer\Models\Size;
 use Pawer\Models\Article;
 use Pawer\Models\Product;
 use Pawer\Models\Category;
@@ -27,6 +28,7 @@ class ArticleController extends Controller
     public function create($productSlug)
     {
         return view('admin.articles.create', [
+            'sizes' => Size::get(),
             'product' => Product::whereSlug($productSlug)->firstOrFail()
         ]);
     }
@@ -40,6 +42,7 @@ class ArticleController extends Controller
             'color' => ['required'],
             'code' => ['nullable'],
             'sizes' => ['required', 'array'],
+            'sizes.*' => ['exists:sizes,id'],
             'main_image' => ['required', 'image', Rule::dimensions()->minWidth(600)],
             'secondary_images' => ['nullable', 'array'],
             'secondary_images.*' => ['image', Rule::dimensions()->minWidth(600)]
@@ -51,13 +54,14 @@ class ArticleController extends Controller
             'description' => request('description'),
             'color' => request('color'),
             'code' => request('code'),
-            'sizes' => request('sizes'),
             'main_image_path' => $mainImage = request('main_image')->store('articles', 'public'),
             'secondary_images' => $secondaryImages = collect(request('secondary_images'))->map(function($image) {
                 return $image->store('articles', 'public');
             }),
             'featured' => request('featured')
         ]);
+
+        $article->sizes()->attach(Size::find(request('sizes')));
 
         ImageAdded::dispatch($article->getImagePaths());
 
@@ -67,6 +71,7 @@ class ArticleController extends Controller
     public function edit($articleSlug)
     {
         return view('admin.articles.edit', [
+            'sizes' => Size::get(),
             'article' => Article::whereSlug($articleSlug)->firstOrFail()
         ]);
     }
@@ -82,6 +87,7 @@ class ArticleController extends Controller
             'color' => ['required'],
             'code' => ['nullable'],
             'sizes' => ['required', 'array'],
+            'sizes.*' => ['exists:sizes,id'],
             'main_image' => ['nullable', 'image', Rule::dimensions()->minWidth(600)],
             'secondary_images' => ['nullable', 'array'],
             'secondary_images.*' => ['nullable', new ImageFileOrUrl($article)]
@@ -93,11 +99,12 @@ class ArticleController extends Controller
             'description' => request('description'),
             'color' => request('color'),
             'code' => request('code'),
-            'sizes' => request('sizes'),
             'main_image_path' => $article->updateMainImage(request('main_image')),
             'secondary_images' => $article->updateSecondaryImages(request('secondary_images')),
             'featured' => request('featured'),
         ]);
+
+        $article->sizes()->sync(Size::find(request('sizes')));
 
         return redirect()->route('articles.edit', $article->slug);
     }

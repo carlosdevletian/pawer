@@ -62,9 +62,14 @@
                         </h4>
                         <div class="w-100 mt-2 d-flex flex-column">
                             <label for="sizes[]">Select the sizes</label>
-                            <p class="m-0 p-0"><input class="mr-2" type="checkbox" name="sizes[]" value="SM">Small</p>
-                            <p class="m-0 p-0"><input class="mr-2" type="checkbox" name="sizes[]" value="MD">Medium</p>
-                            <p class="m-0 p-0"><input class="mr-2" type="checkbox" name="sizes[]" value="LG">Large</p>
+                            @foreach($sizes as $size)
+                                <p class="m-0 p-0">
+                                    <input class="mr-2"
+                                        type="checkbox"
+                                        name="sizes[]"
+                                        value="{{ $size->id }}"
+                                        {{ $article->sizes->contains($size) ? 'checked' : '' }}>{{ $size->name }}</p>
+                            @endforeach
                         </div>
                     </div>
                     <div class="mb-2">
@@ -82,12 +87,10 @@
                     <button type="submit" class="btn rounded-0 clickable btn-brand w-100 mb-2">Save changes</button>
                 </div>
             </div>
-        </form>
-        <div class="container">
             <div class="row">
                 <div class="col-sm-3 col-lg-2"></div>
                 <div class="col-sm-9 col-md-8 col-lg-6 col-xl-5"></div>
-                <delete-button class="col-lg-4 col-xl-5 d-flex flex-column align-items-end mt-md-neg-50 mt-lg-neg-115">
+                <delete-button class="col-lg-4 col-xl-5 d-flex flex-column align-items-end">
                     <form class="v-cloak-invisible" method="POST" action="{{ route('articles.destroy', $article) }}">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
@@ -95,6 +98,6 @@
                     </form>
                 </delete-button>
             </div>
-        </div>
+        </form>
     </div>
 @endsection

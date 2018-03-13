@@ -15,7 +15,6 @@ class Article extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'sizes' => 'array',
         'secondary_images' => 'array',
         'featured' => 'boolean'
     ];
@@ -36,6 +35,11 @@ class Article extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function sizes()
+    {
+        return $this->belongsToMany(Size::class);
     }
 
     public function isFeatured()

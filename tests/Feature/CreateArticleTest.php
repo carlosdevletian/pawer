@@ -30,7 +30,7 @@ class CreateArticleTest extends TestCase
             'description' => 'An example description for the new model',
             'color' => '#C0C0C0',
             'code' => 'EXAMPLECODE',
-            'sizes' => ['sm', 'md', 'lg'],
+            'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
             'secondary_images' => [
                 File::image('secondary_image_1.png', 900, 850),
@@ -38,6 +38,11 @@ class CreateArticleTest extends TestCase
             ],
             'featured' => true
         ], $overrides);
+    }
+
+    private function getValidSizes()
+    {
+        return create('Size', [], 3)->pluck('id')->toArray();
     }
 
     /** @test*/
@@ -67,13 +72,13 @@ class CreateArticleTest extends TestCase
     {
         $product = create('Product', ['name' => 't-shirts']);
 
-        $this->fakeEvents([ImageAdded::class])->signIn()->post('/articles', [
+        $this->withoutExceptionHandling()->fakeEvents([ImageAdded::class])->signIn()->post('/articles', [
             'product_id' => $product->id,
             'name' => 'An example model',
             'description' => 'An example description for the new model',
             'color' => '#C0C0C0',
             'code' => 'EXAMPLECODE',
-            'sizes' => ['sm', 'md', 'lg'],
+            'sizes' => [create('Size', ['name' => 'unique-size'])->id],
             'main_image' => $mainImage = File::image('main_image.png', 1000, 850),
             'secondary_images' => [
                 $s1 = File::image('secondary_image_1.png', 900, 850),
@@ -88,7 +93,7 @@ class CreateArticleTest extends TestCase
             $this->assertEquals('An example description for the new model', $article->description);
             $this->assertEquals('#C0C0C0', $article->color);
             $this->assertEquals('EXAMPLECODE', $article->code);
-            $this->assertEquals(['sm', 'md', 'lg'], $article->sizes);
+            $this->assertEquals($article->sizes->first()->name, 'unique-size');
             Storage::assertExists($article->main_image_path);
             $this->assertFileEquals(
                 $mainImage->getPathName(),
@@ -188,6 +193,16 @@ class CreateArticleTest extends TestCase
             'sizes' => 'not-an-array'
         ]));
         $response->assertSessionHasErrors('sizes');
+        $this->assertCount(0, Article::get());
+    }
+
+    /** @test*/
+    public function sizes_must_be_valid_existing_product_sizes()
+    {
+        $response = $this->signIn()->post('/articles', $this->validParams([
+            'sizes' => [99]
+        ]));
+        $response->assertSessionHasErrors('sizes.*');
         $this->assertCount(0, Article::get());
     }
 

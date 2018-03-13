@@ -33,7 +33,7 @@ class EditArticleTest extends TestCase
             'description' => 'An example description for the new model',
             'color' => '#C0C0C0',
             'code' => 'EXAMPLECODE',
-            'sizes' => ['sm', 'md', 'lg'],
+            'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
             'secondary_images' => [
                 File::image('secondary_image_1.png', 900, 850),
@@ -51,7 +51,7 @@ class EditArticleTest extends TestCase
             'description' => 'Old Description',
             'color' => '#C0C0C0',
             'code' => 'OLDCODE',
-            'sizes' => ['sm', 'md', 'lg'],
+            'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
             'secondary_images' => [
                 File::image('secondary_image_1.png', 900, 850),
@@ -59,6 +59,11 @@ class EditArticleTest extends TestCase
             ],
             'featured' => true
         ], $overrides);
+    }
+
+    private function getValidSizes()
+    {
+        return create('Size', [], 3)->pluck('id')->toArray();
     }
 
     /** @test*/
@@ -74,7 +79,7 @@ class EditArticleTest extends TestCase
             'description' => 'New description',
             'color' => '#000000',
             'code' => 'NEWCODE',
-            'sizes' => ['one-size'],
+            'sizes' => [create('Size', ['name' => 'unique-size'])->id],
             'main_image' => $newMainImage = File::image('main_image.png', 700, 850),
             'secondary_images' => [
                 $newS1 = File::image('secondary_image_1.png', 600, 850),
@@ -89,7 +94,7 @@ class EditArticleTest extends TestCase
             $this->assertEquals('New description', $article->description);
             $this->assertEquals('#000000', $article->color);
             $this->assertEquals('NEWCODE', $article->code);
-            $this->assertEquals(['one-size'], $article->sizes);
+            $this->assertEquals('unique-size', $article->sizes->first()->name);
             $this->assertFileEquals(
                 $newMainImage->getPathName(),
                 Storage::path($article->main_image_path)
@@ -427,27 +432,36 @@ class EditArticleTest extends TestCase
     /** @test*/
     public function sizes_is_required()
     {
-        $article = create('Article', ['sizes' => ['sm', 'md', 'lg']]);
+        $article = create('Article');
 
         $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
             'sizes' => []
         ]));
 
         $response->assertSessionHasErrors('sizes');
-        $this->assertEquals(['sm', 'md', 'lg'], $article->fresh()->sizes);
     }
 
     /** @test*/
     public function sizes_must_be_an_array()
     {
-        $article = create('Article', ['sizes' => ['sm', 'md', 'lg']]);
+        $article = create('Article');
 
         $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
             'sizes' => 'not-an-array'
         ]));
 
         $response->assertSessionHasErrors('sizes');
-        $this->assertEquals(['sm', 'md', 'lg'], $article->fresh()->sizes);
+    }
+
+    /** @test*/
+    public function sizes_must_be_valid_existing_product_sizes()
+    {
+        $article = create('Article');
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'sizes' => [99]
+        ]));
+        $response->assertSessionHasErrors('sizes.*');
     }
 
     /** @test*/

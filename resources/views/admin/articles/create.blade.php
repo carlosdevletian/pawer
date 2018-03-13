@@ -53,9 +53,9 @@
                         </h4>
                         <div class="w-100 mt-2 d-flex flex-column">
                             <label for="sizes[]">Select the sizes</label>
-                            <p class="m-0 p-0"><input class="mr-2" type="checkbox" name="sizes[]" value="SM">Small</p>
-                            <p class="m-0 p-0"><input class="mr-2" type="checkbox" name="sizes[]" value="MD">Medium</p>
-                            <p class="m-0 p-0"><input class="mr-2" type="checkbox" name="sizes[]" value="LG">Large</p>
+                            @foreach($sizes as $size)
+                                <p class="m-0 p-0"><input class="mr-2" type="checkbox" name="sizes[]" value="{{ $size->id }}">{{ $size->name }}</p>
+                            @endforeach
                         </div>
                     </div>
                     <div class="mb-2">
@@ -68,7 +68,6 @@
                     <button type="submit" class="btn rounded-0 clickable btn-brand w-100 mb-2">Create</button>
                 </div>
             </div>
-
         </form>
     </div>
 @endsection

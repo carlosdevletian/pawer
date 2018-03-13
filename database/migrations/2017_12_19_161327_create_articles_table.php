@@ -21,7 +21,6 @@ class CreateArticlesTable extends Migration
             $table->string('slug');
             $table->string('color');
             $table->string('code')->nullable();
-            $table->json('sizes');
             $table->string('main_image_path');
             $table->json('secondary_images');
             $table->boolean('featured')->default(false);
