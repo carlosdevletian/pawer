@@ -14,6 +14,8 @@ class Article extends Model
 
     protected $guarded = [];
 
+    protected $with = ['sizes'];
+
     protected $casts = [
         'secondary_images' => 'array',
         'featured' => 'boolean'

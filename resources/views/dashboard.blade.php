@@ -39,6 +39,13 @@
             <p class="m-0"><a class="futura-medium" href="{{ route('email-subscriptions.index') }}">View all subscribed emails</a></p>
             <!-- <p class="m-0"><a class="futura-medium" href="#">Update an existing category</a></p> -->
         </div>
+        <div class="col-12 col-md-4 p-3 rounded-0">
+            <h3>Model sizes</h3>
+            <hr>
+            <p class="m-0"><a class="futura-medium" href="{{ route('admin.sizes.create') }}">Create a new size</a></p>
+            <p class="m-0"><a class="futura-medium" href="{{ route('admin.sizes.index') }}">View all sizes</a></p>
+            <!-- <p class="m-0"><a class="futura-medium" href="#">Update an existing category</a></p> -->
+        </div>
     </div>
 </div>
 @endsection

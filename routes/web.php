@@ -61,4 +61,10 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::get('/users', 'UserController@index')->name('admin.users.index');
     Route::get('/users/create', 'UserController@create')->name('admin.users.create');
     Route::post('/users', 'UserController@store')->name('admin.users.store');
+
+    Route::get('/sizes', 'SizeController@index')->name('admin.sizes.index');
+    Route::get('/sizes/create', 'SizeController@create')->name('admin.sizes.create');
+    Route::post('/sizes', 'SizeController@store')->name('admin.sizes.store');
+    Route::get('/sizes/edit/{size}', 'SizeController@edit')->name('admin.sizes.edit');
+    Route::patch('/sizes/{size}', 'SizeController@update')->name('admin.sizes.update');
 });

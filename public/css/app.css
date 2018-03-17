@@ -10149,6 +10149,33 @@ button:focus {
   outline: none;
 }
 
+.shadow {
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.right-0 {
+  right: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.sq-10 {
+  width: 10px;
+  height: 10px;
+}
+
+.sq-20 {
+  width: 20px;
+  height: 20px;
+}
+
 .text-xs {
   font-size: .75rem;
 }

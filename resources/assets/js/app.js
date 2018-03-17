@@ -23,6 +23,7 @@ Vue.component('article-secondary-images-upload', require('./components/ArticleSe
 Vue.component('edit-article-secondary-images', require('./components/EditArticleSecondaryImages.vue'));
 Vue.component('loadable-image', require('./components/LoadableImage.vue'));
 Vue.component('delete-button', require('./components/DeleteButton.vue'));
+Vue.component('dropdown-list', require('./components/DropdownList.vue'));
 
 const app = new Vue({
     el: '#app'

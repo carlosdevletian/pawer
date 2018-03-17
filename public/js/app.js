@@ -11635,7 +11635,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(76);
+module.exports = __webpack_require__(81);
 
 
 /***/ }),
@@ -11667,6 +11667,7 @@ Vue.component('article-secondary-images-upload', __webpack_require__(58));
 Vue.component('edit-article-secondary-images', __webpack_require__(63));
 Vue.component('loadable-image', __webpack_require__(68));
 Vue.component('delete-button', __webpack_require__(71));
+Vue.component('dropdown-list', __webpack_require__(76));
 
 var app = new Vue({
   el: '#app'
@@ -30634,9 +30635,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['dataProduct', 'dataModel'],
@@ -30742,15 +30740,13 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "d-flex align-items-center justify-content-center mb-2",
-                staticStyle: { position: "relative", "max-width": "100%" }
+                  "d-flex align-items-center justify-content-center mb-2 position-relative mw-100"
               },
               [
                 _c(
                   "a",
                   {
-                    staticClass: "position-absolute clickable",
-                    staticStyle: { left: "0" },
+                    staticClass: "position-absolute clickable left-0",
                     attrs: { role: "button", title: "Previous Image" },
                     on: { click: _vm.prevImage }
                   },
@@ -30771,8 +30767,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "position-absolute clickable",
-                    staticStyle: { right: "0" },
+                    staticClass: "position-absolute clickable right-0",
                     attrs: { role: "button", title: "Next Image" },
                     on: { click: _vm.nextImage }
                   },
@@ -30790,9 +30785,8 @@ var render = function() {
               },
               _vm._l(_vm.product.images, function(image, index) {
                 return _c("a", {
-                  staticClass: "unselected rounded-circle mr-1 clickable",
+                  staticClass: "unselected rounded-circle mr-1 clickable sq-10",
                   class: { selected: index === _vm.selectedIndex },
-                  staticStyle: { height: "10px", width: "10px" },
                   attrs: { role: "button" },
                   on: {
                     click: function($event) {
@@ -30812,21 +30806,19 @@ var render = function() {
         "div",
         {
           staticClass:
-            "pr-2 pt-2 d-flex flex-column justify-content-center align-items-center border border-top-0 border-left-0 border-right-0 border-secondary mb-2"
+            "pr-2 pt-2 d-flex justify-content-center position-relative border border-top-0 border-left-0 border-right-0 border-secondary mb-2"
         },
         [
-          _c("h4", { staticClass: "futura-medium p-0" }, [
+          _c("h4", { staticClass: "futura-medium p-0 align-self-center" }, [
             _vm._v(_vm._s(_vm.product.name))
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "d-flex justify-content-between w-100 mt-2" },
-            _vm._l(_vm.product.sizes, function(size) {
-              return _c("small", { domProps: { textContent: _vm._s(size) } })
-            })
-          )
-        ]
+          _c("dropdown-list", {
+            staticClass: "position-absolute p-0 m-0 right-0 bottom-0",
+            attrs: { name: "Size", items: _vm.product.sizes }
+          })
+        ],
+        1
       ),
       _vm._v(" "),
       _c(
@@ -30834,8 +30826,7 @@ var render = function() {
         { staticClass: "d-flex justify-content-end mb-4" },
         _vm._l(_vm.related, function(product) {
           return _c("a", {
-            staticClass: "clickable mr-2 border border-light",
-            staticStyle: { width: "20px", height: "20px" },
+            staticClass: "clickable mr-2 border border-light sq-20",
             style: "background-color : " + product.color,
             attrs: {
               role: "button",
@@ -30852,18 +30843,11 @@ var render = function() {
       _vm._v(" "),
       _c("p", { staticClass: "futura-medium m-0" }, [_vm._v("Product Detail")]),
       _vm._v(" "),
-      _c(
-        "p",
-        {
-          staticClass: "p-2 mt-0",
-          staticStyle: { "background-color": "rgb(230,230,230)" }
-        },
-        [
-          _vm._v(
-            "\n            " + _vm._s(_vm.product.description) + "\n        "
-          )
-        ]
-      )
+      _c("p", { staticClass: "p-2 mt-0 bg-grey-light" }, [
+        _vm._v(
+          "\n            " + _vm._s(_vm.product.description) + "\n        "
+        )
+      ])
     ])
   ])
 }
@@ -31959,6 +31943,184 @@ if (false) {
 
 /***/ }),
 /* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(77)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(79)
+/* template */
+var __vue_template__ = __webpack_require__(80)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DropdownList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d16f6af4", Component.options)
+  } else {
+    hotAPI.reload("data-v-d16f6af4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(78);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("5c2ccd1b", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d16f6af4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DropdownList.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d16f6af4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./DropdownList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dropdown-list {\n    right:0;\n    top:35px;\n    z-index:999;\n    width:150px;\n    -webkit-transition: all .3s cubic-bezier(0.23, 1.85, 0.32, 1);\n    transition: all .3s cubic-bezier(0.23, 1.85, 0.32, 1);\n}\n.dropdown-list-enter {\n    -webkit-transform: translateY(-100%);\n    transform: translateY(-100%);\n    opacity: 0;\n}\n.dropdown-list-leave-active {\n    -webkit-transition: all 0.2s ease;\n    transition: all 0.2s ease;\n    -webkit-transform: translateY(100%);\n    transform: translateY(100%);\n    opacity: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['name', 'items'],
+
+    data: function data() {
+        return {
+            showList: false
+        };
+    },
+
+
+    methods: {
+        toggleView: function toggleView() {
+            this.showList = !this.showList;
+        }
+    }
+});
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "clickable d-flex flex-column position-relative",
+      on: { click: _vm.toggleView }
+    },
+    [
+      _c(
+        "p",
+        { staticClass: "align-self-end p-0 m-0 text-grey text-uppercase" },
+        [_vm._v(_vm._s(_vm.name) + " ∨")]
+      ),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "dropdown-list" } }, [
+        _vm.showList
+          ? _c(
+              "ul",
+              {
+                staticClass:
+                  "dropdown-list position-absolute bg-white shadow m-0 no-list-style p-4"
+              },
+              _vm._l(_vm.items, function(item) {
+                return _c("li", {
+                  staticClass: "w-100 d-block text-capitalize futura-medium",
+                  domProps: { textContent: _vm._s(item.name) }
+                })
+              })
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d16f6af4", module.exports)
+  }
+}
+
+/***/ }),
+/* 81 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
