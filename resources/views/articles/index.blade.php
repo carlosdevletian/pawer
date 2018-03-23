@@ -6,7 +6,7 @@
 
 @section('main-content')
     <div class="row h-35vh position-relative">
-        <div class="col-12 background-image opacity-4" style="background-image: url('{{ $product->getImage() }}');" alt="{{ $product->name }}">
+        <div class="col-12 background-image" style="background-image: url('{{ $product->getImage() }}');" alt="{{ $product->name }}">
         </div>
         <h4 class="display-4 mt-auto text-white font-italic pr-5 mb-0 ml-4 text-uppercase position-absolute bottom-0">{{ $product->name }}</h4>
     </div>

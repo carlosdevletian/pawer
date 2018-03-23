@@ -7,7 +7,7 @@
 @section('main-content')
     <!-- Category image header -->
     <div class="row h-35vh position-relative">
-        <div class="col-12 background-image opacity-4" style="background-image: url('{{$category->getImage()}}');" alt="{{ $category->name }}"></div>
+        <div class="col-12 background-image" style="background-image: url('{{$category->getImage()}}');" alt="{{ $category->name }}"></div>
 
         <!-- Names divided by subNames -->
         <div class="position-absolute bottom-0">
