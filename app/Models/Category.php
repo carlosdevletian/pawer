@@ -20,9 +20,9 @@ class Category extends Model
 
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = str_replace("-", "", $value);
+        $this->attributes['name'] = str_replace("_", "", $value);
         $this->attributes['slug'] = strtolower(str_slug($this->attributes['name']));
-        $this->attributes['sub_names'] = json_encode(explode('-', $value));
+        $this->attributes['sub_names'] = json_encode(explode('_', $value));
     }
 
     public function products()

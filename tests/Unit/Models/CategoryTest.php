@@ -22,7 +22,7 @@ class CategoryTest extends TestCase
     /** @test*/
     public function a_category_can_have_sub_names_based_on_dashes_in_name()
     {
-        $underwear = create('Category', ['name' => 'under-wear']);
+        $underwear = create('Category', ['name' => 'under_wear']);
 
         $this->assertEquals('underwear', $underwear->name);
 
@@ -31,7 +31,7 @@ class CategoryTest extends TestCase
             'wear'
         ], $underwear->sub_names);
 
-        $anotherOne = create('Category', ['name' => 'under-wear category']);
+        $anotherOne = create('Category', ['name' => 'under_wear category']);
 
         $this->assertEquals('underwear category', $anotherOne->name);
 
