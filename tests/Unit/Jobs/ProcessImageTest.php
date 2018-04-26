@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ProcessImageTest extends TestCase
 {
     /** @test*/
-    public function it_resizes_the_image_to_600px_wide()
+    public function it_resizes_the_image_to_1800px_wide()
     {
         Storage::fake();
         Storage::put(
@@ -24,8 +24,8 @@ class ProcessImageTest extends TestCase
 
         $resizedImage = Storage::get('examples/example.png');
         [$width, $height] = getimagesizefromstring($resizedImage);
-        $this->assertEquals(600, $width);
-        $this->assertEquals(776, $height);
+        $this->assertEquals(1224, $width);
+        $this->assertEquals(1584, $height);
     }
 
     /** @test*/

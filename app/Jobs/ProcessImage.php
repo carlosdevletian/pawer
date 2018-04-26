@@ -35,9 +35,9 @@ class ProcessImage implements ShouldQueue
     public function resize()
     {
         [$width] = getimagesizefromstring($this->imageContents);
-        if($width <= 600) return $this->file;
+        if($width <= 1800) return $this->file;
 
-        $this->file->resize(600, null, function($constraint) {
+        $this->file->resize(1800, null, function($constraint) {
             $constraint->aspectRatio();
         });
         return $this->file;
