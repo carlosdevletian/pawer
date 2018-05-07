@@ -14,7 +14,7 @@ class ViewArticleTest extends TestCase
     {
         $article = create('Article', [
             'name' => 'RUCA SNAPBACK',
-            'color' => 'red'
+            'color_name' => 'red'
         ]);
 
         $response = $this->get('/models/ruca-snapback-red');
@@ -29,15 +29,15 @@ class ViewArticleTest extends TestCase
     {
         $articleA = create('Article', [
             'name' => 'RUCA SNAPBACK',
-            'color' => 'red',
+            'color_name' => 'red',
         ]);
         $articleB = create('Article', [
             'name' => 'RUCA SNAPBACK',
-            'color' => 'green',
+            'color_name' => 'green',
         ]);
         $articleC = create('Article', [
             'name' => 'RUCA SNAPBACK',
-            'color' => 'black',
+            'color_name' => 'black',
         ]);
 
         $response = $this->get('/models/ruca-snapback-red');

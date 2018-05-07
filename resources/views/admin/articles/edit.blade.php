@@ -72,9 +72,15 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="mb-2">
-                        <label class="futura-medium" for="color">Color</label>
+                    <div class="mb-2 d-flex justify-content-between">
+                        <div>
+                            <label class="futura-medium" for="color">Color</label>
                         <input type="color" name="color" value="{{ $article->color }}">
+                        </div>
+                        <div>
+                            <label class="futura-medium" for="color_name">Color Name</label>
+                            <input type="string" name="color_name" value="{{ $article->color_name }}">
+                        </div>
                     </div>
                     <label for="description" class="futura-medium m-0">Product Detail</label>
                     <textarea name="description"

@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->text('description');
             $table->string('slug');
             $table->string('color');
+            $table->string('color_name');
             $table->string('code')->nullable();
             $table->string('main_image_path');
             $table->json('secondary_images');

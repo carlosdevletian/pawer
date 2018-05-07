@@ -29,6 +29,7 @@ class CreateArticleTest extends TestCase
             'name' => 'An example model',
             'description' => 'An example description for the new model',
             'color' => '#C0C0C0',
+            'color_name' => 'Navy Blue',
             'code' => 'EXAMPLECODE',
             'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
@@ -77,6 +78,7 @@ class CreateArticleTest extends TestCase
             'name' => 'An example model',
             'description' => 'An example description for the new model',
             'color' => '#C0C0C0',
+            'color_name' => 'Navy Blue',
             'code' => 'EXAMPLECODE',
             'sizes' => [create('Size', ['name' => 'unique-size'])->id],
             'main_image' => $mainImage = File::image('main_image.png', 1000, 850),
@@ -92,6 +94,7 @@ class CreateArticleTest extends TestCase
             $this->assertEquals('An example model', $article->name);
             $this->assertEquals('An example description for the new model', $article->description);
             $this->assertEquals('#C0C0C0', $article->color);
+            $this->assertEquals('Navy Blue', $article->color_name);
             $this->assertEquals('EXAMPLECODE', $article->code);
             $this->assertEquals($article->sizes->first()->name, 'unique-size');
             Storage::assertExists($article->main_image_path);
@@ -164,6 +167,16 @@ class CreateArticleTest extends TestCase
             'color' => ''
         ]));
         $response->assertSessionHasErrors('color');
+        $this->assertCount(0, Article::get());
+    }
+
+    /** @test*/
+    public function color_name_is_required()
+    {
+        $response = $this->signIn()->post('/articles', $this->validParams([
+            'color_name' => ''
+        ]));
+        $response->assertSessionHasErrors('color_name');
         $this->assertCount(0, Article::get());
     }
 

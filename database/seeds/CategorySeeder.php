@@ -44,6 +44,7 @@ class CategorySeeder extends Seeder
             'name' => 'RUCA SNAPBACK',
             'description' => 'A description for the ruca snapback article',
             'color' => 'red',
+            'color_name' => 'Crimson Red',
             'code' => 'RUCAEXAMPLECODE-RED',
             'main_image_path' => '/images/gorra1.png',
             'secondary_images' => [
@@ -59,6 +60,7 @@ class CategorySeeder extends Seeder
             'name' => 'RUCA SNAPBACK',
             'description' => 'A description for the ruca snapback article',
             'color' => 'green',
+            'color_name' => 'Military',
             'code' => 'RUCAEXAMPLECODE-GREEN',
             'main_image_path' => '/images/gorra3.png',
             'secondary_images' => [
@@ -72,6 +74,7 @@ class CategorySeeder extends Seeder
             'name' => 'RUCA SNAPBACK',
             'description' => 'A description for the ruca snapback article',
             'color' => 'blue',
+            'color_name' => 'Navy Blue',
             'code' => 'RUCAEXAMPLECODE-BLUE',
             'main_image_path' => '/images/gorra4.png',
             'secondary_images' => [

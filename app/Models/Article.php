@@ -29,7 +29,7 @@ class Article extends Model
 
         static::saving(function($article) {
             $name = str_slug($article->name);
-            $colorValue = str_replace('#', '', $article->color);
+            $colorValue = str_slug($article->color_name);
             $article->slug = strtolower("{$name}-{$colorValue}");
         });
     }

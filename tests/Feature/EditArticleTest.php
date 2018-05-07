@@ -32,6 +32,7 @@ class EditArticleTest extends TestCase
             'name' => 'An example model',
             'description' => 'An example description for the new model',
             'color' => '#C0C0C0',
+            'color_name' => 'Navy Blue',
             'code' => 'EXAMPLECODE',
             'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
@@ -50,6 +51,7 @@ class EditArticleTest extends TestCase
             'name' => 'Old model',
             'description' => 'Old Description',
             'color' => '#C0C0C0',
+            'color_name' => 'Navy Blue',
             'code' => 'OLDCODE',
             'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
@@ -78,6 +80,7 @@ class EditArticleTest extends TestCase
             'name' => 'New name',
             'description' => 'New description',
             'color' => '#000000',
+            'color_name' => 'Navy Blue',
             'code' => 'NEWCODE',
             'sizes' => [create('Size', ['name' => 'unique-size'])->id],
             'main_image' => $newMainImage = File::image('main_image.png', 700, 850),
@@ -418,6 +421,19 @@ class EditArticleTest extends TestCase
     }
 
     /** @test*/
+    public function color_name_is_required()
+    {
+        $article = create('Article', ['color_name' => 'Navy Blue']);
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'color_name' => ''
+        ]));
+
+        $response->assertSessionHasErrors('color_name');
+        $this->assertEquals('Navy Blue', $article->fresh()->color_name);
+    }
+
+    /** @test*/
     public function code_is_optional()
     {
         $article = create('Article', ['code' => 'EXAMPLEOLDCODE']);
@@ -495,16 +511,16 @@ class EditArticleTest extends TestCase
     {
         $article = create('Article', [
             'name' => 'old model',
-            'color' => '#000000'
+            'color_name' => 'old color'
         ]);
 
         $this->signIn()->patch(route('articles.update', $article), $this->validParams([
             'name' => 'new model',
-            'color' => '#000000'
+            'color_name' => 'old color'
         ]));
 
         tap($article->fresh(), function($updatedArticle) {
-            $this->assertEquals('new-model-000000', $updatedArticle->slug);
+            $this->assertEquals('new-model-old-color', $updatedArticle->slug);
         });
     }
 
@@ -513,16 +529,16 @@ class EditArticleTest extends TestCase
     {
         $article = create('Article', [
             'name' => 'old model name',
-            'color' => '#000000'
+            'color_name' => 'Old color'
         ]);
 
         $this->signIn()->patch(route('articles.update', $article), $this->validParams([
             'name' => 'old model name',
-            'color' => '#ffffff'
+            'color_name' => 'New cool color'
         ]));
 
         tap($article->fresh(), function($updatedArticle) {
-            $this->assertEquals('old-model-name-ffffff', $updatedArticle->slug);
+            $this->assertEquals('old-model-name-new-cool-color', $updatedArticle->slug);
         });
     }
 }

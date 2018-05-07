@@ -17,10 +17,10 @@ class ArticleTest extends TestCase
     {
         $article = create('Article', [
             'name' => 'RUCA SNAPBACK',
-            'color' => 'blue'
+            'color_name' => 'Navy-Blue'
         ]);
 
-        $this->assertEquals('ruca-snapback-blue', $article->slug);
+        $this->assertEquals('ruca-snapback-navy-blue', $article->slug);
     }
 
     /** @test*/
