@@ -30830,7 +30830,7 @@ var render = function() {
             style: "background-color : " + product.color,
             attrs: {
               role: "button",
-              title: product.name + "-" + product.color
+              title: product.name + " " + product.color_name
             },
             on: {
               click: function($event) {

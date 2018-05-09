@@ -47,7 +47,7 @@
                     role="button"
                     class="clickable mr-2 border border-light sq-20"
                     :style="'background-color : ' + product.color"
-                    :title="product.name + '-' + product.color"></a>
+                    :title="product.name + ' ' + product.color_name"></a>
             </div>
             <p class="futura-medium m-0">Product Detail</p>
             <p class="p-2 mt-0 bg-grey-light">
