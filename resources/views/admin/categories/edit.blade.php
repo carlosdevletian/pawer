@@ -25,28 +25,57 @@
                     </div>
                 </div>
             @endif
-            <div class="col-12 d-flex flex-column align-items-center justify-content-center">
+            <div class="col-12 col-md-8 offset-md-2 d-flex flex-column align-items-center justify-content-center">
                 <div class="card mb-4">
                     <form method="POST" action="{{ route('categories.update', $category) }}" enctype="multipart/form-data">
                         {{ method_field('PATCH') }}
                         {{ csrf_field() }}
 
-                        <!-- Placeholder hasta que Vue carge -->
-                        <div class="position-relative v-cloak-block">
-                            <div class="background-image image-upload-banner bg-overlay m-0 p-0"></div>
-                        </div>
-                        <!--  -->
-                        <image-upload file-name="category_image" default-image="{{ $category->getImage() }}"></image-upload>
-
-                        <div class="card-section pb-0">
+                        <div class="card-section">
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="name">Category Name</label>
-                                        <input class="mr-2 form-control bg-light rounded-0 text-center" type="text" value="{{ $category->name }}" name="name" placeholder="Category name">
-                                    </div>
+                                <div class="col-12 col-sm-4">
+                                    <h5>Category Name</h5>
+                                    Select a name for the category
+                                </div>
+                                <div class="col-12 col-sm-8  d-flex flex-column justify-content-center">
+                                    <input class="mr-2 form-control bg-light rounded-0 text-center" type="text" value="{{ $category->name }}" name="name" placeholder="Category name">
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="card-section">
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <h5>Home image</h5>
+                                    This image will show up on the home page when this category is displayed.
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <!-- Placeholder hasta que Vue carge -->
+                                    <div class="position-relative v-cloak-block">
+                                        <div class="background-image image-upload-banner bg-overlay m-0 p-0"></div>
+                                    </div>
+                                    <image-upload :image-styles="{'width':'100%'}" file-name="category_home_image" default-image="{{ $category->getHomeImage() }}"></image-upload>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-section">
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <h5>Catalog image</h5>
+                                    This is the catalog image. Whenever the category is displayed (except for the home page), this will be the associated image.
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <!-- Placeholder hasta que Vue carge -->
+                                    <div class="position-relative v-cloak-block">
+                                        <div class="background-image image-upload-banner bg-overlay m-0 p-0"></div>
+                                    </div>
+                                    <image-upload :image-styles="{'width':'100%'}" file-name="category_image" default-image="{{ $category->getImage() }}"></image-upload>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-section pb-0">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group d-flex justify-content-center">

@@ -26,15 +26,18 @@ class CategoryController extends Controller
     {
         request()->validate([
             'category_image' => ['required', 'image', Rule::dimensions()->minWidth(600)],
+            'category_home_image' => ['required', 'image', Rule::dimensions()->minWidth(600)],
             'name' => ['required'],
         ], ['category_image*' => "Make sure you've selected an image that is at least 600px wide"]);
 
         $category = Category::create([
             'name' => request('name'),
-            'image_path' => $image = request('category_image')->storePublicly('categories', 'public')
+            'image_path' => $image = request('category_image')->storePublicly('categories', 'public'),
+            'home_image_path' => $homeImage = request('category_home_image')->storePublicly('categories', 'public')
         ]);
 
         ImageAdded::dispatch($image);
+        ImageAdded::dispatch($homeImage);
 
         return redirect()->route('categories.edit', $category->slug);
     }
@@ -52,12 +55,20 @@ class CategoryController extends Controller
 
         request()->validate([
             'name' => ['required'],
-            'category_image' => ['nullable', 'image', Rule::dimensions()->minWidth(600)]
+            'category_image' => ['nullable', 'image', Rule::dimensions()->minWidth(600)],
+            'category_home_image' => ['nullable', 'image', Rule::dimensions()->minWidth(600)],
         ]);
 
         $category->update([
             'name' => request('name'),
-            'image_path' => $category->updateImage(request('category_image'))
+            'image_path' => $category->updateImage(
+                request('category_image'),
+                $category->image_path
+            ),
+            'home_image_path' => $category->updateImage(
+                request('category_home_image'),
+                $category->home_image_path
+            ),
         ]);
 
         return redirect()->route('categories.edit', $category->slug);

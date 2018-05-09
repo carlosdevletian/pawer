@@ -65,7 +65,7 @@ class ProductController extends Controller
         $product->update([
             'name' => request('name'),
             'category_id' => request('category_id'),
-            'image_path' => $product->updateImage(request('product_image')),
+            'image_path' => $product->updateImage(request('product_image'), $product->image_path),
         ]);
 
         return redirect()->route('products.edit', $product->slug);

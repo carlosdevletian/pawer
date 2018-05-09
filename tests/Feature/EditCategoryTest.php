@@ -28,6 +28,7 @@ class EditCategoryTest extends TestCase
         return array_merge([
             'name' => 'tops',
             'category_image' => File::image('category_image.png', 1100, 850),
+            'category_home_image' => File::image('category_home_image.png', 1200, 850),
         ], $overrides);
     }
 
@@ -36,6 +37,7 @@ class EditCategoryTest extends TestCase
         return array_merge([
             'name' => 'tops',
             'category_image' => File::image('/categories/old-image-path.png', 1100, 850),
+            'category_home_image' => File::image('/categories/old-home-image-path.png', 1200, 850),
         ], $overrides);
     }
 
@@ -46,7 +48,8 @@ class EditCategoryTest extends TestCase
         $this->fakeEvents();
         $this->signIn()->post('/categories', [
             'name' => 'tops',
-            'category_image' => $oldFile = File::image('/categories/old-image-path.png', 1100, 850)
+            'category_image' => $oldFile = File::image('/categories/old-image-path.png', 1100, 850),
+            'category_home_image' => $oldHomeFile = File::image('category_home_image.png', 1100, 850)
         ]);
 
         $category = Category::first();
@@ -54,18 +57,28 @@ class EditCategoryTest extends TestCase
         $response = $this->patch(route('categories.update', $category), [
                         'name' => 'New category',
                         'category_image' => $newFile = File::image('new-image.png', 800, 850),
+                        'category_home_image' => $newHomeFile = File::image('new-home-image.png', 800, 850),
                     ]);
 
-        tap($category->fresh(), function($updatedCategory) use ($oldFile, $newFile) {
+        tap($category->fresh(), function($updatedCategory) use ($oldFile, $newFile, $oldHomeFile, $newHomeFile) {
             $this->assertEquals('New category', $updatedCategory->name);
             Storage::assertExists($updatedCategory->image_path);
             $this->assertFileEquals(
                 $newFile->getPathName(),
                 Storage::path($updatedCategory->image_path)
             );
+            Storage::assertExists($updatedCategory->home_image_path);
+            $this->assertFileEquals(
+                $newHomeFile->getPathName(),
+                Storage::path($updatedCategory->home_image_path)
+            );
             $this->assertFileNotEquals(
                 $oldFile->getPathName(),
                 $newFile->getPathName()
+            );
+            $this->assertFileNotEquals(
+                $oldHomeFile->getPathName(),
+                $newHomeFile->getPathName()
             );
         });
     }
@@ -76,21 +89,25 @@ class EditCategoryTest extends TestCase
         $this->fakeEvents();
         $this->signIn()->post('/categories', [
             'name' => 'Old Name',
-            'category_image' => $oldFile = File::image('/categories/old-image-path.png', 1100, 850)
+            'category_image' => $oldFile = File::image('/categories/old-image-path.png', 1100, 850),
+            'category_home_image' => $oldHomePath = File::image('/categories/old-home-image-path.png', 1100, 850),
         ]);
 
         $category = Category::first();
         $oldPath = $category->image_path;
+        $oldHomePath = $category->home_image_path;
 
         auth()->logout();
         $response = $this->patch(route('categories.update', $category), [
                         'name' => 'New category',
-                        'category_image' => $newFile = File::image('new-image.png', 800, 850),
+                        'category_image' => File::image('new-image.png', 800, 850),
+                        'category_image' => File::image('new-image.png', 800, 850),
                     ]);
 
-        tap($category->fresh(), function($updatedCategory) use ($oldPath, $newFile) {
+        tap($category->fresh(), function($updatedCategory) use ($oldPath, $oldHomePath) {
             $this->assertEquals('Old Name', $updatedCategory->name);
             $this->assertEquals($oldPath, $updatedCategory->image_path);
+            $this->assertEquals($oldHomePath, $updatedCategory->home_image_path);
         });
     }
 
@@ -122,7 +139,8 @@ class EditCategoryTest extends TestCase
         $this->fakeEvents();
         $this->signIn()->post('/categories', [
             'name' => 'tops',
-            'category_image' => $oldFile = File::image('/categories/old-image-path.png', 1100, 850)
+            'category_image' => $oldFile = File::image('/categories/old-image-path.png', 1100, 850),
+            'category_home_image' => File::image('/categories/old-image-path.png', 1100, 850),
         ]);
 
         $category = Category::first();
@@ -137,6 +155,34 @@ class EditCategoryTest extends TestCase
             $this->assertFileEquals(
                 $oldFile->getPathName(),
                 Storage::path($updatedCategory->image_path)
+            );
+        });
+    }
+
+    /** @test*/
+    public function a_home_image_path_is_not_updated_if_it_is_missing()
+    {
+        $this->withoutExceptionHandling();
+        $this->fakeEvents();
+        $this->signIn()->post('/categories', [
+            'name' => 'tops',
+            'category_image' => File::image('/categories/old-image-path.png', 1200, 850),
+            'category_home_image' => $oldFile = File::image('/categories/old-home-image-path.png', 1100, 850)
+        ]);
+
+        $category = Category::first();
+
+        $response = $this->patch(route('categories.update', $category), [
+                        'name' => 'New category',
+                        'category_image' => null,
+                        'category_home_image' => null,
+                    ]);
+
+        tap($category->fresh(), function($updatedCategory) use ($oldFile) {
+            $this->assertEquals('New category', $updatedCategory->name);
+            $this->assertFileEquals(
+                $oldFile->getPathName(),
+                Storage::path($updatedCategory->home_image_path)
             );
         });
     }
