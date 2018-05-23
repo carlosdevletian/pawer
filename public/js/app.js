@@ -11670,7 +11670,24 @@ Vue.component('delete-button', __webpack_require__(71));
 Vue.component('dropdown-list', __webpack_require__(76));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app',
+    data: function data() {
+        return {
+            pageIsLoading: false
+        };
+    },
+    mounted: function mounted() {
+        var forms = document.forms;
+        var vm = this;
+
+        for (var i = forms.length - 1; i >= 0; i--) {
+            forms[i].addEventListener('submit', function (e) {
+                e.preventDefault();
+                vm.pageIsLoading = true;
+                e.target.submit();
+            });
+        }
+    }
 });
 
 /***/ }),

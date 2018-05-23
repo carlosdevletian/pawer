@@ -4,10 +4,11 @@
             <div class="col-md-6 col-lg-5 d-flex flex-column justify-content-center align-items-center">
                 @svg('mono', 'icon-w-3 icon-h-3')
                 <h5>SIGN UP TO BE IN THE KNOW</h5>
-                <div class="d-flex form-group">
+                <form method="POST" action="{{ route('email-subscriptions.store') }}" class="d-flex form-group">
+                    {{ csrf_field() }}
                     <input class="mr-2 form-control rounded-0 text-center" type="email" name="email" placeholder="Email address">
-                    <button class="btn rounded-0 clickable btn-brand">Sign up</button>
-                </div>
+                    <button type="submit" class="btn rounded-0 clickable btn-brand">Sign up</button>
+                </form>
             </div>
             <div class="col-md-6 col-lg-7 d-none d-md-flex flex-column justify-content-center align-items-end">
                 <p class="ls-1">

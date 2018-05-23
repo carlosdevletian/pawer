@@ -17,6 +17,9 @@
 </head>
 <body>
     <div id="app" v-cloak>
+        <div v-if="pageIsLoading" class="w-100 h-100 pin position-fixed bg-overlay front d-flex justify-content-center align-items-center">
+            <div class="loader"></div>
+        </div>
         <div class="mb-footer">
             @include('layouts.header')
 

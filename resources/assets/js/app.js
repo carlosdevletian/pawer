@@ -26,5 +26,23 @@ Vue.component('delete-button', require('./components/DeleteButton.vue'));
 Vue.component('dropdown-list', require('./components/DropdownList.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data()  {
+        return {
+            pageIsLoading: false
+        }
+    },
+
+    mounted() {
+        let forms = document.forms
+        let vm = this
+
+        for (var i = forms.length - 1; i >= 0; i--) {
+            forms[i].addEventListener('submit', function(e) {
+                e.preventDefault()
+                vm.pageIsLoading = true
+                e.target.submit()
+            })
+        }
+    },
 });
