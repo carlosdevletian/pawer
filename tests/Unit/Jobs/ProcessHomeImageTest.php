@@ -10,6 +10,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProcessHomeImageTest extends TestCase
 {
+    protected function setUp()
+    {
+        static::markTestSkipped('Image Processing Suspended');
+    }
+
     /** @test*/
     public function it_resizes_the_image_to_1500px_wide()
     {

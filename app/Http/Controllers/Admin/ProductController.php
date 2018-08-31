@@ -30,7 +30,7 @@ class ProductController extends Controller
         request()->validate([
             'name' => ['required'],
             'category_id' => ['required', 'exists:categories,id'],
-            'product_image' => ['required', 'image', Rule::dimensions()->minWidth(600)],
+            'product_image' => ['required', 'image'],
         ]);
 
         $category = Product::create([
@@ -59,7 +59,7 @@ class ProductController extends Controller
         request()->validate([
             'name' => ['required'],
             'category_id' => ['required', 'exists:categories,id'],
-            'product_image' => ['nullable', 'image', Rule::dimensions()->minWidth(600)]
+            'product_image' => ['nullable', 'image']
         ]);
 
         $product->update([
