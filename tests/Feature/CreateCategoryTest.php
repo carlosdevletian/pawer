@@ -149,6 +149,7 @@ class CreateCategoryTest extends TestCase
     /** @test */
     public function image_must_be_at_least_600px_wide()
     {
+        $this->markTestSkipped('Funcionalidad removida');
         $response = $this->signIn()->post('/categories', $this->validParams([
             'category_image' => File::image('category_image.png', $width = 599, $height = 463)
         ]));
@@ -161,6 +162,7 @@ class CreateCategoryTest extends TestCase
     /** @test */
     public function home_image_must_be_at_least_600px_wide()
     {
+        $this->markTestSkipped('Funcionalidad removida');
         $response = $this->signIn()->post('/categories', $this->validParams([
             'category_home_image' => File::image('category_image.png', $width = 599, $height = 463)
         ]));

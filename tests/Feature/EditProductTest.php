@@ -225,6 +225,7 @@ class EditProductTest extends TestCase
     /** @test */
     public function image_must_be_at_least_600px_wide()
     {
+        $this->markTestSkipped('Funcionalidad removida');
         $this->fakeEvents()->signIn()->post('/products', $this->oldAttributes([
             'category_image' => $oldImage = File::image('category_image.png', 1100, 850),
         ]));

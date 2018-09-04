@@ -266,6 +266,7 @@ class EditCategoryTest extends TestCase
     /** @test */
     public function image_must_be_at_least_600px_wide()
     {
+        $this->markTestSkipped('Funcionalidad removida');
         $this->fakeEvents();
 
         $this->signIn()->post('/categories', $this->oldAttributes([

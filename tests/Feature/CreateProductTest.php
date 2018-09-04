@@ -143,6 +143,7 @@ class CreateProductTest extends TestCase
     /** @test */
     public function image_must_be_at_least_600px_wide()
     {
+        $this->markTestSkipped('Funcionalidad removida');
         $response = $this->signIn()->post('/products', $this->validParams([
             'product_image' => File::image('product_image.png', $width = 599, $height = 463)
         ]));
