@@ -24,7 +24,7 @@
                 <a v-for="color in allColors"
                     role="button"
                     class="clickable mr-1"
-                    style="width: 10px; height: 10px;"
+                    style="width: 10px; height: 10px; border: black 1px solid"
                     :style="'background-color : ' + color.color"
                     @click="changeImage(color.image)"
                     :title="product.name + '-' + color.color"></a>

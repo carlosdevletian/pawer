@@ -30432,7 +30432,11 @@ var render = function() {
                 _vm._l(_vm.allColors, function(color) {
                   return _c("a", {
                     staticClass: "clickable mr-1",
-                    staticStyle: { width: "10px", height: "10px" },
+                    staticStyle: {
+                      width: "10px",
+                      height: "10px",
+                      border: "black 1px solid"
+                    },
                     style: "background-color : " + color.color,
                     attrs: {
                       role: "button",
