@@ -16,5 +16,7 @@ class EmailSubscriptionController extends Controller
         EmailSubscription::create([
             'email' => request('email')
         ]);
+
+        return redirect()->route('home');
     }
 }
