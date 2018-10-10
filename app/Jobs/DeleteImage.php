@@ -22,6 +22,6 @@ class DeleteImage implements ShouldQueue
 
     public function handle()
     {
-        Storage::delete($this->imagePath);
+        Storage::disk('public')->delete($this->imagePath);
     }
 }
