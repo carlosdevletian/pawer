@@ -71,7 +71,7 @@ class HomeImage extends Model
     public static function storeImages($files)
     {
         return $files->map(function($file) {
-            return tap($file->storePublicly('home'), function($path) {
+            return tap($file->storePublicly('home', 'public'), function($path) {
                 HomeImageAdded::dispatch($path);
                 self::create([
                     'path' => $path
