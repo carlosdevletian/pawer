@@ -39,6 +39,7 @@ class ArticleController extends Controller
             'product_id' => ['required', 'exists:products,id'],
             'name' => ['required'],
             'description' => ['required'],
+            'price' => ['required', 'numeric', 'min:0'],
             'color' => ['required'],
             'color_name' => ['required'],
             'code' => ['nullable'],
@@ -53,6 +54,7 @@ class ArticleController extends Controller
             'product_id' => request('product_id'),
             'name' => request('name'),
             'description' => request('description'),
+            'price' => request('price'),
             'color' => request('color'),
             'color_name' => request('color_name'),
             'code' => request('code'),
@@ -85,6 +87,7 @@ class ArticleController extends Controller
         request()->validate([
             'product_id' => ['required', 'exists:products,id'],
             'name' => ['required'],
+            'price' => ['required', 'numeric', 'min:0'],
             'description' => ['required'],
             'color' => ['required'],
             'color_name' => ['required'],
@@ -106,6 +109,7 @@ class ArticleController extends Controller
             'main_image_path' => $article->updateMainImage(request('main_image')),
             'secondary_images' => $article->updateSecondaryImages(request('secondary_images')),
             'featured' => request('featured'),
+            'price' => request('price'),
         ]);
 
         $article->sizes()->sync(Size::find(request('sizes')));

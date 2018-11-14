@@ -31,6 +31,7 @@ class CreateArticleTest extends TestCase
             'color' => '#C0C0C0',
             'color_name' => 'Navy Blue',
             'code' => 'EXAMPLECODE',
+            'price' => 0.50,
             'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
             'secondary_images' => [
@@ -80,6 +81,7 @@ class CreateArticleTest extends TestCase
             'color' => '#C0C0C0',
             'color_name' => 'Navy Blue',
             'code' => 'EXAMPLECODE',
+            'price' => 0.75,
             'sizes' => [create('Size', ['name' => 'unique-size'])->id],
             'main_image' => $mainImage = File::image('main_image.png', 1000, 850),
             'secondary_images' => [
@@ -96,6 +98,7 @@ class CreateArticleTest extends TestCase
             $this->assertEquals('#C0C0C0', $article->color);
             $this->assertEquals('Navy Blue', $article->color_name);
             $this->assertEquals('EXAMPLECODE', $article->code);
+            $this->assertEquals(0.75, $article->price);
             $this->assertEquals($article->sizes->first()->name, 'unique-size');
             Storage::assertExists($article->main_image_path);
             $this->assertFileEquals(
@@ -157,6 +160,36 @@ class CreateArticleTest extends TestCase
             'description' => ''
         ]));
         $response->assertSessionHasErrors('description');
+        $this->assertCount(0, Article::get());
+    }
+
+    /** @test*/
+    public function price_is_required()
+    {
+        $response = $this->signIn()->post('/articles', $this->validParams([
+            'price' => ''
+        ]));
+        $response->assertSessionHasErrors('price');
+        $this->assertCount(0, Article::get());
+    }
+
+    /** @test*/
+    public function price_must_be_numeric()
+    {
+        $response = $this->signIn()->post('/articles', $this->validParams([
+            'price' => 'not-a-number'
+        ]));
+        $response->assertSessionHasErrors('price');
+        $this->assertCount(0, Article::get());
+    }
+
+    /** @test*/
+    public function price_cannot_be_negative()
+    {
+        $response = $this->signIn()->post('/articles', $this->validParams([
+            'price' => -10
+        ]));
+        $response->assertSessionHasErrors('price');
         $this->assertCount(0, Article::get());
     }
 

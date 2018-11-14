@@ -83,6 +83,10 @@
                                 <input type="string" name="color_name" value="{{ $article->color_name }}">
                             </div>
                         </div>
+                        <div class="futura-medium mb-2">
+                            <label for="price">Price</label>
+                            <input class="mr-2 form-control bg-light rounded-0" type="number" step=0.01 name="price" placeholder="Example: 13.99" value="{{ $article->price }}">
+                        </div>
                         <label for="description" class="futura-medium m-0">Product Detail</label>
                         <textarea name="description"
                                 value="{{ $article->description }}"

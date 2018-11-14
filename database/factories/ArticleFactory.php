@@ -16,6 +16,7 @@ $factory->define(Pawer\Models\Article::class, function (Faker $faker) {
         'main_image_path' => 'some/path.png',
         'secondary_images' => [
             '/images/gorra1.png', '/images/gorra2.png'
-        ]
+        ],
+        'price' => 0.99
     ];
 });

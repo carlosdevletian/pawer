@@ -34,6 +34,7 @@ class EditArticleTest extends TestCase
             'color' => '#C0C0C0',
             'color_name' => 'Navy Blue',
             'code' => 'EXAMPLECODE',
+            'price' => 0.50,
             'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
             'secondary_images' => [
@@ -53,6 +54,7 @@ class EditArticleTest extends TestCase
             'color' => '#C0C0C0',
             'color_name' => 'Navy Blue',
             'code' => 'OLDCODE',
+            'price' => 0.99,
             'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
             'secondary_images' => [
@@ -82,6 +84,7 @@ class EditArticleTest extends TestCase
             'color' => '#000000',
             'color_name' => 'Navy Blue',
             'code' => 'NEWCODE',
+            'price' => 0.55,
             'sizes' => [create('Size', ['name' => 'unique-size'])->id],
             'main_image' => $newMainImage = File::image('main_image.png', 700, 850),
             'secondary_images' => [
@@ -98,6 +101,7 @@ class EditArticleTest extends TestCase
             $this->assertEquals('#000000', $article->color);
             $this->assertEquals('NEWCODE', $article->code);
             $this->assertEquals('unique-size', $article->sizes->first()->name);
+            $this->assertEquals(0.55, $article->price);
             $this->assertFileEquals(
                 $newMainImage->getPathName(),
                 Storage::path($article->main_image_path)
@@ -540,5 +544,44 @@ class EditArticleTest extends TestCase
         tap($article->fresh(), function($updatedArticle) {
             $this->assertEquals('old-model-name-new-cool-color', $updatedArticle->slug);
         });
+    }
+
+    /** @test*/
+    public function price_is_required()
+    {
+        $article = create('Article', ['price' => 0.75]);
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'price' => ''
+        ]));
+
+        $response->assertSessionHasErrors('price');
+        $this->assertEquals(0.75, $article->fresh()->price);
+    }
+
+    /** @test*/
+    public function price_must_be_numeric()
+    {
+        $article = create('Article', ['price' => 0.75]);
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'price' => 'not-a-number'
+        ]));
+
+        $response->assertSessionHasErrors('price');
+        $this->assertEquals(0.75, $article->fresh()->price);
+    }
+
+    /** @test*/
+    public function price_cannot_be_negative()
+    {
+        $article = create('Article', ['price' => 0.75]);
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'price' => -10
+        ]));
+
+        $response->assertSessionHasErrors('price');
+        $this->assertEquals(0.75, $article->fresh()->price);
     }
 }
