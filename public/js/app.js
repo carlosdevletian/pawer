@@ -32602,12 +32602,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        var _this = this;
-
         this.getCartData();
-        Vue.nextTick(function () {
-            return _this.cartDataHasLoaded = true;
-        });
     },
 
 
@@ -32628,16 +32623,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('close');
         },
         getCartData: function getCartData() {
-            var _this2 = this;
+            var _this = this;
 
             axios.get('/cart/items/index').then(function (_ref) {
                 var data = _ref.data;
 
-                _this2.items = data.items ? data.items : '';
+                _this.items = data.items ? data.items : '';
+                Vue.nextTick(function () {
+                    return _this.cartDataHasLoaded = true;
+                });
             });
         },
         removeItemFromCart: function removeItemFromCart(item) {
-            var _this3 = this;
+            var _this2 = this;
 
             axios.delete('/cart/items/delete', {
                 data: {
@@ -32646,22 +32644,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (_ref2) {
                 var data = _ref2.data;
 
-                _this3.getCartData();
+                _this2.getCartData();
             });
         },
         resetCart: function resetCart() {
             axios.delete('/cart/items/all');
         },
         sendOrderEmail: function sendOrderEmail() {
-            var _this4 = this;
+            var _this3 = this;
 
             this.sendingEmail = true;
             axios.post('/orders/email', {
                 email: this.email
             }).then(function () {
-                _this4.sendingEmail = false;
-                _this4.orderSent = true;
-                _this4.resetCart();
+                _this3.sendingEmail = false;
+                _this3.orderSent = true;
+                _this3.resetCart();
             });
         }
     }

@@ -87,7 +87,6 @@
 
         mounted() {
             this.getCartData()
-            Vue.nextTick(() => this.cartDataHasLoaded = true)
         },
 
         computed: {
@@ -107,6 +106,7 @@
             getCartData() {
                 axios.get(`/cart/items/index`).then(({data}) => {
                     this.items = data.items ? data.items : ''
+                    Vue.nextTick(() => this.cartDataHasLoaded = true)
                 })
             },
             removeItemFromCart(item) {
