@@ -26,6 +26,13 @@ Route::get('/category/{category}/all-products', 'ProductController@index')->name
 
 Route::post('email-subscriptions', 'EmailSubscriptionController@store')->name('email-subscriptions.store');
 
+Route::get('/cart/items/index', 'CartItemController@index')->name('cart-items.index');
+Route::post('/cart/items/store', 'CartItemController@store')->name('cart-items.store');
+Route::delete('/cart/items/delete', 'CartItemController@destroy')->name('cart-items.destroy');
+Route::delete('/cart/items/all', 'CartItemController@destroyAll')->name('cart-items.destroy-all');
+
+Route::post('/orders/email', 'EmailOrderController@handle')->name('order-email.handle');
+
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 

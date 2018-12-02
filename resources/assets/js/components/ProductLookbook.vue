@@ -19,6 +19,9 @@
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <div class="d-flex align-items-center justify-content-center mb-2 position-relative mw-100">
                     <a role="button" class="position-absolute clickable left-0" @click="prevImage" title="Previous Image"><slot name="arrow-left"></slot></a>
+                        <div v-if="showAddedToCartMessage" class="sq-400 position-absolute bg-overlay text-white d-flex justify-content-center align-items-center">
+                            THE ITEM WAS ADDED TO YOUR CART
+                        </div>
                         <loadable-image
                             skeleton-styles='{"width": "400px", "height": "400px"}'
                             image-styles='{"width": "400px", "height": "400px", "transition" : "all 0.5s"}'
@@ -36,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-xl-5 p-0 px-1">
+        <div class="col-lg-4 col-xl-5 p-0 px-1 mb-2">
             <div class="pr-2 pt-2 d-flex justify-content-center position-relative border border-top-0 border-left-0 border-right-0 border-secondary mb-2">
                 <h4 class="futura-medium p-0 align-self-center">{{ product.name }}</h4>
                 <dropdown-list class="position-absolute p-0 m-0 right-0 bottom-0" name="Size" :items="product.sizes"></dropdown-list>
@@ -54,19 +57,31 @@
             <p class="p-2 mt-0 bg-grey-light">
                 {{ product.description }}
             </p>
+            <div class="d-flex-column">
+                <button v-if="!showAddToCartFields" type="button" class="btn btn-brand mr-2" @click="showAddToCartFields = true">Add to cart</button>
+                <add-to-cart :product="product" :sizes="product.sizes" @item-added="addToCart" v-if="showAddToCartFields"></add-to-cart>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import AddToCart from './AddToCart.vue';
     export default {
         props: ['dataProduct', 'dataModel'],
+
+        components: {
+            AddToCart,
+        },
 
         data() {
             return {
                 product : this.dataProduct,
                 related : this.dataModel,
-                selectedIndex : 0
+                selectedIndex : 0,
+                showAddToCartFields : false,
+                cartAddedQuantity: 0,
+                showAddedToCartMessage: false
             }
         },
 
@@ -92,6 +107,19 @@
                 } else {
                     this.selectedIndex --
                 }
+            },
+            addToCart(item) {
+                let vm = this
+                axios.post(`/cart/items/store`, {
+                    item: item
+                }).then(({data}) => {
+                    this.showAddToCartFields = false
+                    this.showAddedToCartMessage = true
+                    setTimeout(function(){
+                        vm.showAddedToCartMessage = false
+                    }, 1500);
+                    Events.$emit('cart-updated')
+                })
             }
         },
         computed: {

@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.Events = new Vue();
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -24,18 +25,32 @@ Vue.component('edit-article-secondary-images', require('./components/EditArticle
 Vue.component('loadable-image', require('./components/LoadableImage.vue'));
 Vue.component('delete-button', require('./components/DeleteButton.vue'));
 Vue.component('dropdown-list', require('./components/DropdownList.vue'));
+Vue.component('make-order-modal', require('./components/MakeOrderModal.vue'));
+Vue.component('svg-mono', require('./components/svg/mono.vue'));
 
 const app = new Vue({
     el: '#app',
     data()  {
         return {
-            pageIsLoading: false
+            pageIsLoading: false,
+            orderModalIsOpen: false,
+            modalIsActive: false,
+            cartIsUpdating: false,
         }
     },
 
     mounted() {
         let forms = document.forms
         let vm = this
+
+        Events.$on('cart-updated', () => {
+            this.cartIsUpdating = true
+            let vm = this;
+
+            setTimeout(function(){
+                vm.cartIsUpdating = false
+            }, 500);
+        })
 
         for (var i = forms.length - 1; i >= 0; i--) {
             forms[i].addEventListener('submit', function(e) {
@@ -45,4 +60,15 @@ const app = new Vue({
             })
         }
     },
+
+    methods: {
+        openOrderModal() {
+            this.orderModalIsOpen = true
+            this.modalIsActive = false
+        },
+        closeOrderModal() {
+            this.orderModalIsOpen = false;
+            this.modalIsActive = false;
+        }
+    }
 });

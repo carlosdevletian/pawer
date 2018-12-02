@@ -10111,6 +10111,10 @@ a:hover {
   padding: 1rem 1.5rem;
 }
 
+.fill-current {
+  fill: currentColor;
+}
+
 .bg-overlay {
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -10137,12 +10141,32 @@ a:hover {
   border-radius: 0 !important;
 }
 
+.rounded-1 {
+  border-radius: 5px !important;
+}
+
+.m-4 {
+  margin: 3em;
+}
+
+.p-4 {
+  padding: 3em;
+}
+
+.hover\:text-brand-primary:hover {
+  color: #eb3323;
+}
+
 .even\:bg-grey-light:nth-child(even) {
   background-color: #E6E6E6;
 }
 
 .black {
   color: black;
+}
+
+.w-1 {
+  width: 1em;
 }
 
 button:focus {
@@ -10154,12 +10178,21 @@ button:focus {
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
+.shadow-lg {
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+          box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+}
+
 .right-0 {
   right: 0;
 }
 
 .left-0 {
   left: 0;
+}
+
+.top-0 {
+  top: 0;
 }
 
 .bottom-0 {
@@ -10176,8 +10209,45 @@ button:focus {
   height: 20px;
 }
 
+.sq-40 {
+  width: 40px;
+  height: 40px;
+}
+
+.sq-60 {
+  width: 60px;
+  height: 60px;
+}
+
+.sq-80 {
+  width: 80px;
+  height: 80px;
+}
+
+.sq-200 {
+  width: 200px;
+  height: 200px;
+}
+
+.sq-400 {
+  width: 400px;
+  height: 400px;
+}
+
 .front {
   z-index: 999;
+}
+
+.cart-button {
+  bottom: 25px;
+  right: 25px;
+  z-index: 999;
+}
+
+.cart-updated {
+  -webkit-animation: spin 0.5s linear;
+  /* Safari */
+  animation: spin 0.5s linear;
 }
 
 .loader {
@@ -10835,6 +10905,10 @@ button:focus {
   background-color: #ffebef;
 }
 
+.hover\:bg-red-light:hover {
+  background-color: #ef5753;
+}
+
 @-webkit-keyframes placeHolderShimmer {
   0% {
     background-position: -468px 0;
@@ -10871,6 +10945,10 @@ button:focus {
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 800px 104px;
   height: 96px;
+}
+
+.border {
+  border: 1px solid;
 }
 
 .border-transparent {
@@ -11267,6 +11345,12 @@ button:focus {
 .v-cloak-inline,
 .v-cloak-inlineBlock {
   display: none;
+}
+
+@media (min-width: 768px) {
+  .md\:text-left {
+    text-align: left !important;
+  }
 }
 
 @media (min-width: 768px) {

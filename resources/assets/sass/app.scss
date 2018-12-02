@@ -10,6 +10,12 @@
 @import "vue.scss";
 
 @include media-breakpoint-up(md) {
+  .md\:text-left{
+    text-align: left !important;
+  }
+}
+
+@include media-breakpoint-up(md) {
   .w-md-50 {
     width: 50% !important;
   }
