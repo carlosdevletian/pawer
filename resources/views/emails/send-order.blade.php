@@ -12,7 +12,7 @@
     <div style="padding: 5px">
         @foreach($items as $item)
             <div style=" background-color: white; color: #22292f; padding: 15px; margin-bottom: 15px">
-                <img height="75px" width="75px" src="{{ asset($item->article->main_image_path) }}" style="float:left; margin-right: 10px">
+                <img height="75px" width="75px" src="{{ asset('storage/' . $item->article->main_image_path) }}" style="float:left; margin-right: 10px">
                 <div>
                     <div>Product: <a href="{{ route('articles.show', $item->article->slug) }}">{{ $item->article->name }}</a></div>
                     <div>Color: {{ $item->article->color_name }}</div>
