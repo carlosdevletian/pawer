@@ -36,6 +36,13 @@ a:hover {
     background-color: $primaryColor;
     font-family: Futura Medium;
 }
+.btn-sold-out {
+    border-color: black;
+    color: black;
+    background-color: white;
+    font-family: Futura Medium;
+    cursor: not-allowed !important;
+}
 .btn-brand:hover {
     background-color: rgb(260, 51, 35);
     color: white;

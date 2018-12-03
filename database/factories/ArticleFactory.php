@@ -17,6 +17,7 @@ $factory->define(Pawer\Models\Article::class, function (Faker $faker) {
         'secondary_images' => [
             '/images/gorra1.png', '/images/gorra2.png'
         ],
-        'price' => 0.99
+        'price' => 0.99,
+        'sold_out' => false,
     ];
 });

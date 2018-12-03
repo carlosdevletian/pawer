@@ -61,6 +61,10 @@
                                 <label for="name" class="sr-only">Name</label>
                                 <input class="mr-2 form-control bg-light rounded-0 text-center" type="string" value="{{ $article->name }}" name="name" placeholder="Model name">
                             </h4>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="sold_out" value=1 {{ $article->isSoldOut() ? 'checked' : '' }}>
+                                <label class="form-check-label" for="inlineRadio1">Sold Out</label>
+                            </div>
                             <div class="w-100 mt-2 d-flex flex-column">
                                 <label for="sizes[]">Select the sizes</label>
                                 @foreach($sizes as $size)

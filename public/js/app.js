@@ -30701,6 +30701,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -30717,7 +30723,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selectedIndex: 0,
             showAddToCartFields: false,
             cartAddedQuantity: 0,
-            showAddedToCartMessage: false
+            showAddedToCartMessage: false,
+            errors: null
         };
     },
 
@@ -30760,6 +30767,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     vm.showAddedToCartMessage = false;
                 }, 1500);
                 Events.$emit('cart-updated');
+            }).catch(function (_ref2) {
+                var response = _ref2.response;
+
+                if (response.status == 422) {
+                    _this.errors = response.data.errors['item.article_id'];
+                    _this.showAddToCartFields = false;
+                }
             });
         }
     },
@@ -30847,7 +30861,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             selectedItem: {
-                product_id: this.product.id,
+                article_id: this.product.id,
                 quantity: '',
                 size: null
             },
@@ -31210,35 +31224,46 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "d-flex-column" },
-        [
-          !_vm.showAddToCartFields
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn btn-brand mr-2",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.showAddToCartFields = true
-                    }
-                  }
-                },
-                [_vm._v("Add to cart")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.showAddToCartFields
-            ? _c("add-to-cart", {
-                attrs: { product: _vm.product, sizes: _vm.product.sizes },
-                on: { "item-added": _vm.addToCart }
-              })
-            : _vm._e()
-        ],
-        1
-      )
+      _c("div", { staticClass: "d-flex-column" }, [
+        _vm.product.sold_out
+          ? _c("div", { staticClass: "btn btn-sold-out" }, [
+              _vm._v("\n                SOLD OUT\n            ")
+            ])
+          : _c(
+              "div",
+              [
+                _vm.errors
+                  ? _c("span", { staticClass: "d-block" }, [
+                      _vm._v(_vm._s(_vm.errors[0]))
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.showAddToCartFields
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-brand mr-2",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.showAddToCartFields = true
+                          }
+                        }
+                      },
+                      [_vm._v("Add to cart")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.showAddToCartFields
+                  ? _c("add-to-cart", {
+                      attrs: { product: _vm.product, sizes: _vm.product.sizes },
+                      on: { "item-added": _vm.addToCart }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
+      ])
     ])
   ])
 }

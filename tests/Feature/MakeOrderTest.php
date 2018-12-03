@@ -18,20 +18,20 @@ class MakeOrderTest extends TestCase
     {
         Mail::fake();
 
-        $articleA = create('Article');
+        $articleA = create('Article', ['sold_out' => false]);
         $sizeA = create('Size');
 
         $itemA = [
-            'product_id' => $articleA->id,
+            'article_id' => $articleA->id,
             'quantity' => 2,
             'size' => $sizeA->id
         ];
 
-        $articleB = create('Article');
+        $articleB = create('Article', ['sold_out' => false]);
         $sizeB = create('Size');
 
         $itemB = [
-            'product_id' => $articleB->id,
+            'article_id' => $articleB->id,
             'quantity' => 2,
             'size' => $sizeB->id
         ];

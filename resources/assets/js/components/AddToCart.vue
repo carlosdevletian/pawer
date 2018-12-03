@@ -22,7 +22,7 @@
         data() {
             return {
                 selectedItem : {
-                    product_id : this.product.id,
+                    article_id : this.product.id,
                     quantity : '',
                     size : null
                 },

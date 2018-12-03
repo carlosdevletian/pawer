@@ -11,7 +11,7 @@ class CartItem
 
     function __construct($item)
     {
-        $this->article = Article::findOrFail($item['product_id']);
+        $this->article = Article::findOrFail($item['article_id']);
         $this->name = $this->article->name;
         $this->quantity = $item['quantity'];
         $this->size = Size::findOrFail($item['size']);

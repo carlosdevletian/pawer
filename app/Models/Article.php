@@ -18,7 +18,8 @@ class Article extends Model
 
     protected $casts = [
         'secondary_images' => 'array',
-        'featured' => 'boolean'
+        'featured' => 'boolean',
+        'sold_out' => 'boolean'
     ];
 
     const IMAGES_FOLDER = 'articles';
@@ -49,9 +50,29 @@ class Article extends Model
         return $this->featured === true;
     }
 
+    public function isSoldOut()
+    {
+        return $this->sold_out === true;
+    }
+
+    public function isAvailable()
+    {
+        return $this->sold_out === false;
+    }
+
     public function scopeFeatured($query)
     {
         return $query->where('featured', true);
+    }
+
+    public function scopeSoldOut($query)
+    {
+        return $query->where('sold_out', true);
+    }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('sold_out', false);
     }
 
     public function getImagePaths()

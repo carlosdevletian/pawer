@@ -96,7 +96,8 @@ class ArticleController extends Controller
             'sizes.*' => ['exists:sizes,id'],
             'main_image' => ['nullable', 'image', Rule::dimensions()->minWidth(600)],
             'secondary_images' => ['nullable', 'array'],
-            'secondary_images.*' => ['nullable', new ImageFileOrUrl($article)]
+            'secondary_images.*' => ['nullable', new ImageFileOrUrl($article)],
+            'sold_out' => ['nullable'],
         ]);
 
         $article->update([
@@ -110,6 +111,7 @@ class ArticleController extends Controller
             'secondary_images' => $article->updateSecondaryImages(request('secondary_images')),
             'featured' => request('featured'),
             'price' => request('price'),
+            'sold_out' => request('sold_out') === null ? false : true
         ]);
 
         $article->sizes()->sync(Size::find(request('sizes')));

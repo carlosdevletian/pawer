@@ -58,8 +58,14 @@
                 {{ product.description }}
             </p>
             <div class="d-flex-column">
-                <button v-if="!showAddToCartFields" type="button" class="btn btn-brand mr-2" @click="showAddToCartFields = true">Add to cart</button>
-                <add-to-cart :product="product" :sizes="product.sizes" @item-added="addToCart" v-if="showAddToCartFields"></add-to-cart>
+                <div v-if="product.sold_out" class="btn btn-sold-out">
+                    SOLD OUT
+                </div>
+                <div v-else>
+                    <span v-if="errors" class="d-block">{{ errors[0] }}</span>
+                    <button v-if="!showAddToCartFields" type="button" class="btn btn-brand mr-2" @click="showAddToCartFields = true">Add to cart</button>
+                    <add-to-cart :product="product" :sizes="product.sizes" @item-added="addToCart" v-if="showAddToCartFields"></add-to-cart>
+                </div>
             </div>
         </div>
     </div>
@@ -81,7 +87,8 @@
                 selectedIndex : 0,
                 showAddToCartFields : false,
                 cartAddedQuantity: 0,
-                showAddedToCartMessage: false
+                showAddedToCartMessage: false,
+                errors: null
             }
         },
 
@@ -119,6 +126,11 @@
                         vm.showAddedToCartMessage = false
                     }, 1500);
                     Events.$emit('cart-updated')
+                }).catch(({response}) => {
+                    if(response.status == 422) {
+                        this.errors = response.data.errors['item.article_id']
+                        this.showAddToCartFields = false
+                    }
                 })
             }
         },

@@ -9962,6 +9962,14 @@ a:hover {
   font-family: Futura Medium;
 }
 
+.btn-sold-out {
+  border-color: black;
+  color: black;
+  background-color: white;
+  font-family: Futura Medium;
+  cursor: not-allowed !important;
+}
+
 .btn-brand:hover {
   background-color: #ff3323;
   color: white;

@@ -55,6 +55,7 @@ class EditArticleTest extends TestCase
             'color_name' => 'Navy Blue',
             'code' => 'OLDCODE',
             'price' => 0.99,
+            'sold_out' => false,
             'sizes' => $this->getValidSizes(),
             'main_image' => File::image('main_image.png', 1000, 850),
             'secondary_images' => [
@@ -85,6 +86,7 @@ class EditArticleTest extends TestCase
             'color_name' => 'Navy Blue',
             'code' => 'NEWCODE',
             'price' => 0.55,
+            'sold_out' => true,
             'sizes' => [create('Size', ['name' => 'unique-size'])->id],
             'main_image' => $newMainImage = File::image('main_image.png', 700, 850),
             'secondary_images' => [
@@ -96,12 +98,14 @@ class EditArticleTest extends TestCase
 
         tap($article->fresh(), function($article) use($newProduct, $newMainImage, $newS1, $newS2) {
             $this->assertTrue($article->product->is($newProduct));
+            $this->assertTrue($article->product->is($newProduct));
             $this->assertEquals('New name', $article->name);
             $this->assertEquals('New description', $article->description);
             $this->assertEquals('#000000', $article->color);
             $this->assertEquals('NEWCODE', $article->code);
             $this->assertEquals('unique-size', $article->sizes->first()->name);
             $this->assertEquals(0.55, $article->price);
+            $this->assertTrue($article->sold_out);
             $this->assertFileEquals(
                 $newMainImage->getPathName(),
                 Storage::path($article->main_image_path)
@@ -583,5 +587,31 @@ class EditArticleTest extends TestCase
 
         $response->assertSessionHasErrors('price');
         $this->assertEquals(0.75, $article->fresh()->price);
+    }
+
+    /** @test*/
+    public function an_article_can_be_markes_as_sold_out()
+    {
+        $article = create('Article', ['sold_out' => false]);
+        $this->assertFalse($article->isSoldOut());
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'sold_out' => 1
+        ]));
+
+        $this->assertTrue($article->fresh()->isSoldOut());
+    }
+
+    /** @test*/
+    public function an_article_can_be_markes_as_available()
+    {
+        $article = create('Article', ['sold_out' => true]);
+        $this->assertTrue($article->isSoldOut());
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'sold_out' => null
+        ]));
+
+        $this->assertTrue($article->fresh()->isAvailable());
     }
 }

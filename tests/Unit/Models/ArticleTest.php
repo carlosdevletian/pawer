@@ -36,6 +36,46 @@ class ArticleTest extends TestCase
     }
 
     /** @test*/
+    public function an_article_can_be_marked_as_sold_out()
+    {
+        $article = create('Article', ['sold_out' => false]);
+
+        $this->assertFalse($article->isSoldOut());
+        $this->assertTrue($article->isAvailable());
+
+        $article->update(['sold_out' => true]);
+
+        $this->assertTrue($article->isSoldOut());
+        $this->assertFalse($article->isAvailable());
+    }
+
+    /** @test*/
+    public function sold_out_articles_can_be_queried()
+    {
+        $soldOutArticles = create('Article', ['sold_out' => true], 2);
+        $availableArticle = create('Article', ['sold_out' => false]);
+
+        $soldOut = Article::soldOut();
+
+        $this->assertCount(2, $soldOut->get());
+        $this->assertTrue($soldOut->get()[0]->is($soldOutArticles[0]));
+        $this->assertTrue($soldOut->get()[1]->is($soldOutArticles[1]));
+    }
+
+    /** @test*/
+    public function available_articles_can_be_queried()
+    {
+        $soldOutArticles = create('Article', ['sold_out' => true]);
+        $availableArticles = create('Article', ['sold_out' => false], 2);
+
+        $available = Article::available();
+
+        $this->assertCount(2, $available->get());
+        $this->assertTrue($available->get()[0]->is($availableArticles[0]));
+        $this->assertTrue($available->get()[1]->is($availableArticles[1]));
+    }
+
+    /** @test*/
     public function can_get_all_image_paths_for_the_article()
     {
         $article = create('Article', [
