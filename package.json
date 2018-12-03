@@ -20,6 +20,7 @@
         "bootstrap": "^4.0.0-beta.3",
         "jquery": "^3.2.1",
         "popper.js": "^1.13.0",
-        "vue-carousel-3d": "^0.1.19"
+        "vue-carousel-3d": "^0.1.19",
+        "vue-smooth-reflow": "^0.1.12"
     }
 }

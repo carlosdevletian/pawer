@@ -1,7 +1,7 @@
 <template>
     <transition name="modal">
         <div class="Modal__background" @click="$emit('close')" :style="addOverflow">
-            <div class="Modal" :class="childClassObject" @click.stop>
+            <div class="Modal" :class="childClassObject" @click.stop ref="Modal">
                 <span class="Modal__close" @click="$emit('close')">&#10005;</span>
                 <div class="Modal__header">
                     <slot name="header"></slot>
@@ -21,7 +21,9 @@
 </template>
 
 <script>
+    import smoothReflow from 'vue-smooth-reflow'
     export default {
+        mixins: [smoothReflow],
         props: {
             childClassObject: {
                 type: Object,
@@ -44,6 +46,10 @@
             }
         },
         mounted: function () {
+            this.$smoothReflow({
+                el : this.$refs.Modal
+            })
+
             document.addEventListener("keydown", (e) => {
               if (e.keyCode == 27) {
                     this.$emit('close');
