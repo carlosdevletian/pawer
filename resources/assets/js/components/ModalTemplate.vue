@@ -45,7 +45,7 @@
                 }
             }
         },
-        mounted: function () {
+        mounted() {
             this.$smoothReflow({
                 el : this.$refs.Modal
             })
