@@ -3,7 +3,7 @@
         <div v-show="errors.quantity" class="text-red text-center" v-text="errors.quantity"></div>
         <div v-show="errors.selectedSize" class="text-red text-center" v-text="errors.selectedSize"></div>
         <div class="form-group">
-            <input class="form-control" type="number" v-model="selectedItem.quantity" placeholder="How many do you want to add?" v-focus>
+            <input class="form-control" type="number" v-model="selectedItem.quantity" placeholder="How many do you want to add?" min=0 v-focus>
         </div>
         <div class="form-group">
             <select v-model="selectedItem.size" class="form-control mb-2">

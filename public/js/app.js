@@ -30955,7 +30955,8 @@ var render = function() {
           staticClass: "form-control",
           attrs: {
             type: "number",
-            placeholder: "How many do you want to add?"
+            placeholder: "How many do you want to add?",
+            min: "0"
           },
           domProps: { value: _vm.selectedItem.quantity },
           on: {
