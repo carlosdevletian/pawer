@@ -31,7 +31,7 @@ class SendOrderMail extends Mailable
      */
     public function build()
     {
-        return $this->from('pawer@example.com')
+        return $this->from('orders@paw3r.com')
                     ->replyTo($this->emailAddress)
                     ->subject("New Order by {$this->emailAddress}")
                     ->view('emails.send-order');
