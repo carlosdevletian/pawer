@@ -16,6 +16,12 @@ window.Events = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.directive('focus', {
+    inserted: function (el) {
+        el.focus()
+    }
+})
+
 Vue.component('product-carousel', require('./components/ProductCarousel.vue'));
 Vue.component('product', require('./components/Product.vue'));
 Vue.component('product-lookbook', require('./components/ProductLookbook.vue'));

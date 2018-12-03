@@ -45,12 +45,14 @@
                     </div>
                     <div class="d-flex justify-content-between">
                         <button  v-if="!showEmailField" type="button" class="btn btn-brand rounded-0 ml-4" @click="showEmailField = true">MAKE ORDER</button>
-                        <form @submit.prevent="sendOrderEmail" v-else class="d-flex">
-                            <div class="ml-4 mb-0">
-                                <input class="h-100 border border-white px-4" type="email" v-model="email" required placeholder="Your email here" autofocus></input>
-                            </div>
-                            <button type="submit" class="btn btn-brand rounded-0 border-none">CONFIRM</button>
-                        </form>
+                        <transition name="cubic">
+                            <form @submit.prevent="sendOrderEmail" v-if="showEmailField" class="d-flex cubic">
+                                <div class="ml-4 mb-0">
+                                    <input class="h-100 border border-white px-4" type="email" v-model="email" required placeholder="Your email here" v-focus></input>
+                                </div>
+                                <button type="submit" class="btn btn-brand rounded-0 border-none">CONFIRM</button>
+                            </form>
+                        </transition>
                         <span class="text-2xl mr-4"><span class="text-base">Total:</span> ${{ totalAmount }}</span>
                     </div>
                 </div>
@@ -134,3 +136,14 @@
         }
     }
 </script>
+
+<style>
+    .cubic {
+        transition: all 0.6s cubic-bezier(0.23, 1.85, 0.32, 1);
+    }
+    .cubic-enter {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+</style>
