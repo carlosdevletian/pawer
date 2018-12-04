@@ -1,27 +1,26 @@
 <template>
     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-        <a :href="linkTo" v-if="linkTo && active" :title="selectedArticle.name">
-            <loadable-image
+        <div class="position-relative">
+            <a v-if="linkTo && active" :href="linkTo"  :title="selectedArticle.name" >
+                <loadable-image
+                    skeleton-styles='{"width": "250px", "height": "250px"}'
+                    image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
+                    :image-source="imagePath"
+                    image-classes="fit-to-parent"
+                    :image-alt="selectedArticle.name"
+                ></loadable-image>
+            </a>
+            <loadable-image v-else
                 skeleton-styles='{"width": "250px", "height": "250px"}'
                 image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
                 :image-source="imagePath"
                 image-classes="fit-to-parent"
                 :image-alt="selectedArticle.name"
             ></loadable-image>
-        </a>
-        <loadable-image
-            v-else
-            skeleton-styles='{"width": "250px", "height": "250px"}'
-            image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
-            :image-source="imagePath"
-            image-classes="fit-to-parent"
-            :image-alt="selectedArticle.name"
-        ></loadable-image>
+            <p class="position-absolute" style="right:0; bottom:-40px">${{ selectedArticle.price }}</p>
+        </div>
         <div style="margin-top: 0; width: 47%" class="d-flex-column" v-if="active">
-            <div class="position-relative">
-                <p class="position-absolute" style="right:-65px; top:0">${{ selectedArticle.price }}</p>
-                <p class="m-0 p-0 futura-medium">{{ selectedArticle.name }}</p>
-            </div>
+            <p class="m-0 p-0 futura-medium">{{ selectedArticle.name }}</p>
             <hr class="m-0 mb-2 p-0">
             <div class="d-flex justify-content-end">
                 <a v-for="article in allArticles"

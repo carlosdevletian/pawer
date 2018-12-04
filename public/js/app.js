@@ -30351,7 +30351,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['dataProduct', 'dataActive', 'linkTo'],
@@ -30423,12 +30422,32 @@ var render = function() {
         "d-flex flex-column justify-content-center align-items-center mb-3"
     },
     [
-      _vm.linkTo && _vm.active
-        ? _c(
-            "a",
-            { attrs: { href: _vm.linkTo, title: _vm.selectedArticle.name } },
-            [
-              _c("loadable-image", {
+      _c(
+        "div",
+        { staticClass: "position-relative" },
+        [
+          _vm.linkTo && _vm.active
+            ? _c(
+                "a",
+                {
+                  attrs: { href: _vm.linkTo, title: _vm.selectedArticle.name }
+                },
+                [
+                  _c("loadable-image", {
+                    attrs: {
+                      "skeleton-styles":
+                        '{"width": "250px", "height": "250px"}',
+                      "image-styles":
+                        '{"maxWidth": "250px", "maxHeight": "250px"}',
+                      "image-source": _vm.imagePath,
+                      "image-classes": "fit-to-parent",
+                      "image-alt": _vm.selectedArticle.name
+                    }
+                  })
+                ],
+                1
+              )
+            : _c("loadable-image", {
                 attrs: {
                   "skeleton-styles": '{"width": "250px", "height": "250px"}',
                   "image-styles": '{"maxWidth": "250px", "maxHeight": "250px"}',
@@ -30436,19 +30455,19 @@ var render = function() {
                   "image-classes": "fit-to-parent",
                   "image-alt": _vm.selectedArticle.name
                 }
-              })
-            ],
-            1
+              }),
+          _vm._v(" "),
+          _c(
+            "p",
+            {
+              staticClass: "position-absolute",
+              staticStyle: { right: "0", bottom: "-40px" }
+            },
+            [_vm._v("$" + _vm._s(_vm.selectedArticle.price))]
           )
-        : _c("loadable-image", {
-            attrs: {
-              "skeleton-styles": '{"width": "250px", "height": "250px"}',
-              "image-styles": '{"maxWidth": "250px", "maxHeight": "250px"}',
-              "image-source": _vm.imagePath,
-              "image-classes": "fit-to-parent",
-              "image-alt": _vm.selectedArticle.name
-            }
-          }),
+        ],
+        1
+      ),
       _vm._v(" "),
       _vm.active
         ? _c(
@@ -30458,19 +30477,8 @@ var render = function() {
               staticStyle: { "margin-top": "0", width: "47%" }
             },
             [
-              _c("div", { staticClass: "position-relative" }, [
-                _c(
-                  "p",
-                  {
-                    staticClass: "position-absolute",
-                    staticStyle: { right: "-65px", top: "0" }
-                  },
-                  [_vm._v("$" + _vm._s(_vm.selectedArticle.price))]
-                ),
-                _vm._v(" "),
-                _c("p", { staticClass: "m-0 p-0 futura-medium" }, [
-                  _vm._v(_vm._s(_vm.selectedArticle.name))
-                ])
+              _c("p", { staticClass: "m-0 p-0 futura-medium" }, [
+                _vm._v(_vm._s(_vm.selectedArticle.name))
               ]),
               _vm._v(" "),
               _c("hr", { staticClass: "m-0 mb-2 p-0" }),
@@ -30502,8 +30510,7 @@ var render = function() {
             ]
           )
         : _vm._e()
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []
