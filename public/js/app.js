@@ -30349,28 +30349,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['dataProduct', 'dataActive', 'linkTo'],
 
     data: function data() {
         return {
-            product: '',
-            imagePath: '',
-            allProducts: '',
-            associated: '',
-            imageLoaded: false
+            allArticles: '',
+            imageLoaded: false,
+            selectedArticle: null
         };
     },
     created: function created() {
-        this.product = this.dataProduct[0];
-        this.imagePath = this.product.main_image_path, this.allProducts = Array.from(this.dataProduct);
+        this.allArticles = Array.from(this.dataProduct);
+        this.selectedArticle = this.dataProduct[0];
     },
 
 
     methods: {
         changeImage: function changeImage(path) {
             this.imagePath = path;
+        },
+        changeArticle: function changeArticle(id) {
+            var selected = null;
+            this.allArticles.forEach(function (article) {
+                if (article.id === id) {
+                    selected = article;
+                }
+            });
+            this.selectedArticle = selected;
         }
     },
 
@@ -30380,6 +30390,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return this.$parent.isCurrent;
             }
             return this.dataActive;
+        },
+        imagePath: function imagePath() {
+            return this.selectedArticle.main_image_path;
         },
         imageHasLoaded: function imageHasLoaded() {
             var _this = this;
@@ -30391,16 +30404,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             if (image.complete) image.onload.call(image);
             return this.imageLoaded;
-        },
-        allColors: function allColors() {
-            var colors = {};
-            this.allProducts.forEach(function (product, index) {
-                return colors[index] = {
-                    'color': product.color,
-                    'image': product.main_image_path
-                };
-            });
-            return colors;
         }
     }
 });
@@ -30423,7 +30426,7 @@ var render = function() {
       _vm.linkTo && _vm.active
         ? _c(
             "a",
-            { attrs: { href: _vm.linkTo, title: _vm.product.name } },
+            { attrs: { href: _vm.linkTo, title: _vm.selectedArticle.name } },
             [
               _c("loadable-image", {
                 attrs: {
@@ -30431,7 +30434,7 @@ var render = function() {
                   "image-styles": '{"maxWidth": "250px", "maxHeight": "250px"}',
                   "image-source": _vm.imagePath,
                   "image-classes": "fit-to-parent",
-                  "image-alt": _vm.product.name
+                  "image-alt": _vm.selectedArticle.name
                 }
               })
             ],
@@ -30443,7 +30446,7 @@ var render = function() {
               "image-styles": '{"maxWidth": "250px", "maxHeight": "250px"}',
               "image-source": _vm.imagePath,
               "image-classes": "fit-to-parent",
-              "image-alt": _vm.product.name
+              "image-alt": _vm.selectedArticle.name
             }
           }),
       _vm._v(" "),
@@ -30455,8 +30458,19 @@ var render = function() {
               staticStyle: { "margin-top": "0", width: "47%" }
             },
             [
-              _c("p", { staticClass: "m-0 p-0 futura-medium" }, [
-                _vm._v(_vm._s(_vm.product.name))
+              _c("div", { staticClass: "position-relative" }, [
+                _c(
+                  "p",
+                  {
+                    staticClass: "position-absolute",
+                    staticStyle: { right: "-65px", top: "0" }
+                  },
+                  [_vm._v("$" + _vm._s(_vm.selectedArticle.price))]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "m-0 p-0 futura-medium" }, [
+                  _vm._v(_vm._s(_vm.selectedArticle.name))
+                ])
               ]),
               _vm._v(" "),
               _c("hr", { staticClass: "m-0 mb-2 p-0" }),
@@ -30464,7 +30478,7 @@ var render = function() {
               _c(
                 "div",
                 { staticClass: "d-flex justify-content-end" },
-                _vm._l(_vm.allColors, function(color) {
+                _vm._l(_vm.allArticles, function(article) {
                   return _c("a", {
                     staticClass: "clickable mr-1",
                     staticStyle: {
@@ -30472,14 +30486,14 @@ var render = function() {
                       height: "10px",
                       border: "black 1px solid"
                     },
-                    style: "background-color : " + color.color,
+                    style: "background-color : " + article.color,
                     attrs: {
                       role: "button",
-                      title: _vm.product.name + "-" + color.color
+                      title: article.name + "-" + article.color
                     },
                     on: {
                       click: function($event) {
-                        _vm.changeImage(color.image)
+                        _vm.changeArticle(article.id)
                       }
                     }
                   })

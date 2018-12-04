@@ -124,7 +124,7 @@ class Article extends Model
 
     public function scopeByFamily($query)
     {
-        return $query->select('name', 'color', 'main_image_path', 'slug')
+        return $query->select('id', 'name', 'color', 'main_image_path', 'slug', 'price')
                     ->get()
                     ->groupBy('name');
     }

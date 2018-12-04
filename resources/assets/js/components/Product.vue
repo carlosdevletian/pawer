@@ -1,12 +1,12 @@
 <template>
     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
-        <a :href="linkTo" v-if="linkTo && active" :title="product.name">
+        <a :href="linkTo" v-if="linkTo && active" :title="selectedArticle.name">
             <loadable-image
                 skeleton-styles='{"width": "250px", "height": "250px"}'
                 image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
                 :image-source="imagePath"
                 image-classes="fit-to-parent"
-                :image-alt="product.name"
+                :image-alt="selectedArticle.name"
             ></loadable-image>
         </a>
         <loadable-image
@@ -15,19 +15,22 @@
             image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
             :image-source="imagePath"
             image-classes="fit-to-parent"
-            :image-alt="product.name"
+            :image-alt="selectedArticle.name"
         ></loadable-image>
         <div style="margin-top: 0; width: 47%" class="d-flex-column" v-if="active">
-            <p class="m-0 p-0 futura-medium">{{ product.name }}</p>
+            <div class="position-relative">
+                <p class="position-absolute" style="right:-65px; top:0">${{ selectedArticle.price }}</p>
+                <p class="m-0 p-0 futura-medium">{{ selectedArticle.name }}</p>
+            </div>
             <hr class="m-0 mb-2 p-0">
             <div class="d-flex justify-content-end">
-                <a v-for="color in allColors"
+                <a v-for="article in allArticles"
                     role="button"
                     class="clickable mr-1"
                     style="width: 10px; height: 10px; border: black 1px solid"
-                    :style="'background-color : ' + color.color"
-                    @click="changeImage(color.image)"
-                    :title="product.name + '-' + color.color"></a>
+                    :style="'background-color : ' + article.color"
+                    @click="changeArticle(article.id)"
+                    :title="article.name + '-' + article.color"></a>
             </div>
         </div>
     </div>
@@ -39,23 +42,29 @@
 
         data() {
             return {
-                product : '',
-                imagePath: '',
-                allProducts: '',
-                associated: '',
-                imageLoaded : false
+                allArticles: '',
+                imageLoaded : false,
+                selectedArticle : null
             }
         },
 
         created() {
-            this.product = this.dataProduct[0]
-            this.imagePath = this.product.main_image_path,
-            this.allProducts = Array.from(this.dataProduct);
+            this.allArticles = Array.from(this.dataProduct);
+            this.selectedArticle = this.dataProduct[0]
         },
 
         methods: {
             changeImage(path) {
                 this.imagePath = path
+            },
+            changeArticle(id) {
+                let selected = null
+                this.allArticles.forEach((article) => {
+                    if(article.id === id) {
+                        selected = article
+                    }
+                })
+                this.selectedArticle = selected
             }
         },
 
@@ -67,6 +76,10 @@
                 return this.dataActive
             },
 
+            imagePath() {
+                return this.selectedArticle.main_image_path
+            },
+
             imageHasLoaded() {
                 var image = new Image()
                 image.src = this.imagePath
@@ -74,17 +87,6 @@
                 if (image.complete) image.onload.call(image)
                 return this.imageLoaded
             },
-
-            allColors() {
-                let colors = {};
-                this.allProducts.forEach((product, index) =>
-                    colors[index] = {
-                        'color' : product.color,
-                        'image' : product.main_image_path
-                    }
-                );
-                return colors;
-            }
         }
     }
 </script>
