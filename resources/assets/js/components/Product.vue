@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-column justify-content-center align-items-center mb-3">
         <div class="position-relative">
-            <a v-if="linkTo && active" :href="linkTo"  :title="selectedArticle.name" >
+            <a v-if="withLink && active" :href="selectedArticle.links.show"  :title="selectedArticle.name">
                 <loadable-image
                     skeleton-styles='{"width": "250px", "height": "250px"}'
                     image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
@@ -17,7 +17,7 @@
                 image-classes="fit-to-parent"
                 :image-alt="selectedArticle.name"
             ></loadable-image>
-            <p class="position-absolute" style="right:0; bottom:-40px">${{ selectedArticle.price }}</p>
+            <p class="position-absolute" style="right:0; bottom:-40px" v-if="active">${{ selectedArticle.price }}</p>
         </div>
         <div style="margin-top: 0; width: 47%" class="d-flex-column" v-if="active">
             <p class="m-0 p-0 futura-medium">{{ selectedArticle.name }}</p>
@@ -37,7 +37,7 @@
 
 <script>
     export default {
-        props: ['dataProduct', 'dataActive', 'linkTo'],
+        props: ['dataProduct', 'dataActive', 'withLink'],
 
         data() {
             return {

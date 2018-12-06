@@ -30217,7 +30217,7 @@ var render = function() {
                 attrs: {
                   "data-product": product,
                   "data-active": "parent",
-                  "link-to": product[0].links.show
+                  "with-link": true
                 }
               })
             ],
@@ -30353,7 +30353,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['dataProduct', 'dataActive', 'linkTo'],
+    props: ['dataProduct', 'dataActive', 'withLink'],
 
     data: function data() {
         return {
@@ -30426,11 +30426,14 @@ var render = function() {
         "div",
         { staticClass: "position-relative" },
         [
-          _vm.linkTo && _vm.active
+          _vm.withLink && _vm.active
             ? _c(
                 "a",
                 {
-                  attrs: { href: _vm.linkTo, title: _vm.selectedArticle.name }
+                  attrs: {
+                    href: _vm.selectedArticle.links.show,
+                    title: _vm.selectedArticle.name
+                  }
                 },
                 [
                   _c("loadable-image", {
@@ -30457,14 +30460,16 @@ var render = function() {
                 }
               }),
           _vm._v(" "),
-          _c(
-            "p",
-            {
-              staticClass: "position-absolute",
-              staticStyle: { right: "0", bottom: "-40px" }
-            },
-            [_vm._v("$" + _vm._s(_vm.selectedArticle.price))]
-          )
+          _vm.active
+            ? _c(
+                "p",
+                {
+                  staticClass: "position-absolute",
+                  staticStyle: { right: "0", bottom: "-40px" }
+                },
+                [_vm._v("$" + _vm._s(_vm.selectedArticle.price))]
+              )
+            : _vm._e()
         ],
         1
       ),
