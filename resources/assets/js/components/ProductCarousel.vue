@@ -1,5 +1,8 @@
 <template>
-    <div class="row" style="position: relative">
+    <div class="row position-relative">
+        <h2 class="position-absolute w-100 text-center mt-2 mb-2 text-brand-primary bg-white" style="z-index:1">
+            FEATURED PRODUCTS
+        </h2>
         <carousel-3d width="250" height="300" space=300 perspective=0 ref="carousel">
             <slide v-for="(product, index) in products"
                     :index="parseInt(index)"

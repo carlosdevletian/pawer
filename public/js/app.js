@@ -30149,6 +30149,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -30195,8 +30198,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row", staticStyle: { position: "relative" } },
+    { staticClass: "row position-relative" },
     [
+      _c(
+        "h2",
+        {
+          staticClass:
+            "position-absolute w-100 text-center mt-2 mb-2 text-brand-primary bg-white",
+          staticStyle: { "z-index": "1" }
+        },
+        [_vm._v("\n        FEATURED PRODUCTS\n    ")]
+      ),
+      _vm._v(" "),
       _c(
         "carousel-3d",
         {
@@ -30483,7 +30496,7 @@ var render = function() {
             },
             [
               _c("p", { staticClass: "m-0 p-0 futura-medium text-truncate" }, [
-                _vm._v("Exquisitos Athletic")
+                _vm._v(_vm._s(_vm.selectedArticle.name))
               ]),
               _vm._v(" "),
               _c("hr", { staticClass: "m-0 mb-2 p-0" }),
