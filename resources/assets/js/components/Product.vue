@@ -20,7 +20,7 @@
             <p class="position-absolute" style="right:0; bottom:-40px" v-if="active">${{ selectedArticle.price }}</p>
         </div>
         <div style="margin-top: 0; width: 47%" class="d-flex-column" v-if="active">
-            <p class="m-0 p-0 futura-medium">{{ selectedArticle.name }}</p>
+            <p class="m-0 p-0 futura-medium text-truncate">Exquisitos Athletic</p>
             <hr class="m-0 mb-2 p-0">
             <div class="d-flex justify-content-end">
                 <a v-for="article in allArticles"

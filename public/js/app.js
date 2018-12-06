@@ -30482,8 +30482,8 @@ var render = function() {
               staticStyle: { "margin-top": "0", width: "47%" }
             },
             [
-              _c("p", { staticClass: "m-0 p-0 futura-medium" }, [
-                _vm._v(_vm._s(_vm.selectedArticle.name))
+              _c("p", { staticClass: "m-0 p-0 futura-medium text-truncate" }, [
+                _vm._v("Exquisitos Athletic")
               ]),
               _vm._v(" "),
               _c("hr", { staticClass: "m-0 mb-2 p-0" }),
