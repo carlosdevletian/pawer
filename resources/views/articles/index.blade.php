@@ -24,7 +24,7 @@
         @component('articles.thumbnail')
             <product :data-product="{{ $article }}"
                     :data-active="true"
-                    link-to="{{ route('articles.show', $article->first()->slug) }}"></product>
+                    :with-link="true"></product>
         @endcomponent
     @endforeach
     </div>
