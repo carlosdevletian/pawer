@@ -21,7 +21,7 @@
             </div>
             <div v-if="! sendingEmail && ! orderSent">
                 <div v-if="items.length > 0">
-                    <div v-for="item in items" class="bg-white text-black m-4 p-4 d-flex flex-column flex-md-row position-relative">
+                    <div v-for="item in items" class="bg-white text-black mb-2 m-sm-4 p-2 p-sm-4 d-flex flex-column flex-md-row position-relative">
                         <div class="d-flex flex-column justify-content-center align-items-center">
                             <loadable-image
                                 skeleton-styles='{"width": "150px", "height": "150px"}'
@@ -43,17 +43,20 @@
                         </div>
                         <div class="position-absolute right-0 d-none d-md-block text-2xl" style="bottom: 50%; left: 80%">${{ item.total_price }}</div>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <button  v-if="!showEmailField" type="button" class="btn btn-brand rounded-0 ml-4" @click="showEmailField = true">MAKE ORDER</button>
+                    <div class="d-block d-md-flex justify-content-between text-center">
+                        <div class="text-2xl mr-md-4 order-md-2"><span class="text-base">Total:</span> ${{ totalAmount }}</div>
+                        <button  v-if="!showEmailField" type="button" class="btn btn-brand rounded-0 ml-md-4 order-md-1" @click="showEmailField = true">MAKE ORDER</button>
                         <transition name="cubic">
-                            <form @submit.prevent="sendOrderEmail" v-if="showEmailField" class="d-flex cubic">
-                                <div class="ml-4 mb-0">
-                                    <input class="h-100 border border-white px-4" type="email" v-model="email" required placeholder="Your email here" v-focus></input>
+                            <form @submit.prevent="sendOrderEmail" v-if="showEmailField" class="d-flex cubic order-md-1 mw-100 justify-content-center">
+                                <div class="ml-md-4 mb-0">
+                                    <input class="h-100 border border-white px-2 px-md-4 py-2" type="email" v-model="email" required placeholder="Your email here" v-focus></input>
                                 </div>
-                                <button type="submit" class="btn btn-brand rounded-0 border-none">CONFIRM</button>
+                                <button type="submit" class="btn btn-brand rounded-0 d-none d-sm-block">SEND</button>
+                                <button type="submit" class="btn btn-brand rounded-0 d-flex justify-content-center align-items-center d-sm-none m-none">
+                                    <svg class="fill-current rounded-circle" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 0l20 10L0 20V0zm0 8v4l10-2L0 8z"/></svg>
+                                </button>
                             </form>
                         </transition>
-                        <span class="text-2xl mr-4"><span class="text-base">Total:</span> ${{ totalAmount }}</span>
                     </div>
                 </div>
                 <div v-if="! items.length > 0" class="text-center">

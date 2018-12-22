@@ -32745,6 +32745,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -33168,7 +33171,7 @@ var render = function() {
                               "div",
                               {
                                 staticClass:
-                                  "bg-white text-black m-4 p-4 d-flex flex-column flex-md-row position-relative"
+                                  "bg-white text-black mb-2 m-sm-4 p-2 p-sm-4 d-flex flex-column flex-md-row position-relative"
                               },
                               [
                                 _c(
@@ -33322,14 +33325,28 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "d-flex justify-content-between" },
+                            {
+                              staticClass:
+                                "d-block d-md-flex justify-content-between text-center"
+                            },
                             [
+                              _c(
+                                "div",
+                                { staticClass: "text-2xl mr-md-4 order-md-2" },
+                                [
+                                  _c("span", { staticClass: "text-base" }, [
+                                    _vm._v("Total:")
+                                  ]),
+                                  _vm._v(" $" + _vm._s(_vm.totalAmount))
+                                ]
+                              ),
+                              _vm._v(" "),
                               !_vm.showEmailField
                                 ? _c(
                                     "button",
                                     {
                                       staticClass:
-                                        "btn btn-brand rounded-0 ml-4",
+                                        "btn btn-brand rounded-0 ml-md-4 order-md-1",
                                       attrs: { type: "button" },
                                       on: {
                                         click: function($event) {
@@ -33346,7 +33363,8 @@ var render = function() {
                                   ? _c(
                                       "form",
                                       {
-                                        staticClass: "d-flex cubic",
+                                        staticClass:
+                                          "d-flex cubic order-md-1 mw-100 justify-content-center",
                                         on: {
                                           submit: function($event) {
                                             $event.preventDefault()
@@ -33357,7 +33375,7 @@ var render = function() {
                                       [
                                         _c(
                                           "div",
-                                          { staticClass: "ml-4 mb-0" },
+                                          { staticClass: "ml-md-4 mb-0" },
                                           [
                                             _c("input", {
                                               directives: [
@@ -33373,7 +33391,7 @@ var render = function() {
                                                 }
                                               ],
                                               staticClass:
-                                                "h-100 border border-white px-4",
+                                                "h-100 border border-white px-2 px-md-4 py-2",
                                               attrs: {
                                                 type: "email",
                                                 required: "",
@@ -33397,21 +33415,47 @@ var render = function() {
                                           "button",
                                           {
                                             staticClass:
-                                              "btn btn-brand rounded-0 border-none",
+                                              "btn btn-brand rounded-0 d-none d-sm-block",
                                             attrs: { type: "submit" }
                                           },
-                                          [_vm._v("CONFIRM")]
+                                          [_vm._v("SEND")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-brand rounded-0 d-flex justify-content-center align-items-center d-sm-none m-none",
+                                            attrs: { type: "submit" }
+                                          },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                staticClass:
+                                                  "fill-current rounded-circle",
+                                                attrs: {
+                                                  width: "20",
+                                                  height: "20",
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
+                                                  viewBox: "0 0 20 20"
+                                                }
+                                              },
+                                              [
+                                                _c("path", {
+                                                  attrs: {
+                                                    d:
+                                                      "M0 0l20 10L0 20V0zm0 8v4l10-2L0 8z"
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
                                         )
                                       ]
                                     )
                                   : _vm._e()
-                              ]),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "text-2xl mr-4" }, [
-                                _c("span", { staticClass: "text-base" }, [
-                                  _vm._v("Total:")
-                                ]),
-                                _vm._v(" $" + _vm._s(_vm.totalAmount))
                               ])
                             ],
                             1
