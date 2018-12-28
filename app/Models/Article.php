@@ -19,7 +19,8 @@ class Article extends Model
     protected $casts = [
         'secondary_images' => 'array',
         'featured' => 'boolean',
-        'sold_out' => 'boolean'
+        'sold_out' => 'boolean',
+        'on_sale' => 'boolean',
     ];
 
     const IMAGES_FOLDER = 'articles';
@@ -55,6 +56,11 @@ class Article extends Model
         return $this->sold_out === true;
     }
 
+    public function isOnSale()
+    {
+        return $this->on_sale === true;
+    }
+
     public function isAvailable()
     {
         return $this->sold_out === false;
@@ -73,6 +79,11 @@ class Article extends Model
     public function scopeAvailable($query)
     {
         return $query->where('sold_out', false);
+    }
+
+    public function scopeOnSale($query)
+    {
+        return $query->where('on_sale', true);
     }
 
     public function getImagePaths()
@@ -124,7 +135,7 @@ class Article extends Model
 
     public function scopeByFamily($query)
     {
-        return $query->select('id', 'name', 'color', 'main_image_path', 'slug', 'price')
+        return $query->select('id', 'name', 'color', 'main_image_path', 'slug', 'price', 'on_sale', 'sale_price')
                     ->get()
                     ->groupBy('name');
     }

@@ -50,6 +50,18 @@ class ArticleTest extends TestCase
     }
 
     /** @test*/
+    public function an_article_can_be_marked_as_on_sale()
+    {
+        $article = create('Article', ['on_sale' => false]);
+
+        $this->assertFalse($article->isOnSale());
+
+        $article->update(['on_sale' => true]);
+
+        $this->assertTrue($article->isOnSale());
+    }
+
+    /** @test*/
     public function sold_out_articles_can_be_queried()
     {
         $soldOutArticles = create('Article', ['sold_out' => true], 2);
@@ -73,6 +85,19 @@ class ArticleTest extends TestCase
         $this->assertCount(2, $available->get());
         $this->assertTrue($available->get()[0]->is($availableArticles[0]));
         $this->assertTrue($available->get()[1]->is($availableArticles[1]));
+    }
+
+    /** @test*/
+    public function articles_on_sale_can_be_queried()
+    {
+        $onSaleArticles = create('Article', ['on_sale' => true], 2);
+        $regularArticles = create('Article', ['on_sale' => false], 1);
+
+        $onSale = Article::onSale();
+
+        $this->assertCount(2, $onSale->get());
+        $this->assertTrue($onSale->get()[0]->is($onSaleArticles[0]));
+        $this->assertTrue($onSale->get()[1]->is($onSaleArticles[1]));
     }
 
     /** @test*/

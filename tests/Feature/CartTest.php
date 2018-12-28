@@ -338,4 +338,48 @@ class CartTest extends TestCase
 
         $this->assertCount(0, $response->getData()->items);
     }
+
+    /** @test*/
+    public function if_an_item_is_on_sale_it_takes_into_account_the_sale_price()
+    {
+
+        $articleA = create('Article', ['price' => 10.99, 'on_sale' => true, 'sale_price' => 5.99]);
+        $sizeA = create('Size');
+
+        $item = [
+            'article_id' => $articleA->id,
+            'quantity' => 2,
+            'size' => $sizeA->id
+        ];
+
+        $response = $this->post(route('cart-items.store'), [
+            'item' => $item
+        ]);
+
+        $response->assertSuccessful();
+        $this->assertEquals(Cart::items()->first(), CartItem::new($item));
+        $this->assertEquals(Cart::items()->first()->total_price, 11.98 );
+    }
+
+    /** @test*/
+    public function if_an_item_is_not_on_sale_it_takes_into_account_the_regular_price()
+    {
+
+        $articleA = create('Article', ['price' => 10.99, 'on_sale' => false, 'sale_price' => 5.99]);
+        $sizeA = create('Size');
+
+        $item = [
+            'article_id' => $articleA->id,
+            'quantity' => 2,
+            'size' => $sizeA->id
+        ];
+
+        $response = $this->post(route('cart-items.store'), [
+            'item' => $item
+        ]);
+
+        $response->assertSuccessful();
+        $this->assertEquals(Cart::items()->first(), CartItem::new($item));
+        $this->assertEquals(Cart::items()->first()->total_price, 21.98 );
+    }
 }

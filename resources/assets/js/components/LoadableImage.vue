@@ -2,6 +2,7 @@
     <div>
         <div v-if="! imageHasLoaded" class="animated-background" :style="skeletonStyle"></div>
         <img v-else :src="imageSource" :class="imageClasses" :style="imageStyle" :alt="imageAlt">
+        <slot></slot>
     </div>
 </template>
 

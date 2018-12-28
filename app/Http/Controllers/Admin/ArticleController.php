@@ -98,6 +98,10 @@ class ArticleController extends Controller
             'secondary_images' => ['nullable', 'array'],
             'secondary_images.*' => ['nullable', new ImageFileOrUrl($article)],
             'sold_out' => ['nullable'],
+            'on_sale' => ['nullable'],
+            'sale_price' => ['nullable', 'required_with:on_sale', 'numeric', 'min:0.01', 'bail', 'lt:price'],
+        ], [
+            'sale_price.lt' => "The sale price must be less than the item's price"
         ]);
 
         $article->update([
@@ -111,7 +115,9 @@ class ArticleController extends Controller
             'secondary_images' => $article->updateSecondaryImages(request('secondary_images')),
             'featured' => request('featured'),
             'price' => request('price'),
-            'sold_out' => request('sold_out') === null ? false : true
+            'sold_out' => request('sold_out') === null ? false : true,
+            'on_sale' => request('on_sale') === null ? false : true,
+            'sale_price' => request('sale_price')
         ]);
 
         $article->sizes()->sync(Size::find(request('sizes')));

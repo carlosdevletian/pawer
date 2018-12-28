@@ -614,4 +614,66 @@ class EditArticleTest extends TestCase
 
         $this->assertTrue($article->fresh()->isAvailable());
     }
+
+    /** @test*/
+    public function an_article_can_be_put_on_sale()
+    {
+        $article = create('Article', ['on_sale' => false]);
+        $this->assertFalse($article->isOnSale());
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'price' => 10,
+            'on_sale' => 1,
+            'sale_price' => 9
+        ]));
+
+        $this->assertTrue($article->fresh()->isOnSale());
+    }
+
+    /** @test*/
+    public function if_an_article_is_put_on_sale_a_sale_price_must_be_present()
+    {
+        $article = create('Article', ['on_sale' => false]);
+        $this->assertFalse($article->isOnSale());
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'on_sale' => 1,
+            'sale_price' => 0
+        ]));
+
+        $this->assertFalse($article->fresh()->isOnSale());
+        $response->assertSessionHasErrors('sale_price');
+    }
+
+    /** @test*/
+    public function if_an_article_is_put_on_sale_the_sale_price_must_be_lower_than_regular_price()
+    {
+        $article = create('Article', ['price' => 10, 'on_sale' => false]);
+        $this->assertFalse($article->isOnSale());
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'price' => "10",
+            'on_sale' => 1,
+            'sale_price' => "11"
+        ]));
+
+        $this->assertFalse($article->fresh()->isOnSale());
+        $response->assertSessionHasErrors('sale_price');
+    }
+
+    /** @test*/
+    public function sale_price_must_be_numeric()
+    {
+        $article = create('Article', ['price' => 10, 'on_sale' => false]);
+        $this->assertFalse($article->isOnSale());
+
+        $response = $this->signIn()->patch(route('articles.update', $article), $this->validParams([
+            'price' => 10.0,
+            'on_sale' => 1,
+            'sale_price' => 'not-a-number'
+        ]));
+
+        $this->assertFalse($article->fresh()->isOnSale());
+        $response->assertSessionHasErrors('sale_price');
+    }
 }

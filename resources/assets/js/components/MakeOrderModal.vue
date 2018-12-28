@@ -38,7 +38,7 @@
                             <p class="futura-medium m-0 mb-1">Color: <span class="text-grey-darker">{{ item.article.color_name }}</span></p>
                             <p class="futura-medium m-0 mb-1">Quantity: <span class="text-grey-darker">{{ item.quantity }}</span></p>
                             <p class="futura-medium m-0 mb-1">Size: <span class="text-grey-darker">{{ item.size.name }}</span></p>
-                            <p class="futura-medium m-0">Price: <span class="text-grey-darker">${{ item.article.price }}</span></p>
+                            <p class="futura-medium m-0">Price: <span class="text-grey-darker">${{ item.article.on_sale ? item.article.sale_price : item.article.price }}</span></p>
                             <p class="futura-medium m-0 mt-1 d-md-none text-2xl">${{ item.total_price }}</p>
                         </div>
                         <div class="position-absolute right-0 d-none d-md-block text-2xl" style="bottom: 50%; left: 80%">${{ item.total_price }}</div>

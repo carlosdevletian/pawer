@@ -3,21 +3,43 @@
         <div class="position-relative">
             <a v-if="withLink && active" :href="selectedArticle.links.show"  :title="selectedArticle.name">
                 <loadable-image
+                    class="position-relative"
                     skeleton-styles='{"width": "250px", "height": "250px"}'
                     image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
                     :image-source="imagePath"
                     image-classes="fit-to-parent"
                     :image-alt="selectedArticle.name"
-                ></loadable-image>
+                >
+                    <div class="position-absolute text-2xl text-red" style="bottom: 0px; right: 0px;" v-if="selectedArticle.on_sale">
+                        <div class="position-relative">
+                            <svg style="transform: rotate(45deg)" class="fill-current" width="55" height="55" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path class="position-relative" d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                            </svg>
+                            <span class="text-white position-absolute text-base font-weight-bold d-flex justify-content-center align-items-center w-100 h-100 pin">${{ selectedArticle.sale_price }}</span>
+                        </div>
+                    </div>
+                </loadable-image>
             </a>
             <loadable-image v-else
+                class="position-relative"
                 skeleton-styles='{"width": "250px", "height": "250px"}'
                 image-styles='{"maxWidth": "250px", "maxHeight": "250px"}'
                 :image-source="imagePath"
                 image-classes="fit-to-parent"
                 :image-alt="selectedArticle.name"
-            ></loadable-image>
-            <p class="position-absolute" style="right:0; bottom:-40px" v-if="active">${{ selectedArticle.price }}</p>
+            >
+                <div class="position-absolute text-2xl text-red" style="bottom: 0px; right: 0px;" v-if="selectedArticle.on_sale">
+                    <div class="position-relative">
+                        <svg style="transform: rotate(45deg)" class="fill-current" width="55" height="55" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path class="position-relative" d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                        </svg>
+                        <span class="text-white position-absolute text-base font-weight-bold d-flex justify-content-center align-items-center w-100 h-100 pin">${{ selectedArticle.sale_price }}</span>
+                    </div>
+                </div>
+            </loadable-image>
+            <p class="position-absolute" style="right:0; bottom:-40px;" v-if="active">
+                <span :class="{ 'line-through' : selectedArticle.on_sale  }">${{ selectedArticle.price }}</span>
+            </p>
         </div>
         <div style="margin-top: 0; width: 47%" class="d-flex-column" v-if="active">
             <p class="m-0 p-0 futura-medium text-truncate">{{ selectedArticle.name }}</p>

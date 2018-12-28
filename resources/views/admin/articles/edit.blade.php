@@ -91,6 +91,23 @@
                             <label for="price">Price</label>
                             <input class="mr-2 form-control bg-light rounded-0" type="number" step=0.01 name="price" placeholder="Example: 13.99" value="{{ $article->price }}">
                         </div>
+                        <div class="futura-medium mb-2">
+                            <div class="d-flex justify-content-between">
+                                <div class="form-check form-check-inline ">
+                                    <input class="form-check-input" type="checkbox" name="on_sale" value=1 {{ $article->isOnSale() ? 'checked' : '' }}>
+                                    <label class="form-check-label">On Sale</label>
+                                </div>
+                                <div class="d-flex">
+                                    <label class="futura-medium" for="sale_price">Sale price</label>
+                                    <input class="form-control bg-light rounded-0"
+                                        type="number"
+                                        step=0.01
+                                        name="sale_price"
+                                        placeholder="Example: 13.99"
+                                        value="{{ $article->sale_price >= 0.01 ? $article->sale_price : null }}">
+                                </div>
+                            </div>
+                        </div>
                         <label for="description" class="futura-medium m-0">Product Detail</label>
                         <textarea name="description"
                                 value="{{ $article->description }}"
