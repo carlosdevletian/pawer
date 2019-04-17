@@ -10161,6 +10161,10 @@ a:hover {
   padding: 3em;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 .hover\:text-brand-primary:hover {
   color: #eb3323;
 }

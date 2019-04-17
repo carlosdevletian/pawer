@@ -30364,6 +30364,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['dataProduct', 'dataActive', 'withLink'],
@@ -30449,29 +30474,157 @@ var render = function() {
                   }
                 },
                 [
-                  _c("loadable-image", {
-                    attrs: {
-                      "skeleton-styles":
-                        '{"width": "250px", "height": "250px"}',
-                      "image-styles":
-                        '{"maxWidth": "250px", "maxHeight": "250px"}',
-                      "image-source": _vm.imagePath,
-                      "image-classes": "fit-to-parent",
-                      "image-alt": _vm.selectedArticle.name
-                    }
-                  })
+                  _c(
+                    "loadable-image",
+                    {
+                      staticClass: "position-relative",
+                      attrs: {
+                        "skeleton-styles":
+                          '{"width": "250px", "height": "250px"}',
+                        "image-styles":
+                          '{"maxWidth": "250px", "maxHeight": "250px"}',
+                        "image-source": _vm.imagePath,
+                        "image-classes": "fit-to-parent",
+                        "image-alt": _vm.selectedArticle.name
+                      }
+                    },
+                    [
+                      _vm.selectedArticle.on_sale &&
+                      !_vm.selectedArticle.sold_out
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "position-absolute text-2xl text-red",
+                              staticStyle: { bottom: "0px", right: "0px" }
+                            },
+                            [
+                              _c("div", { staticClass: "position-relative" }, [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass: "fill-current",
+                                    staticStyle: { transform: "rotate(45deg)" },
+                                    attrs: {
+                                      width: "55",
+                                      height: "55",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      viewBox: "0 0 20 20"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      staticClass: "position-relative",
+                                      attrs: {
+                                        d:
+                                          "M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "text-white position-absolute text-base font-weight-bold d-flex justify-content-center align-items-center w-100 h-100 pin"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "$" +
+                                        _vm._s(_vm.selectedArticle.sale_price)
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.selectedArticle.sold_out
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "position-absolute d-flex text-3xl text-red justify-content-center align-items-center koyu-italic",
+                              staticStyle: {
+                                bottom: "90px",
+                                right: "45px",
+                                transform: "rotate(-35deg)"
+                              }
+                            },
+                            [_c("span", [_vm._v("SOLD OUT")])]
+                          )
+                        : _vm._e()
+                    ]
+                  )
                 ],
                 1
               )
-            : _c("loadable-image", {
-                attrs: {
-                  "skeleton-styles": '{"width": "250px", "height": "250px"}',
-                  "image-styles": '{"maxWidth": "250px", "maxHeight": "250px"}',
-                  "image-source": _vm.imagePath,
-                  "image-classes": "fit-to-parent",
-                  "image-alt": _vm.selectedArticle.name
-                }
-              }),
+            : _c(
+                "loadable-image",
+                {
+                  staticClass: "position-relative",
+                  attrs: {
+                    "skeleton-styles": '{"width": "250px", "height": "250px"}',
+                    "image-styles":
+                      '{"maxWidth": "250px", "maxHeight": "250px"}',
+                    "image-source": _vm.imagePath,
+                    "image-classes": "fit-to-parent",
+                    "image-alt": _vm.selectedArticle.name
+                  }
+                },
+                [
+                  _vm.selectedArticle.on_sale && _vm.active
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "position-absolute text-2xl text-red",
+                          staticStyle: { bottom: "0px", right: "0px" }
+                        },
+                        [
+                          _c("div", { staticClass: "position-relative" }, [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "fill-current",
+                                staticStyle: { transform: "rotate(45deg)" },
+                                attrs: {
+                                  width: "55",
+                                  height: "55",
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  viewBox: "0 0 20 20"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  staticClass: "position-relative",
+                                  attrs: {
+                                    d:
+                                      "M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "text-white position-absolute text-base font-weight-bold d-flex justify-content-center align-items-center w-100 h-100 pin"
+                              },
+                              [
+                                _vm._v(
+                                  "$" + _vm._s(_vm.selectedArticle.sale_price)
+                                )
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    : _vm._e()
+                ]
+              ),
           _vm._v(" "),
           _vm.active
             ? _c(
@@ -30480,7 +30633,13 @@ var render = function() {
                   staticClass: "position-absolute",
                   staticStyle: { right: "0", bottom: "-40px" }
                 },
-                [_vm._v("$" + _vm._s(_vm.selectedArticle.price))]
+                [
+                  _c(
+                    "span",
+                    { class: { "line-through": _vm.selectedArticle.on_sale } },
+                    [_vm._v("$" + _vm._s(_vm.selectedArticle.price))]
+                  )
+                ]
               )
             : _vm._e()
         ],
@@ -30673,6 +30832,11 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AddToCart_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__AddToCart_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__AddToCart_vue__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -31252,8 +31416,23 @@ var render = function() {
         })
       ),
       _vm._v(" "),
-      _c("p", { staticClass: "futura-medium text-xl" }, [
-        _vm._v("$" + _vm._s(_vm.product.price))
+      _c("div", { staticClass: "d-flex align-items-center mb-2" }, [
+        _vm.product.on_sale
+          ? _c("div", { staticClass: "text-2xl text-red mr-4" }, [
+              _c("span", { staticClass: "font-weight-bold" }, [
+                _vm._v("$" + _vm._s(_vm.product.sale_price))
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "futura-medium text-xl",
+            class: { "line-through": _vm.product.on_sale }
+          },
+          [_vm._v("$" + _vm._s(_vm.product.price))]
+        )
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "futura-medium m-0" }, [_vm._v("Product Detail")]),
@@ -32134,6 +32313,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -32191,18 +32371,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    !_vm.imageHasLoaded
-      ? _c("div", {
-          staticClass: "animated-background",
-          style: _vm.skeletonStyle
-        })
-      : _c("img", {
-          class: _vm.imageClasses,
-          style: _vm.imageStyle,
-          attrs: { src: _vm.imageSource, alt: _vm.imageAlt }
-        })
-  ])
+  return _c(
+    "div",
+    [
+      !_vm.imageHasLoaded
+        ? _c("div", {
+            staticClass: "animated-background",
+            style: _vm.skeletonStyle
+          })
+        : _c("img", {
+            class: _vm.imageClasses,
+            style: _vm.imageStyle,
+            attrs: { src: _vm.imageSource, alt: _vm.imageAlt }
+          }),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33292,7 +33478,12 @@ var render = function() {
                                           { staticClass: "text-grey-darker" },
                                           [
                                             _vm._v(
-                                              "$" + _vm._s(item.article.price)
+                                              "$" +
+                                                _vm._s(
+                                                  item.article.on_sale
+                                                    ? item.article.sale_price
+                                                    : item.article.price
+                                                )
                                             )
                                           ]
                                         )

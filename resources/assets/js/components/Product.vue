@@ -10,13 +10,16 @@
                     image-classes="fit-to-parent"
                     :image-alt="selectedArticle.name"
                 >
-                    <div class="position-absolute text-2xl text-red" style="bottom: 0px; right: 0px;" v-if="selectedArticle.on_sale">
+                    <div class="position-absolute text-2xl text-red" style="bottom: 0px; right: 0px;" v-if="selectedArticle.on_sale && !selectedArticle.sold_out">
                         <div class="position-relative">
                             <svg style="transform: rotate(45deg)" class="fill-current" width="55" height="55" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path class="position-relative" d="M0 10V2l2-2h8l10 10-10 10L0 10zm4.5-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
                             </svg>
                             <span class="text-white position-absolute text-base font-weight-bold d-flex justify-content-center align-items-center w-100 h-100 pin">${{ selectedArticle.sale_price }}</span>
                         </div>
+                    </div>
+                    <div class="position-absolute d-flex text-3xl text-red justify-content-center align-items-center koyu-italic" style="bottom: 90px; right: 45px; transform: rotate(-35deg)"  v-if="selectedArticle.sold_out">
+                        <span>SOLD OUT</span>
                     </div>
                 </loadable-image>
             </a>
