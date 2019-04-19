@@ -10,7 +10,7 @@
                 <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('about') }}" title="About Pawer">ABOUT</a>
             </li>
             <li class="nav-item mr-5">
-                <a class="nav-link ls-1 text-light fut-con-med" href="#" title="New Arrivals">NEW ARRIVALS</a>
+                <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('new-arrivals') }}" title="New Arrivals">NEW ARRIVALS</a>
             </li>
             <li class="nav-item @auth mr-5 @endauth">
                 <a class="nav-link ls-1 text-light fut-con-med" href="{{ route('catalog') }}" title="Catalog">CATALOG</a>

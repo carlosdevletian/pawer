@@ -16,6 +16,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::view('/about', 'about')->name('about');
+Route::get('/new-arrivals', 'NewArrivalsController@index')->name('new-arrivals');
 
 Route::get('/product/{article}/all-models', 'ArticleController@index')->name('articles.index');
 Route::get('/models/{article}', 'ArticleController@show')->name('articles.show');
